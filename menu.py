@@ -1,36 +1,58 @@
-from dr_robert_neville import Character
+from character_location_classes import Character, Location
 from script import open_story
 import time
 import sys
 from pygame import mixer
 
-character1 = Character("Dr. Robert Neville", 100, "high", 5, "Male", 0)
-character2 = Character("Susan", 100, "medium", 10, "Female", 0)
-character3 = Character("John", 100, "medium", 15, "Male", 0)
-character4 = Character("Stephen", 100, "low", 20, "Male", 0)
+character1 = Character("Dr. Robert Neville", 100, "high", 5, "Male", 0, 5)
+character2 = Character("Susan", 100, "medium", 10, "Female", 0, 5)
+character3 = Character("Carl Grimes", 100, "medium", 15, "Male", 0, 5)
+character4 = Character("Stephen", 100, "low", 20, "Male", 0, 5)
 
-clerk = Character("Clerk", 100, "low", 999, "Female", 0)
-cashier = Character("Cashier", 100, "low", 999, "Female", 0)
+bartender = Character("Bartender", 100, "low", 999, "Female", 0, 5)
+clerk = Character("Clerk", 100, "low", 999, "Male", 0, 5)
+cashier = Character("Cashier", 100, "low", 999, "Female", 0, 5)
+sus_npc = Character("Sus_Npc", 100, "low", 999, "Male or Female", 0, 5)
+
+bartender_zombie = Character("Bartender Zombie", 25, "low", 5, "Male", 10, 4)
+
+home = Location("Home", "This is my home", "room1 is my room", "room2 is the kitchen", "room3 is the garage")
+pub = Location("Pub", "This is the Pub", "room1 is my room", "room2 is the kitchen", "room3 is the garage")
+highschool = Location("High-School", "This is the High-School", "room1 is my room", "room2 is the kitchen", "room3 is the garage")
+stadium = Location("Stadium", "This is the Stadium", "room1 is my room", "room2 is the kitchen", "room3 is the garage")
+susan_location = Location("Sus-Pick", "This is Sus-pick", "room1 is my room", "room2 is the kitchen", "room3 is the garage")
+
+def y_or_n():
+    y_n_choice = str(int("Y or N? ")).lower()
+    if y_n_choice == "y":
+        return 
+
+# def location_list():
+#     return[home, pub, highschool, stadium, susan_location]
+
+
 def character_menu():
     print("1. ", str(character1), "2. ", str(character2), "3. ", str(character3), "4. ", str(character4))
     while True:
-            user_choice = input("Choose your character wisely? (1-4) ")
-            if user_choice == "1":
+            user_choice1 = input("Choose your character wisely? (1-4) ")
+            if user_choice1 == "1":
                 player = character1
                 # INPUT SOUNDBOARD RELATED TO CHARACTER
                 # time.sleep()
                 return player
-            elif user_choice == "2":
+            elif user_choice1 == "2":
                 player = character2
                 # INPUT SOUNDBOARD RELATED TO CHARACTER
                 # time.sleep()
                 return player
-            elif user_choice == "3":
+            elif user_choice1 == "3":
                 player = character3
                 # INPUT SOUNDBOARD RELATED TO CHARACTER
                 # time.sleep()
                 return player
-            elif user_choice == "4":
+                location_menu()
+
+            elif user_choice1 == "4":
                 player = character4
                 # INPUT SOUNDBOARD RELATED TO CHARACTER
                 # time.sleep()
@@ -40,13 +62,158 @@ def character_menu():
                 # time.sleep(1.5)
                 print("YOU HAVE FAILED ME FOR THE LAST TIME!")
 
-def player_died(player):
-    print("%s is dead." % (player.name))
-    # Create a word graphic
-    # INPUT SOUNDBOARD RELATED TO LOSING
-    # time.sleep(1.5)
-    # PRINT SOMETHING
-    sys.exit(0)
+# def location_menu():
+#     print("1. ", str(pub.place))
+#     while True:
+#         location_choice = input("Where would you like to go? (1-4) ")
+#         if location_choice == "1":
+#             location = pub
+#             print(str(player))
+#             # location = pub
+#             pub_location()
+#             pub_menu()
+#         if location_choice == "2":
+#             location = highschool
+#             return highschool
+#         if location_choice == "3":
+#             location = stadium
+#             return stadium
+#         if location_choice == "4":
+#             location = susan_location
+#             return susan_location
+#         else:
+#             print("YOU HAVE FAILED ME FOR THE LAST TIME")
+    
+
+# def highschool_location(player, key_word):
+#     player.location = key_word
+
+def pub_location():
+    print("""
+Ahh, the old pub. You've been coming here for years. It's been a while though, 
+what with the pandemic and all. The smell of bar tar and cigarettes still lingers; 
+this place was always packed. Now, a single bartender manages every patron. 
+It's almost empty, but there are two young ladies sitting at the far end of the bar.
+    """)
+    time.sleep(5)
+    print("What will it be?")
+    time.sleep(3)
+
+def pub_menu():
+    bartenderencounter = 1
+    while True:
+            user_choice = input("""
+1. Have a Pint 
+2. Talk to the Bartender
+3. Approach the Young Ladies
+4. Leave
+""")
+            if user_choice == "1":
+                # self.getdrunk()
+                print("Will you have another?")
+                pub_menu()
+                # INPUT SOUNDBOARD OF POURING A BEER
+                # time.sleep()
+            elif user_choice == "2":
+                time.sleep(2)
+                if bartenderencounter == 1:
+                    print("""
+You approach the bar. The bartender greets you with a smile..
+"The usual?" he says, as he pours your whiskey.
+It's nice to be here..
+""")
+                    time.sleep(5)
+                    # INPUT ZOMBIE BARTENDER SOUND
+                    # time.sleep()
+                    print("new menu to either talk to the girls or leave?")
+                    #/self.zombie_fight(pubZombie)
+                    bartenderencounter += 1
+                elif bartenderencounter == 2:
+                    print("""
+You approach the bar. Your faithful bartender's back is turned.
+He's more interested in his female patrons than you.
+As you sit down, he turns to you and looks up, an empty stare on his face.
+His mouth is...
+""")
+                    time.sleep(5)
+                    print("""
+Bleeding?
+""")
+                    # INPUT ZOMBIE BARTENDER SOUND
+                    # time.sleep()
+                    zombie_fight(player)
+                    bartenderencounter += 1
+                elif bartenderencounter > 2:
+                    print("The bartender is dead")
+                    pub_menu()
+
+            elif user_choice == "3":
+                time.sleep(2)
+                print("""
+You can't help but notice these two gorgeous young ladies looking at you.
+You approach them...
+""")
+                time.sleep(5)
+                print("""
+"How are you, ladies?"
+""")
+                # INPUT ZOMBIE BARTENDER SOUND
+                # time.sleep()
+                print("\"Hey there, handsome\" they say, in a slow, drawly unison.")
+                #/self.zombie_fight(pubZombie)
+                pub_menu()
+            elif user_choice == "4":
+                location_menu()
+
+
+# def stadium_location(player, key):
+#     player.location = key_word
+
+
+def zombie_fight():
+    # player = player
+    if location == pub:
+        bad_guy = bartender_zombie
+    if location == highschool:
+        bad_guy = clerk_zombie
+    if location == stadium:
+        bad_guy = cashier_zombie
+    if location == susan_location:
+        bad_guy = sus_npc
+    print("Get ready to battle %s!" % bad_guy.name)
+    while player.alive() and bad_guy.alive():
+        player.print_status()
+        bad_guy.print_status()
+        print("")
+        print("Battle options:")
+        print("1. fight %s" % bad_guy.name)
+        print("2. do nothing")
+        print("3. flee")
+        user_input = str(input("Enter choice here: "))
+        print("*" * 10)
+        if user_input == "1":
+            player.attack(bad_guy)
+        elif user_input == "2":
+            pass
+        elif user_input == "3":
+            print("Goodbye.")
+            break
+        else:
+            print("Invalid input %r" % user_input)
+        
+        if player.alive():
+            bad_guy.attack(player)
+            
+        if bad_guy.dead():
+            print("%s killed %s!" % (player.name, bad_guy.name))
+
+# def player_died(player):
+#     print("%s is dead." % (player.name))
+#     # Create a word graphic
+#     # INPUT SOUNDBOARD RELATED TO LOSING
+#     # time.sleep(1.5)
+#     # PRINT SOMETHING
+#     sys.exit(0)
 
 def ending():
     # create word graphic as well print out a congratulations message
@@ -60,3 +227,5 @@ time.sleep(2)
 print("Press enter to continue")
 
 character_menu()
+
+
