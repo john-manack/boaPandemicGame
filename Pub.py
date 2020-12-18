@@ -23,12 +23,12 @@ def pub_menu():
 
 """)
             if user_choice == "1":
+                # INPUT SOUNDBOARD OF POURING A BEER
+                # time.sleep()
                 # self.getdrunk()
                 print("Will you have another?")
                 pub_menu()
-                # INPUT SOUNDBOARD OF POURING A BEER
-                # time.sleep()
-                return player
+        
             
             elif user_choice == "2":
                 time.sleep(2)
@@ -45,8 +45,6 @@ It's nice to be here..
                     print("new menu to either talk to the girls or leave?")
                     #/self.zombie_fight(pubZombie)
                     bartenderencounter += 1
-                    print(int(bartenderencounter))
-
 
                 elif bartenderencounter == 2:
                     print("""
@@ -55,7 +53,7 @@ He's more interested in his female patrons than you.
 As you sit down, he turns to you and looks up, an empty stare on his face.
 His mouth is...
 """)
-                    time.sleep(5)
+                    #///time.sleep(5)
                     print("""
 Bleeding?
 """)
@@ -81,10 +79,9 @@ You approach them...
                 print("""
 "How are you, ladies?"
 """)
-                # INPUT ZOMBIE BARTENDER SOUND
+                # INPUT LADIES SOUND
                 # time.sleep()
                 print("\"Hey there, handsome\" they say, in a slow, drawly unison.")
-                #/self.zombie_fight(pubZombie)
                 pub_menu()
             
             

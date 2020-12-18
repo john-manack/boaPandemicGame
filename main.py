@@ -1,6 +1,6 @@
 import random
 import time
-from classes import Character
+from classes import Character, Location
 from functions import open_story, character_list, print_character_menu, player_selection, pub_location, pub_menu, location_menu
 import sys
 
@@ -11,5 +11,5 @@ import sys
 # mixer.music.play(-1)
 
 open_story()
-player_selection()
-location_menu()
+player=player_selection()
+location_menu(player)
