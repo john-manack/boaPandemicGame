@@ -63,41 +63,29 @@ class Character:
     def print_status(self):
         print("%s has %d health and %d power." % (self.name, self.health, self.power))
 
-class Location():
-    def __init__(self, place, description, room1, room2, room3):
-        self.place = place
-        self.description = description
-        self.room1 = room1
-        self.room2 = room2
-        self.room3 = room3
+# class Npc():
 
-    def __str__(self):
-        return"""
-        %s
-        %s
-        """ % (self.place, self.description)
-# def room1(self, place):
+#     def __init__(self, name, purse, sex, npc_class, npc_type):
+#         self.name = name
+#         self.species = species
+#         self.npc_class = str(npc_class)
+#         if npc_type == 'minion' or npc_type == 'rival' or npc_type == 'nemesis':
+#             self.npc_type = npc_type
+#         else:
+#             print('\n', "Must choose 'minion', 'rival', or 'nemeses'.",'\n\n')
+#             print(" Example calling npc object: npc('Duke Skyhawker', 'human', 'pirate', 'rival')", '\n')
+#             raise SystemExit
 
-    def location_menu():
-        print("1. ", str(pub.place))
-        while True:
-            location_choice = input("Where would you like to go? (1-4) ")
-            if location_choice == "1":
-                location = pub
-                print(str(player))
-                # location = pub
-                pub_location()
-                pub_menu()
-            if location_choice == "2":
-                location = highschool
-                return highschool
-            if location_choice == "3":
-                location = stadium
-                return stadium
-            if location_choice == "4":
-                location = susan_location
-                return susan_location
-            else:
-                print("YOU HAVE FAILED ME FOR THE LAST TIME")
-    
-
+# def general_skills(self):
+#         if self.npc_type == 'minion':
+#             skill_limit = 2
+#         elif self.npc_type == 'rival':
+#             skill_limit = 3
+#         elif self.npc_type == 'nemesis':
+#             skill_limit = 4
+ 
+#         try:
+#             qty = career[self.npc_class][1][0] + type_rules[self.npc_type][2][0]
+#             return dict(zip(random.sample(general_skills,qty),[(random.randint(0,skill_limit) + 1) for number in range(1,qty + 1)]))
+#         except ValueError:
+#             return "Max amount of knowledge skills is 22"
