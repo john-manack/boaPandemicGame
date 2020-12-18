@@ -91,3 +91,5 @@ def zombie_fight(good_guy, bad_guy):
             
         if bad_guy.dead():
             print("%s killed %s!" % (good_guy.name, bad_guy.name))
+
+zombie_fight(carl, bartender_zombie)
