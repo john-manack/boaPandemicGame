@@ -34,42 +34,42 @@ class Character:
         self.bag.append(new_item)
         print("%s was added to your bag" % (new_item))
 
-    def punch(self, enemy):
+    def do_punch(self, zombie):
         if self.punch_power == "low":
-            punch = random.randint(1,3)
+            damage = random.randint(1,3)
         if self.punch_power == "medium":
-            punch = random.randint(4,6)
+            damage = random.randint(4,6)
         if self.punch_power == "high":
-            punch = random.randit(7,9)
-        defense = enemy.add_defense()
-        if defense > punch:
-            defense = punch
-        enemy.health -= (punch - defense)
+            damage = random.randint(7,9)
+        # defense = zombie.add_defense()
+        # if defense < damage:
+        #     defense = 8
+        zombie.health -= damage
         #//mixer.Sound.play(punch_se)
         #//time.sleep(1)
-        print("\n\nYou PUNCHED the %s for %d damage!" % (enemy.name, punch))
-        print ("%s BLOCKED your punch and has %d health left." % (enemy.name, enemy.health))
+        print("\n\n%s PUNCHED %s for %d damage!" % (self.name, zombie.name, damage))
+        print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health) )
 
-    def knife(self, enemy):
+    def do_knife(self, zombie):
         self.knife_power == 25
-        defense = enemy.add_defense()
+        defense = zombie.add_defense()
         if defense > self.knife_power:
             defense = self.knife_power
-        enemy.health -= (self.knife_power - defense)
-        print("\n\nYou SLASHED the %s for %d damage!" % (enemy.name, self.knife_power))
-    
-    def shoot(self, enemy):
+        zombie.health -= (self.knife_power - defense)
+        print("\n\nYou SLASHED %s for %d damage!" % (zombie.name, self.knife_power))
+
+    def do_shoot(self, zombie):
         self.shoot_power == 50
-        defense = enemy.add_defense()
+        defense = zombie.add_defense()
         if defense > self.shoot_power:
             defense = self.shoot_power
-        enemy.health -= (self.shoot_power - defense)
-        print("\n\nYou SLASHED the %s for %d damage!" % (enemy.name, self.shoot_power))
-    
-    def alive(self):
+        zombie.health -= (self.shoot_power - defense)
+        print("\n\nYou SLASHED %s for %d damage!" % (zombie.name, self.shoot_power))
+
+    def is_alive(self):
         return self.health > 0
-    
-    def dead(self):
+
+    def is_dead(self):
         return self.health <= 0
 
     def add_defense(self):

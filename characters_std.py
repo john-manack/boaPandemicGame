@@ -56,3 +56,11 @@ bar_zombie = Character("Bartender Zombie", "Zombie", 25, "low", 50, "Male", 5, 0
 hs_zombie = Character("Lunch Lady Zombie", "Zombie", 25, "low", 50, "Female", 5, 0, 0, 3, None)
 cash_zombie = Character("Cashier Zombie", "Zombie", 25, "low", 50, "Male", 5, 0, 0, 3, None)
 sus_npc_zombie = Character("Susan NPC Zombie", "Zombie", 25, "low", 50, "Male", 5, 0, 0, 3, None)
+
+def npc_list():
+    return [bartender, lunch_lady, cashier, sus_npc, bar_zombie, hs_zombie, cash_zombie, sus_npc_zombie]
+
+##################################
+####### DEFINE LOCATIONS  ########
+##################################
+highschool = Location("High School", "This is the highschool", "Classroom", "Cafeteria", "Auditorium")
