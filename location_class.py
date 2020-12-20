@@ -12,16 +12,16 @@ class Location:
 
 
     def __str__(self):
-        return"""
-        %s
-        """ % (self.place)
+        return "%s" % (self.place)
+
+
 
 # class Home(Location):
-#     def __init__(self, place, description, home_visits, room1, room2, room3):
-#         super().__init__(place, description, home_visits, room1, room2, room3)
-#         self.home_visits = 0
+#     def __init__(self, place, description, home_counts, room1, room2, room3):
+#         super().__init__(place, description, home_counts, room1, room2, room3)
+#         self.home_counts = 0
 
-#         def home_visit(self):
+#         def home_count(self):
 #             self.home_vists += 1
 
 #         def room1(self):
@@ -34,11 +34,11 @@ class Location:
 #             pass
 
 # class Pub(Location):
-#     def __init__(self, place, description, pub_visits, room1, room2, room3):
-#         super().__init__(place, description, pub_visits, room1, room2, room3)
-#         self.pub_visits = 0
+#     def __init__(self, place, description, pub_counts, room1, room2, room3):
+#         super().__init__(place, description, pub_counts, room1, room2, room3)
+#         self.pub_counts = 0
 
-#         def pub_visit(self):
+#         def pub_count(self):
 #             self.pub_vists += 1
 
 
@@ -52,11 +52,11 @@ class Location:
 #             pass
 
 # class Highschool(Location):
-#     def __init__(self, place, description, hs_visits, room1, room2, room3):
-#         super().__init__(place, description, hs_visits, room1, room2, room3)
-#         self.hs_visits = 0
+#     def __init__(self, place, description, hs_counts, room1, room2, room3):
+#         super().__init__(place, description, hs_counts, room1, room2, room3)
+#         self.hs_counts = 0
 
-#         def hs_visit(self):
+#         def hs_count(self):
 #             self.hs_vists += 1
 
 
@@ -70,11 +70,11 @@ class Location:
 #             pass
 
 # class Stadium(Location):
-#     def __init__(self, place, description, stad_visits, room1, room2, room3):
-#         super().__init__(place, description, stad_visits, room1, room2, room3)
-#         self.stad_visits = 0
+#     def __init__(self, place, description, stad_counts, room1, room2, room3):
+#         super().__init__(place, description, stad_counts, room1, room2, room3)
+#         self.stad_counts = 0
 
-#         def stad_visit(self):
+#         def stad_count(self):
 #             self.stad_vists += 1
 
 
@@ -88,11 +88,11 @@ class Location:
 #             pass
 
 # class DigitalCrafts(Location):
-#     def __init__(self, place, description, dc_visits, room1, room2, room3):
-#         super().__init__(place, description, dc_visits, room1, room2, room3)
-#         self.dc_visits = 0
+#     def __init__(self, place, description, dc_counts, room1, room2, room3):
+#         super().__init__(place, description, dc_counts, room1, room2, room3)
+#         self.dc_counts = 0
 
-#         def dc_visit(self):
+#         def dc_count(self):
 #             self.dc_vists += 1
 
 

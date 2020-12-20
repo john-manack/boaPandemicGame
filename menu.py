@@ -5,11 +5,8 @@ import sys
 from pygame import mixer
 
 character1 = Character("Dr. Robert Neville", "Human", 100, "high", 0, "Male", "medium", 15, 25, 50, "high", 15, "SAM ATTACK!")
-
 character2 = Character("Sherlock", "Cat", 100, "UNDT CHARISMA", 0, "UNDT SEX", "UNDT PUNCH POWER", 15, 25, 50, "UNDT DEFENSE LVL", 15, "Psychic Whiskers")
-
 character3 = Character("Carl Grimes", "Human", 100, "low", 0, "Male", "medium", 15, 25, 50, "low", 15, "Trooper Drop Kick")
-
 character4 = Character("Chico Dusty", "Human", 100, "UNDT CHARISMA", 0, "Male", "high", 15, 25, 50, "low", 15, "UNDT SPECIAL POWER")
 
 bartender = Character("Bartender", "Human", 100, "low", 999, "Male", 0, 0, 0, 0, 0, 0, None)
@@ -40,6 +37,9 @@ def opponent_list():
 def location_list():
     return[home, pub, highschool, stadium, dig_crafts]
 
+listof_places = []
+listof_menus = []
+
 def print_character_menu(pos1, char1, pos2, char2, pos3, char3, pos4, char4):
     print("-" * 110)
     print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
@@ -59,7 +59,9 @@ def print_character_menu(pos1, char1, pos2, char2, pos3, char3, pos4, char4):
         "Defense:", char1.defense_lvl.title(), char2.defense_lvl.title(), char3.defense_lvl.title(), char4.defense_lvl.title()))
     print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
         "Spec. Power:", char1.special_power.title(), char2.special_power.title(), char3.special_power.title(), char4.special_power.title()))
-
+############################################################################################################################
+###########################                                           ###########################
+############################################################################################################################
 def character_menu():
     print_character_menu("1. ", character1, "2. ", character2, "3. ", character3, "4. ", character4)
     while True:
@@ -69,7 +71,6 @@ def character_menu():
 3. Carl Grimes
 4. Chico Dusty
 """)
-
         character_choice = input("Choose your character wisely? (1-4) ")
         if character_choice == "1":
             player = character1
@@ -121,43 +122,69 @@ You must move quickly now. It's spreading... Where will you go?
             print("YOU HAVE FAILED ME FOR THE LAST TIME!")
             time.sleep(2)
             print("Choose your character by inputing 1, 2, 3, or 4")
-
+############################################################################################################################
+###########################           ADD GRAPHICS TO LOCATION MENU                              ###########################
+############################################################################################################################
 def location_menu(player):
     while True:
-        location_choice = input("""
+        location_choice = int(input("""
 Where would you like to go?
 
 1. The Pub
 2. The High School
 3. The Stadium
 4. DigitalCrafts
-""")
-        if location_choice == "1": # and location.vists <=0
+"""))
+        if location_choice == 1: # and location.vists <=0
             location = pub
-            pub_description(player)
-            return pub
-            # pub_location()
-            # pub_menu()
-        if location_choice == "2":
+            listof_places.append(location_choice)
+            place_visit(player, listof_places, location_choice)
+            return location
+        if location_choice == 2:
             location = highschool
-            return highschool
-        if location_choice == "3":
+            listof_places.append(location_choice)
+            place_visit(player, listof_places, location_choice)
+            return location
+        if location_choice == 3:
             location = stadium
-            return stadium
-        if location_choice == "4":
+            listof_places.append(location_choice)
+            place_visit(player, listof_places, location_choice)
+            return location
+        if location_choice == 4:
             location = dig_crafts
-            return dig_crafts
+            listof_places.append(location_choice)
+            place_visit(player, listof_places, location_choice)
+            return location
         else:
             print("YOU HAVE FAILED ME FOR THE LAST TIME")
     print(location.description)
+#############################################################################################################################
+####################################### COME BACK HERE TO CHANGE COUNTER FOR EACH LOCATION
+#############################################################################################################################
+def place_visit(player, listof_places, location_choice):
+    if listof_places.count(location_choice) <= 1:
+        pub_description(player)
+    else:
+        pub_menu(player)
 
-# def highschool_location(player, key_word):
-#     player.location = key_word
+#############################################################################################################################
+####################################### COME BACK HERE TO CHANGE 
+####################################### WHEN EACH FIGHT WILL TAKE
+#######################################         PLACE
+#############################################################################################################################
+
+# def pub_menu(player, listof_places, user_choice):
+#     if listof_places.count(user_choice) <= 2:
+        
+#     else:
+#         pub_menu(player)
+
+#############################################################################################################################
+####################################### COME BACK HERE TO CHANGE DESCRIPTION FUNCTION
+#############################################################################################################################
 
 def pub_description(player):
     while True:
-        # pub_visit()
-        # if pub_visits <= 1:
         print("""
 Ahh, the old pub. You've been coming here for years. It's been a while though,
 what with the pandemic and all. The smell of bar tar and cigarettes still lingers; 
@@ -166,12 +193,13 @@ It's almost empty, but there are two young ladies sitting at the far end of the 
 """)
         # time.sleep(5)
         print("What will it be?")
+        
         # time.sleep(3)
         pub_menu(player)
-    # elif pub_visit >= 1:
-        # print("What will it be?")
-        # time.sleep(1)
-        # pub_menu(player)
+
+#############################################################################################################################
+##################      COME BACK HERE TO CHANGE EACH LOCATION MENU     ####################################################
+#############################################################################################################################
 
 def pub_menu(player):
     bartenderencounter = 1
@@ -190,7 +218,7 @@ def pub_menu(player):
                 # time.sleep()
             elif user_choice == "2":
                 # time.sleep(2)
-                if bartenderencounter == 1:
+                if bartenderencounter == 1 :
                     print("""
 You approach the bar. The bartender greets you with a smile..
 "The usual?" he says, as he pours your whiskey.
@@ -217,7 +245,7 @@ Bleeding?
                     # time.sleep()
                     zombie_fight(player)
                     bartenderencounter += 1
-                elif bartenderencounter >= 2:
+                elif bar_zombie.dead():
                     print("""
                     You approach the bar. The new bartender greets you with a shocked look..
 "Sorry about that, he was fine this morning and wasn't showing any signs of turning." he says, as he pours your whiskey.

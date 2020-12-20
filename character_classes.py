@@ -118,17 +118,4 @@ class Character:
         print("%s does %d damage to %s." % (self.name, self.punch_power, enemy.name))
 
 
-class Location:
-    def __init__(self, place, description, room1, room2, room3):
-        self.place = place
-        self.description = description
-        self.room1 = room1
-        self.room2 = room2
-        self.room3 = room3
-        
-
-    def __str__(self):
-        return"""
-        %s
-        """ % (self.place)
 
