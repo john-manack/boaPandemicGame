@@ -12,6 +12,7 @@ class Character:
         self.knife = knife
         self.shoot = shoot
         self.defense = defense
+        self.bag = []
         # self.location = location
     
     def __str__(self):
@@ -27,6 +28,8 @@ class Character:
     def add_item(self, new_item):
         self.bag.append(new_item)
         print("%s was added to your bag" % (new_item))
+    
+
 
     def do_punch(self, zombie):
         if self.punch == "low":
@@ -47,12 +50,11 @@ class Character:
         
 
     def do_knife(self, zombie):
-        self.knife_power == 25
+        self.knife == 25
         defense = zombie.add_defense()
-        if defense > self.knife_power:
-            defense = self.knife_power
-        zombie.health -= (self.knife_power - defense)
-        print("\n\nYou SLASHED %s for %d damage!" % (zombie.name, self.knife_power))
+        zombie.health -= (self.knife - defense)
+        print("\n\n%s SLASHED %s for %d damage!" % (self.name, zombie.name, self.knife))
+        print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health) )
 
     def do_shoot(self, zombie):
         self.shoot_power == 50

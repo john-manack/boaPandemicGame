@@ -45,10 +45,10 @@ Who are you?
 ########################################################################################################
 
 #name, health, purse, sex, punch_power, knife_power, shoot_power, defense)
-character1 = Character("Dr. Robert Neville", 100, 500, "Male", "low", 25, 50, "high")
-character2 = Character("Susan's Character", 100, 400, "Female", "medium", 25, 50, "medium")
-character3 = Character("Carl Grimes", 100, 600, "Male", "high", 25, 50, "low")
-character4 = Character("Chico Dusty", 100, 1000, "Male", "high", 25, 50, "low")
+character1 = Character("Dr. Robert Neville", 100, 500, "Male", "low", 24, 50, "high")
+character2 = Character("Susan's Character", 100, 400, "Female", "medium", 24, 50, "medium")
+character3 = Character("Carl Grimes", 100, 600, "Male", "high", 24, 50, "low")
+character4 = Character("Chico Dusty", 100, 1000, "Male", "high", 24, 50, "low")
 pubZombie = Character("Pub Zombie", 20, 100, "Male", "low", 0, 0, "low")
 pub = Location("The Pub", "your favorite watering hole", "Bar Area", "Bathroom", "Dart Board")
 
@@ -142,52 +142,6 @@ You must move quickly now. It's spreading... Where will you go?
 ######################################### end SELECT A PLAYER ##########################################
 ########################################################################################################
 
-
-
-
-
-########################################################################################################
-####################################### ZOMBIE FIGHT FUNCTION ##########################################
-########################################################################################################
-
-# def zombie_fight():
-# #     if location == pub:
-# #         zombie = pubZombie
-# #         return zombie
-
-#     while pubZombie.health > 0 and player.health > 0:
-#             print("\nWhat do you want to do?")
-#             print("1. Run Away")
-#             print("2. Punch")
-#             if player.knife_power > 0:
-#                 print ("3. Use Knife")
-#             if player.shoot_power > 0:
-#                 print ("4. Use Gun")
-#             user_input = input()
-#     # Run Away
-#             if user_input == "1":
-#                 player.health -= 20
-#                 location_menu()
-#     # Punch
-#             elif user_input == "2":
-#                 punch(player.punch, zombie)
-#     # Knife
-#             elif user_input == "3":
-#                 knife(player.knife, zombie)   
-#     # Gun
-#             elif user_input == "4":
-#                 shoot(player.shoot, zombie)
-
-#             else:
-#                 print(
-#                     "Your keyboard skills need some work! You missed your chance to attack!\n")
-#                 #time.sleep(1.5)
-#     # Computer ATTACKS!
-#             if player.health > 0:
-#                 # Opponent attacks player
-#                 pubZombie.attack(player)
-#                 if player.alive() == False:
-#                     dead(player)
 
 
 
@@ -300,8 +254,8 @@ ZOMBIE ATTACK!
                             print("\nWhat do you want to do?")
                             print("1. Run Away")
                             print("2. Punch")
-                            # if player.knife_power > 0:
-                            #     print ("3. Use Knife")
+                            if player.knife >= 25:
+                                print ("3. Use Knife")
                             # if player.shoot_power > 0:
                             #     print ("4. Use Gun")
                             user_input = input()
@@ -313,8 +267,8 @@ ZOMBIE ATTACK!
                             elif user_input == "2":
                                 player.do_punch(pubZombie)
                     # Knife
-                            # elif user_input == "3":
-                            #     knife(player.knife, zombie)   
+                            elif user_input == "3":
+                                player.do_knife(pubZombie)
                     # Gun
                             # elif user_input == "4":
                             #     shoot(player.shoot, zombie)
@@ -323,7 +277,7 @@ ZOMBIE ATTACK!
                                 print("You entered an invalid option and missed your chance to strike!")
                                 #time.sleep(1.5)
                     # ZOMBIE ATTACKS!
-                            if player.health > 0:
+                            if player.health > 0 and pubZombie.health > 0:
                                 # Opponent attacks player
                                 pubZombie.do_punch(player)
                             
@@ -346,9 +300,8 @@ ZOMBIE ATTACK!
 
 
                 elif user_choice == "3":
-                    #time.sleep(2)
                     print("""
-You can't help but notice these two gorgeous young ladies looking at you.
+You can't help but acknowledge the two gorgeous young ladies at the end of the bar.
 You approach them...
 """)
                     #time.sleep(5)
@@ -357,9 +310,11 @@ You approach them...
 """)
                     # INPUT LADIES SOUND
                     # time.sleep()
-                    print("\"Hey there, handsome\" they say, in a slow, drawly unison.")
-                    pub_menu(player)
-                
+                    print("""
+\"Get lost, creep,\" says the older, less attractive one.
+                    
+Today may not be your day...""")
+                    pub_menu(player)                
                     
                 elif user_choice == "4":
                     print("You couldn't be leaving any sooner... Where to?")
@@ -394,8 +349,20 @@ You approach them...
 """)
                     # INPUT LADIES SOUND
                     # time.sleep()
-                    print("\"Hey there, handsome\" they say, in a slow, drawly unison.")
-                    pub_menu(player)
+                    print("""
+\"Hey there, handsome\" says the pale, glassy eyed brunette, 
+in a slow, almost infectious drawl. "You saved us from that plague of a bartender.
+We thought we were history."
+
+"Just an instinct these days," you reply, as you notice the color
+running away from her face.
+
+"Here," she says. "Take this." As she pulls a large, glinting
+blade from her handbag. "I'm not much with it. But it may help you next time..."
+""")            
+                    player.knife += 1
+                    player.add_item("knife")
+                    pub_menu(player)  
                 
                     
                 elif user_choice == "3":
