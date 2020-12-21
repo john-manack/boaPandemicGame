@@ -45,13 +45,13 @@ Who are you?
 ########################################################################################################
 
 #name, species, health, charisma level, purse, sex, punch, knife, shoot, defense)
-character1 = Character("Dr. Robert Neville", 100, 500, "Male", "low", 24, 49, "high", 1, 1, 1)
-character2 = Character("Sherlock", 100, 400, "Female", "medium", 24, 49, "high", 1, 1, 1)
-character3 = Character("Carl Grimes", 100, 600, "Male", "high", 24, 49, "low", 1, 1, 1)
-character4 = Character("Chico Dusty", 100, 1000, "Male", "high", 24, 49, "low", 1, 1, 1)
-pubZombie = Character("Pub Zombie", 40, 100, "Male", "low", 0, 0, "low", 1, 1, 1)
-cyborgsean = Character("Cyborg Sean", 60, 100, "Male", "low", 0, 0, "medium", 1, 1, 1)
-hs_zombie = Character("Lunch Lady Zombie", 80, 100, "Female", "low", 0, 0, "medium", 1, 1, 1)
+character1 = Character("Dr. Robert Neville", 100, 500, "Male", "low", "high")
+character2 = Character("Sherlock", 100, 400, "Female", "medium", "high")
+character3 = Character("Carl Grimes", 100, 600, "Male", "high", "low")
+character4 = Character("Chico Dusty", 100, 1000, "Male", "high", "low")
+pubZombie = Character("Pub Zombie", 40, 100, "Male", "low", "low")
+cyborgsean = Character("Cyborg Sean", 60, 100, "Male", "low", "medium")
+hs_zombie = Character("Lunch Lady Zombie", 80, 100, "Female", "low", "medium")
 #pub = Location("The Pub", "your favorite watering hole", "Bar Area", "Bathroom", "Dart Board")
 
 def character_list():
@@ -171,8 +171,8 @@ def location_menu(player):
             highschool_location()
             highschool_menu(player)
         elif location_choice == "3":
-            stadium_location()
-            stadium_menu(player)
+            mall_location()
+            mall_menu(player)
         elif location_choice == "4":
             digitalcrafts_location()
             digitalcrafts_menu(player)
@@ -209,7 +209,6 @@ It's almost empty, but there are two young ladies sitting at the far end of the 
     # time.sleep(3)
 
 def pub_menu(player): 
-    bartenderencounter = 1
     while True:
 
 # IF PUB ZOMBIE IS ALIVE:
@@ -233,7 +232,7 @@ def pub_menu(player):
                 elif user_choice == "2":
                     #time.sleep(2)
                     
-                    if bartenderencounter == 1:
+                    if player.bartenderencounter == 1:
                         print("""
 You approach the bar. The bartender greets you with a smile..
 "The usual?" he says, as he pours your whiskey.
@@ -243,9 +242,9 @@ It's nice to be here..
                         # INPUT ZOMBIE BARTENDER SOUND
                         # time.sleep()
                         #/print("new menu to either talk to the girls or leave?")
-                        bartenderencounter += 1
+                        player. bartenderencounter += 1
 
-                    elif bartenderencounter == 2:
+                    elif player.bartenderencounter == 2:
                         print("""
 You approach the bar. Your faithful bartender's back is turned.
 He's more interested in his female patrons than you.
@@ -262,10 +261,10 @@ ZOMBIE ATTACK!
                             print("\nWhat do you want to do?")
                             print("1. Run Away")
                             print("2. Punch")
-                            if player.knife >= 25:
+                            if "knife" in player.bag:
                                 print ("3. Use Knife")
-                            # if player.shoot_power > 0:
-                            #     print ("4. Use Gun")
+                            if "gun" in player.bag:
+                                print ("4. Use Gun")
                             user_input = input()
                     # Run Away
                             if user_input == "1":
@@ -275,11 +274,11 @@ ZOMBIE ATTACK!
                             elif user_input == "2":
                                 player.do_punch(pubZombie)
                     # Knife
-                            elif user_input == "3":
+                            elif user_input == "3" and "knife" in player.bag:
                                 player.do_knife(pubZombie)
                     # Gun
-                            # elif user_input == "4":
-                            #     shoot(player.shoot, zombie)
+                            elif user_input == "4" and "gun" in player.bag:
+                                player.do_shoot(pubZombie)
 
                             else:
                                 print("You entered an invalid option and missed your chance to strike!")
@@ -300,9 +299,9 @@ ZOMBIE ATTACK!
 %s's health is %d.
 
 ....Now what?""" % (player.name, pubZombie.name, player.name, player.health))
-                        bartenderencounter += 1
+                        player.bartenderencounter += 1
 
-                    elif bartenderencounter > 2:
+                    elif player.bartenderencounter > 2:
                         print("The bartender is dead")
                         pub_menu(player)
 
@@ -346,32 +345,37 @@ Today may not be your day...""")
                     pub_menu(player)
 
                 elif user_choice == "2":
-                    #time.sleep(2)
-                    print("""
-You can't help but notice these two gorgeous young ladies looking at you.
-You approach them...
-""")
-                    #time.sleep(5)
-                    print("""
-"How are you, ladies?"
-""")
-                    # INPUT LADIES SOUND
-                    # time.sleep()
-                    print("""
-\"Hey there, handsome\" says the pale, glassy eyed brunette, 
-in a slow, almost infectious drawl. "You saved us from that plague of a bartender.
-We thought we were history."
+                    if player.ladies_count == 1:
+                        #time.sleep(2)
+                        print("""
+    You can't help but notice these two gorgeous young ladies looking at you.
+    You approach them...
+    """)
+                        #time.sleep(5)
+                        print("""
+    "How are you, ladies?"
+    """)
+                        # INPUT LADIES SOUND
+                        # time.sleep()
+                        print("""
+    \"Hey there, handsome\" says the pale, glassy eyed brunette, 
+    in a slow, almost infectious drawl. "You saved us from that plague of a bartender.
+    We thought we were history."
 
-"Just an instinct these days," you reply, as you notice the color
-running away from her face.
+    "Just an instinct these days," you reply, as you notice the color
+    running away from her face.
 
-"Here," she says. "Take this." As she pulls a large, glinting
-blade from her handbag. "I'm not much with it. But it may help you next time..."
-""")            
-                    player.knife += 1
-                    player.add_item("knife")
-                    pub_menu(player)  
-                
+    "Here," she says. "Take this." As she pulls a large, glinting
+    blade from her handbag. "I'm not much with it. But it may help you next time..."
+    """)            
+                        player.knife += 1
+                        player.add_item("knife")
+                        player.ladies_count += 1
+                        pub_menu(player)
+                    elif player.ladies_count >= 2:
+                        print("""
+"That was some showing with the bartender. Hope the knife we gave you helps..."
+""")                
                     
                 elif user_choice == "3":
                     print("You couldn't be leaving any sooner... Where to?")
@@ -457,10 +461,10 @@ ZOMBIE ATTACK!")
                     print("\nWhat do you want to do?")
                     print("1. Run Away")
                     print("2. Punch")
-                    # if player.knife_power > 0:
-                    #     print ("3. Use Knife")
-                    # if player.shoot_power > 0:
-                    #     print ("4. Use Gun")
+                    if "knife" in player.bag:
+                        print ("3. Use Knife")
+                    if "gun" in player.bag:
+                        print ("4. Use Gun")
                     user_input = input()
             # Run Away
                     if user_input == "1":
@@ -469,11 +473,11 @@ ZOMBIE ATTACK!")
                     elif user_input == "2":
                         player.do_punch(hs_zombie)
             # Knife
-                    # elif user_input == "3":
-                    #     knife(player.knife, zombie)   
+                    elif user_input == "3" and "knife" in player.bag:
+                        player.do_knife(hs_zombie)
             # Gun
-                    # elif user_input == "4":
-                    #     shoot(player.shoot, zombie)
+                    elif user_input == "4" and "gun" in player.bag:
+                        player.do_shoot(hs_zombie)
 
                     else:
                         print("You entered an invalid option and missed your chance to strike!")
@@ -573,7 +577,8 @@ You are lead to an empty room at the end of the hallway.
 There you find a doll in the middle of the room.
 """)
             yesorno = input("Would you like to pick it up? (Y/N) ")
-            if yesorno == "Y":
+            yesorno = yesorno.lower()
+            if yesorno == "y":
                 print("""
 You pick up the doll. 
 Suddenly it releases a poisonous gas!
@@ -623,9 +628,9 @@ You need a challenge - let's fight!""")
                             print("\nWhat do you want to do?")
                             print("1. Run Away")
                             print("2. Punch")
-                            if player.knife >= 25:
+                            if "knife" in player.bag:
                                 print ("3. Use Knife")
-                            if player.shoot >= 50:
+                            if "gun" in player.bag:
                                 print ("4. Use Gun")
                             user_input = input()
                     # Run Away
@@ -636,10 +641,10 @@ You need a challenge - let's fight!""")
                             elif user_input == "2":
                                 player.do_punch(cyborgsean)
                     # Knife
-                            elif user_input == "3":
+                            elif user_input == "3" and "knife" in player.bag:
                                 player.do_knife(cyborgsean)
                     # Gun
-                            elif user_input == "4":
+                            elif user_input == "4" and "gun" in player.bag:
                                 player.do_shoot(cyborgsean)
 
                             else:

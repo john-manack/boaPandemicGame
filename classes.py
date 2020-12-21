@@ -3,19 +3,24 @@ import time
 from pygame import mixer
 
 class Character:
-    def __init__(self, name, health, purse, sex, punch, knife, shoot, defense, classroom_count, auditorium_count, cafeteria_count):
+    def __init__(self, name, health, purse, sex, punch, defense):
         self.name = name
         self.health = health
         self.purse = purse
         self.sex = sex
         self.punch = punch
-        self.knife = knife
-        self.shoot = shoot
+        self.knife = 25
+        self.shoot = 50
         self.defense = defense
         self.bag = []
-        self.classroom_count = classroom_count
-        self.auditorium_count = auditorium_count
-        self.cafeteria_count = cafeteria_count
+        self.classroom_count = 1
+        self.auditorium_count = 1
+        self.cafeteria_count = 1
+        self.bartenderencounter = 1
+        self.ladies_count = 1
+        self.dc_hallway_count = 1
+        self.dc_sound_count = 1
+        self.dc_cabinet_count = 1
         # self.location = location
     
     def __str__(self):
@@ -99,7 +104,7 @@ class Character:
         # time.sleep(1)
         print('You got paid $%d, you now have $%s!' % (pay, other_person.purse))
         
-    #def get_infected(self):
+    # def get_infected(self):
     #    self.infection += 5
     #    while self.infection > 0:
     #        self.health -= self.infection
