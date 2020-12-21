@@ -402,11 +402,10 @@ The smell of rotting food floats through the air.
 You think you see a shadowy figure step behind a wall on the far side of the building.
 The front doors are locked, but you notice a window that's been left ajar.
 You climb through to find yourself in a dark hallway.
-          """)
+""")
     print("*" * 20)
 
 def highschool_menu(player):
-
     while True:
         user_choice = input("Where do you want to go? (1-4)\n1. Auditorium\n2. Cafeteria\n3. Classroom\n4. Leave High School\nEnter selection here: ")
 
@@ -563,148 +562,118 @@ You are not alone.
 
 def digitalcrafts_menu(player):
     time.sleep(2)
-    actionlist = ["1. Continue Down Hallway", 
-    "2. Investigate Sound",
-    "3. Open Cabinet",
-    "4. Leave"]
-    print(actionlist)
-    while len(actionlist) >= 1:
-        action = input("What would you like to do? (1-4) ")
-        if action == "1":
-            print("""
-You continue down the hallway.
-You are lead to an empty room at the end of the hallway.
-There you find a doll in the middle of the room.
-""")
-            yesorno = input("Would you like to pick it up? (Y/N) ")
-            yesorno = yesorno.lower()
-            if yesorno == "y":
+    while True:
+        user_choice = input("Where do you want to go? (1-4)\n1. Continue Down Hallway\n2. Head Upstairs\n3. Open Cabinet\n4. Leave Digital Crafts\nEnter selection here: ")
+        if user_choice == "1":
+            if player.dc_hallway_count == 1:
                 print("""
-You pick up the doll. 
-Suddenly it releases a poisonous gas!
-Your health takes a -10 hit.
-""")
-                # need to change character to player
-                player.health -= 10
-                # want to return character stats
-                print("%s's health: %d" % (player.name, player.health))
-                actionlist.pop(0)
-                print(actionlist)
-                # how to loop around with new changes
-                digitalcrafts_menu(player)
-            else:
-                digitalcrafts_menu(player)
-        elif action == "2":
-            print("""
+    You continue down the hallway.
+    You are lead to an empty room at the end of the hallway.
+    There you find a doll in the middle of the room.
+    """)
+                yesorno = input("Would you like to pick it up? (Y/N) ")
+                yesorno = yesorno.lower()
+                if yesorno == "y":
+                    print("""
+    You pick up the doll. 
+    Suddenly it releases a poisonous gas!
+    Your health takes a -10 hit.
+    """)
+                    player.health -= 10
+                    player.dc_hallway_count += 1
+                    print("%s's health: %d" % (player.name, player.health))
+            elif player.dc_hallway_count >= 2:
+                print("Hmm! There's just the empty remnants of the poison doll here... You head back into the hallway.")
+        elif user_choice == "2":
+            if player.dc_sound_count == 1:
+                print("""
 Your curiosity gets the best of you. Let us not hope curiosity kills the cat.
 You walk upstairs and investigate the sound.
 """)
-            time.sleep(4)
-            print("""
+                # time.sleep(4)
+                print("""
 The room is dark, but you make out a faint outline in the corner of the room.
 """)
-            time.sleep(2)
-            print("""
+                # time.sleep(2)
+                print("""
 'Who goes there?!' Calls the voice.
 You answer back.
 Suddenly, a man with a scraggly beard and kind but withered eyes appears. He looks like he's been through a lot.
-            """)
-            time.sleep(2)
-            print("""
+""")
+                # time.sleep(2)
+                print("""
 'My name is Sean. I used to teach here at Digital Crafts... But that was a long time ago.
 Since then, I haven't been able to leave the facility. Memories, ya know? But also, I'm a bit tied up.'
 Sean shows you a battery pack hooked up to the wall. Sean is a cyborg.
 'It's one of the few places in town that still has electricity...'
 You look around and see he has a small pouch next to him.
-            """)
-            time.sleep(2)
-            yesorno = input("'You want it? It's got some money in it. I don't need it anymore.' (Y/N)" )
-            if yesorno == "Y":
-                print("""
+""")
+                # time.sleep(2)
+                yesorno = input("'You want it? It's got some money in it. I don't need it anymore.' (Y/N)" )
+                yesorno = yesorno.lower()
+                if yesorno == "y":
+                    print("""
 Alright... But I won't let you just have all the answers!
 You need a challenge - let's fight!""")
-                print("Cyborg Sean challenges you to a duel!")
-                while cyborgsean.health > 0 and player.health > 0:
-                            print("\nWhat do you want to do?")
-                            print("1. Run Away")
-                            print("2. Punch")
-                            if "knife" in player.bag:
-                                print ("3. Use Knife")
-                            if "gun" in player.bag:
-                                print ("4. Use Gun")
-                            user_input = input()
-                    # Run Away
-                            if user_input == "1":
-                                player.health -= 20
-                                location_menu(player)
-                    # Punch
-                            elif user_input == "2":
-                                player.do_punch(cyborgsean)
-                    # Knife
-                            elif user_input == "3" and "knife" in player.bag:
-                                player.do_knife(cyborgsean)
-                    # Gun
-                            elif user_input == "4" and "gun" in player.bag:
-                                player.do_shoot(cyborgsean)
+                    print("Cyborg Sean challenges you to a duel!")
+                    while cyborgsean.health > 0 and player.health > 0:
+                                print("\nWhat do you want to do?")
+                                print("1. Run Away")
+                                print("2. Punch")
+                                if "knife" in player.bag:
+                                    print ("3. Use Knife")
+                                if "gun" in player.bag:
+                                    print ("4. Use Gun")
+                                user_input = input()
+                        # Run Away
+                                if user_input == "1":
+                                    player.health -= 20
+                        # Punch
+                                elif user_input == "2":
+                                    player.do_punch(cyborgsean)
+                        # Knife
+                                elif user_input == "3" and "knife" in player.bag:
+                                    player.do_knife(cyborgsean)
+                        # Gun
+                                elif user_input == "4" and "gun" in player.bag:
+                                    player.do_shoot(cyborgsean)
 
-                            else:
-                                print("You entered an invalid option and missed your chance to strike!")
-                                #time.sleep(1.5)
-                    # ZOMBIE ATTACKS!
-                            if player.health > 0 and cyborgsean.health > 0:
-                                # Opponent attacks player
-                                cyborgsean.do_punch(player)
-                            
-                            if player.health <= 0:
-                                print ("The %s KILLED YOU!!! Better luck next time...")
-                                quit
-                            
-                            if cyborgsean.health <= 0:
-                                print ("""
-                            
+                                else:
+                                    print("You entered an invalid option and missed your chance to strike!")
+                                    #time.sleep(1.5)
+                        # ZOMBIE ATTACKS!
+                                if player.health > 0 and cyborgsean.health > 0:
+                                    # Opponent attacks player
+                                    cyborgsean.do_punch(player)
+                                
+                                if player.health <= 0:
+                                    print ("The %s KILLED YOU!!! Better luck next time...")
+                                    quit
+                                
+                                if cyborgsean.health <= 0:
+                                    print ("""
+                                
 %s KILLED %s!! 
 %s's health is %d.
 
 ....Now what?""" % (player.name, cyborgsean.name, player.name, player.health))
-                digitalcrafts_menu(player)
-
-            else:
-                print("Okay. Bye bye.")
-                digitalcrafts_menu(player)
-        elif action == "3":
-            print("""
+                                    player.dc_sound_count += 1
+                else:
+                    print("Okay. Bye bye.")
+            elif player.dc_sound_count >= 2:
+                print('The mangled wreckage of Cyborg Sean lay sparking. You can hear him softly repeating "group debug... group debug..."')
+        elif user_choice == "3":
+            if player.dc_cabinet_count == 1:
+                print("""
 You sweep away the cobwebs and open the cabinet.
 You find some old sanitizer.
-            """)
-            player.bag.append("Sanitizer")
-            print(player.bag)
-            actionlist.pop(2)
-            print(actionlist)
-            digitalcrafts_menu(player)
-
-        elif action == "4":
+""")
+                player.bag.append("Sanitizer")
+                print("Your bag contents is now %s." % player.bag)
+                player.dc_cabinet_count += 1
+            elif player.dc_cabinet_count >= 2:
+                print("Hmm! The cabinet is empty... You've seen all there is to see here.")
+        elif user_choice == "4":
             location_menu(player)
         else:
             print("BLOOP. Can't do that patna'. Please choose again. ")
-
-# # Cyborg Sean fight!
-# def sean_fight(player, zombie):
-#     print("Cyborg Sean challenges you to a duel!")
-#     while player.health > 0:
-#         action = input("""
-#         What will you do? 
-#         1. Punch
-#         2. Knife
-#         3. Shoot
-#         4. Flee
-#         """)
-#         if action == "1":
-#             player.do_punch(cyborgsean)
-#         elif action == "2":
-#             player.do_knife(cyborgsean)
-#         elif action == "3":
-#             player.do_shoot(cyborgsean)
-#         elif action == "4":
-#             digitalcrafts_menu(player)
-#         else:
-#             print("BLOOP. Can't do that patna'. Please choose again. ")
