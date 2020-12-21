@@ -45,13 +45,13 @@ Who are you?
 ########################################################################################################
 
 #name, species, health, charisma level, purse, sex, punch, knife, shoot, defense)
-character1 = Character("Dr. Robert Neville", 100, 500, "Male", "low", 24, 49, "high")
-character2 = Character("Sherlock", 100, 400, "Female", "medium", 24, 49, "high")
-character3 = Character("Carl Grimes", 100, 600, "Male", "high", 24, 49, "low")
-character4 = Character("Chico Dusty", 100, 1000, "Male", "high", 24, 49, "low")
-pubZombie = Character("Pub Zombie", 40, 100, "Male", "low", 0, 0, "low")
-cyborgsean = Character("Cyborg Sean", 60, 100, "Male", "low", 0, 0, "medium")
-hs_zombie = Character("Lunch Lady Zombie", 80, 100, "Female", "low", 0, 0, "medium")
+character1 = Character("Dr. Robert Neville", 100, 500, "Male", "low", 24, 49, "high", 1, 1, 1)
+character2 = Character("Sherlock", 100, 400, "Female", "medium", 24, 49, "high", 1, 1, 1)
+character3 = Character("Carl Grimes", 100, 600, "Male", "high", 24, 49, "low", 1, 1, 1)
+character4 = Character("Chico Dusty", 100, 1000, "Male", "high", 24, 49, "low", 1, 1, 1)
+pubZombie = Character("Pub Zombie", 40, 100, "Male", "low", 0, 0, "low", 1, 1, 1)
+cyborgsean = Character("Cyborg Sean", 60, 100, "Male", "low", 0, 0, "medium", 1, 1, 1)
+hs_zombie = Character("Lunch Lady Zombie", 80, 100, "Female", "low", 0, 0, "medium", 1, 1, 1)
 #pub = Location("The Pub", "your favorite watering hole", "Bar Area", "Bathroom", "Dart Board")
 
 def character_list():
@@ -131,7 +131,7 @@ You must move quickly now. It's spreading... Where will you go?
             player = character4
             print("""
 Ahhh, Chico Dusty. Father of Sir Lucious Leftfoot.
-It took quite some time to gather your wits. 
+It took quite some time to gather your wits.
 They say that is a side effect when you've got it...
 
 You must move quickly now. It's spreading... Where will you go?
@@ -181,7 +181,7 @@ def location_menu(player):
         elif location_choice == "6":
             player.bag_contents()   
         else:
-            print("Enter \"1\", \"2\", \"2\", \"3\", \"4\", \"5\", or \"6\"")
+            print("Enter \"1\", \"2\", \"3\", \"4\", \"5\", or \"6\"")
             location_menu(player)
 
 ########################################################################################################
@@ -402,42 +402,44 @@ You climb through to find yourself in a dark hallway.
     print("*" * 20)
 
 def highschool_menu(player):
-    classroom_count = 1
-    cafeteria_count = 1
-    auditorium_count = 1
 
     while True:
-            user_choice = input("Where do you want to go? (1-4)\n1. Classroom\n2. Cafeteria\n3. Auditorium\n4. Leave High School\nEnter selection here: ")
+        user_choice = input("Where do you want to go? (1-4)\n1. Auditorium\n2. Cafeteria\n3. Classroom\n4. Leave High School\nEnter selection here: ")
 
 ################ INTERACTION 1 ######################
-            if user_choice == "1":
-                if classroom_count == 1:
-                    print("*" * 20)
-                    print(""" 
-You walk into the classroom down the hall. 
-There are few desks overturned and the chalk-board on the wall is crooked...
-It looks like there was some sort of struggle in here. 
-Something shiny catches your eye under one of the desks... 
-It's a little lock-picking kit! Must have belonged to a misbehaving highscooler!
-You pick it up and slip it in your bag. 
-You wander back into the hall.
-                          """)
-                    print("*" * 20)
-                    player.bag.append("Lock-picking Kit")
-                    print("Your bag contents is now %s." % player.bag)
-                    classroom_count += 1
-                elif classroom_count >= 2:
+        if user_choice == "1":
+            if player.auditorium_count == 1:
+                if "Lock-picking Kit" in player.bag:
+                        print("*" * 20)
+                        print("""
+You use your lock-picking kit to pick the locked door.
+You enter the school auditorium, which is cool and dark.
+The large burgundy curtains hanging over the stage are ripped and tattered.
+To your left is the sound booth, so you decide to investigate.
+As soon as you open the saloon-style door, you notice a $25 bill on the floor benieth the sound board.
+Neat!
+                        """)
+                        player.purse += 25
+                        print("You added $25 to your purse! The contents of your purse is now %s!" % player.purse)
+                        player.auditorium_count += 1
+                else:
                     print("*" * 20)
                     print("")
-                    print("Hmm! You've seen all there is to see here! You wander back into the hall.")
+                    print("This door is locked! If only there were a way to pick the lock...")
                     print("")
                     print("*" * 20)
+            elif player.auditorium_count >= 2:
+                print("*" * 20)
+                print("")
+                print("Hmm! You've seen all there is to see here! You wander back into the hall.")
+                print("")
+                print("*" * 20)
 
 ################ INTERACTION 2 ######################
-            elif user_choice == "2":
-                if cafeteria_count == 1:
-                    print("*" * 20)
-                    print("""
+        elif user_choice == "2":
+            if player.cafeteria_count == 1:
+                print("*" * 20)
+                print("""
 The cafeteria reveals the source of the horrid smell. 
 The freezers have been left open for days,
 and the putrid food has been plundered thrown all over the cafeteria by someone...
@@ -449,87 +451,87 @@ The beloved high school lunch lady is laying on the ground with her head turned.
 You run up to check if she is still breathing. No breath. No pulse.
 But is that her arm...... moving???
 ZOMBIE ATTACK!")
-                    """)
-                    print("*" * 20)
-                    while hs_zombie.health > 0 and player.health > 0:
-                        print("\nWhat do you want to do?")
-                        print("1. Run Away")
-                        print("2. Punch")
-                        # if player.knife_power > 0:
-                        #     print ("3. Use Knife")
-                        # if player.shoot_power > 0:
-                        #     print ("4. Use Gun")
-                        user_input = input()
-                # Run Away
-                        if user_input == "1":
-                            player.health -= 20
-                # Punch
-                        elif user_input == "2":
-                            player.do_punch(hs_zombie)
-                # Knife
-                        # elif user_input == "3":
-                        #     knife(player.knife, zombie)   
-                # Gun
-                        # elif user_input == "4":
-                        #     shoot(player.shoot, zombie)
+                """)
+                print("*" * 20)
+                while hs_zombie.health > 0 and player.health > 0:
+                    print("\nWhat do you want to do?")
+                    print("1. Run Away")
+                    print("2. Punch")
+                    # if player.knife_power > 0:
+                    #     print ("3. Use Knife")
+                    # if player.shoot_power > 0:
+                    #     print ("4. Use Gun")
+                    user_input = input()
+            # Run Away
+                    if user_input == "1":
+                        player.health -= 20
+            # Punch
+                    elif user_input == "2":
+                        player.do_punch(hs_zombie)
+            # Knife
+                    # elif user_input == "3":
+                    #     knife(player.knife, zombie)   
+            # Gun
+                    # elif user_input == "4":
+                    #     shoot(player.shoot, zombie)
 
-                        else:
-                            print("You entered an invalid option and missed your chance to strike!")
-                            #time.sleep(1.5)
-                # ZOMBIE ATTACKS!
-                        if player.health > 0:
-                            # Opponent attacks player
-                            hs_zombie.do_punch(player)
-                        
-                        if player.health <= 0:
-                            print ("The %s KILLED YOU!!! Better luck next time...")
-                            quit
-                        
-                        if hs_zombie.health <= 0:
-                            print ("""
+                    else:
+                        print("You entered an invalid option and missed your chance to strike!")
+                        #time.sleep(1.5)
+            # ZOMBIE ATTACKS!
+                    if player.health > 0:
+                        # Opponent attacks player
+                        hs_zombie.do_punch(player)
+                    
+                    if player.health <= 0:
+                        print ("The %s KILLED YOU!!! Better luck next time..." % hs_zombie)
+                        quit()
+                    
+                    if hs_zombie.health <= 0:
+                        print ("""
 %s KILLED %s!! 
 %s's health is %d.
 ....Now what?""" % (player.name, hs_zombie.name, player.name, player.health))
-                    cafeteria_count += 1
-                elif cafeteria_count >= 2:
-                    print("*" * 20)
-                    print("")
-                    print("Hmm! You've seen all there is to see here! You wander back into the hall.")
-                    print("")
-                    print("*" * 20)
+                player.cafeteria_count += 1
+            elif player.cafeteria_count >= 2:
+                print("*" * 20)
+                print("")
+                print("Hmm! You've seen all there is to see here! You wander back into the hall.")
+                print("")
+                print("*" * 20)
 
 ################ INTERACTION 3 ######################
-            elif user_choice == "3":
-                if "Lock-picking Kit" in player.bag:
-                    if auditorium_count == 1:
-                        print("*" * 20)
-                        print("""
-You use your lock-picking kit to pick the locked door.
-You enter the school auditorium, which is cool and dark.
-The large burgundy curtains hanging over the stage are ripped and tattered.
-To your left is the sound booth, so you decide to investigate.
-As soon as you open the saloon-style door, you notice a $25 bill on the floor benieth the sound board.
-Neat!
-                            """)
-                        player.purse += 25
-                        print("You added $25 to your purse! The contents of your purse is now %s!" % player.purse)
-                        auditorium_count += 1
-                    elif auditorium_count >= 2:
-                        print("*" * 20)
-                        print("")
-                        print("Hmm! You've seen all there is to see here! You wander back into the hall.")
-                        print("")
-                        print("*" * 20)
-                else:
-                    print("This door is locked! If only there were a way to pick the lock...")
+        elif user_choice == "3":
+            if player.classroom_count == 1:    
+                print("*" * 20)
+                print(""" 
+You walk into the classroom down the hall. 
+There are few desks overturned and the chalk-board on the wall is crooked...
+It looks like there was some sort of struggle in here. 
+Something shiny catches your eye under one of the desks... 
+It's a little lock-picking kit! Must have belonged to a misbehaving highscooler!
+You pick it up and slip it in your bag. 
+You wander back into the hall.
+                        """)
+                print("*" * 20)
+                player.bag.append("Lock-picking Kit")
+                print("Your bag contents is now %s." % player.bag)
+                player.classroom_count += 1
+            elif player.classroom_count >= 2:
+                print("*" * 20)
+                print("")
+                print("Hmm! You've seen all there is to see here! You wander back into the hall.")
+                print("")
+                print("*" * 20)
+                
 ################ LEAVE SCHOOL #######################
-            elif user_choice == "4":
-                location_menu(player)
+        elif user_choice == "4":
+            location_menu(player)
 
 ############### INVALID ENTRY - LOOP RESETS #########
-            else:
-                
-                print("Sorry I didn't get that.")
+        else:
+            
+            print("Sorry I didn't get that.")
 
 
 

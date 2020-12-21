@@ -3,7 +3,7 @@ import time
 from pygame import mixer
 
 class Character:
-    def __init__(self, name, health, purse, sex, punch, knife, shoot, defense):
+    def __init__(self, name, health, purse, sex, punch, knife, shoot, defense, classroom_count, auditorium_count, cafeteria_count):
         self.name = name
         self.health = health
         self.purse = purse
@@ -13,6 +13,9 @@ class Character:
         self.shoot = shoot
         self.defense = defense
         self.bag = []
+        self.classroom_count = classroom_count
+        self.auditorium_count = auditorium_count
+        self.cafeteria_count = cafeteria_count
         # self.location = location
     
     def __str__(self):
