@@ -15,22 +15,24 @@ from classes import Character, Location
 
 def open_story():
     print("""
-            _  .-')                                 .-') _  _ .-') _           .-') _   ('-.  _  .-')               
-           ( \( -O )                               ( OO ) )( (  OO) )         (  OO) )_(  OO)( \( -O )              
-  ,----.    ,------.  .-'),-----.  ,--. ,--.   ,--./ ,--,'  \     .'_       ,(_)----.(,------.,------.  .-'),-----. 
- '  .-./-') |   /`. '( OO'  .-.  ' |  | |  |   |   \ |  |\  ,`'--..._)      |       | |  .---'|   /`. '( OO'  .-.  '
- |  |_( O- )|  /  | |/   |  | |  | |  | | .-') |    \|  | ) |  |  \  '      '--.   /  |  |    |  /  | |/   |  | |  |
- |  | .--, \|  |_.' |\_) |  |\|  | |  |_|( OO )|  .     |/  |  |   ' |      (_/   /  (|  '--. |  |_.' |\_) |  |\|  |
-(|  | '. (_/|  .  '.'  \ |  | |  | |  | | `-' /|  |\    |   |  |   / :       /   /___ |  .--' |  .  '.'  \ |  | |  |
- |  '--'  | |  |\  \    `'  '-'  '('  '-'(_.-' |  | \   |   |  '--'  /      |        ||  `---.|  |\  \    `'  '-'  '
-  `------'  `--' '--'     `-----'   `-----'    `--'  `--'   `-------'       `--------'`------'`--' '--'     `-----'
-
-You wake up in a daze.
-Outside the window, it's dark and dreary. 
-You look around the room and find a mirror..
-An unfamiliar face stares back at you.
-
-Who are you? 
+                                                 _  .-')                                 .-') _  _ .-') _           .-') _   ('-.  _  .-')               
+                                                ( \( -O )                               ( OO ) )( (  OO) )         (  OO) )_(  OO)( \( -O )              
+                                        ,----.    ,------.  .-'),-----.  ,--. ,--.   ,--./ ,--,'  \     .'_       ,(_)----.(,------.,------.  .-'),-----. 
+                                        '  .-./-') |   /`. '( OO'  .-.  ' |  | |  |   |   \ |  |\  ,`'--..._)      |       | |  .---'|   /`. '( OO'  .-.  '
+                                        |  |_( O- )|  /  | |/   |  | |  | |  | | .-') |    \|  | ) |  |  \  '      '--.   /  |  |    |  /  | |/   |  | |  |
+                                        |  | .--, \|  |_.' |\_) |  |\|  | |  |_|( OO )|  .     |/  |  |   ' |      (_/   /  (|  '--. |  |_.' |\_) |  |\|  |
+                                        (|  | '. (_/|  .  '.'  \ |  | |  | |  | | `-' /|  |\    |   |  |   / :       /   /___ |  .--' |  .  '.'  \ |  | |  |
+                                        |  '--'  | |  |\  \    `'  '-'  '('  '-'(_.-' |  | \   |   |  '--'  /      |        ||  `---.|  |\  \    `'  '-'  '
+                                        `------'  `--' '--'     `-----'   `-----'    `--'  `--'   `-------'       `--------'`------'`--' '--'     `-----'
+        
+        
+                                                                                You wake up in a daze.
+                                                                    When you look outside the window its dark and dreary. 
+                                                                        You look around the room and find a mirror,
+                                                                            and you see an unfamiliar figure
+                                                                            staring back at you. who are you? 
+                                                                                        
+                                                                                        Who are you? 
 """)
 
 ########################################################################################################
@@ -61,20 +63,20 @@ def character_list():
     return [character1, character2, character3, character4]
 
 def print_character_menu(pos1, char1, pos2, char2, pos3, char3, pos4, char4):
-    print("-" * 110)
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        # "Name:", (pos1 + char1.name), (pos2 + char2.name), (pos3 + char3.name), (pos4 + char4.name)))
-        "Name:", (char1.name), (char2.name), (char3.name), (char4.name)))
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        "Health:", char1.health, char2.health, char3.health, char4.health))
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        "Purse:", char1.purse, char2.purse, char3.purse, char4.purse))
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        "Sex:", char1.sex, char2.sex, char3.sex, char4.sex))
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        "Punch:", char1.punch.title(), char2.punch.title(), char3.punch.title(), char4.punch.title()))
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        "Defense:", char1.defense.title(), char2.defense.title(), char3.defense.title(), char4.defense.title()))
+    print("-" * 192)
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    # "Name:", (pos1 + char1.name), (pos2 + char2.name), (pos3 + char3.name), (pos4 + char4.name)))
+                                                    "Name:", (char1.name), (char2.name), (char3.name), (char4.name)))
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    "Health:", char1.health, char2.health, char3.health, char4.health))
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    "Purse:", char1.purse, char2.purse, char3.purse, char4.purse))
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    "Sex:", char1.sex, char2.sex, char3.sex, char4.sex))
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    "Punch:", char1.punch.title(), char2.punch.title(), char3.punch.title(), char4.punch.title()))
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    "Defense:", char1.defense.title(), char2.defense.title(), char3.defense.title(), char4.defense.title()))
 
 ########################################################################################################
 ######################### end character object and function definitions ################################
@@ -93,59 +95,68 @@ def player_selection():
 
 # Looping user input to choose character
     while True:
+        print("-" * 192)
         character_choice = input("""
-1. Doctor Robert Neville
-2. Sherlock
-3. Carl Grimes
-4. Chico Dusty
+                                                                                    1. Doctor Robert Neville
+                                                                                    2. Sherlock
+                                                                                    3. Carl Grimes
+                                                                                    4. Chico Dusty
 
-""")
+        """)
+        print("-" * 192)
         if character_choice == "1":
             player = character1
             print("""
-Ahhh, Doctor Neville. It took quite some time
-to gather your wits. They say that is a side effect
-when you've got it...
+                                                                        Ahhh, Doctor Neville. It took quite some time
+                                                                        to gather your wits. They say that is a side effect
+                                                                        when you've got it...
 
-You must move quickly now. It's spreading... Where will you go?
+                                                                        You must move quickly now. It's spreading... Where will you go?
             """)
-            mall_menu(player)
+            print("-" * 192)
+            location_menu(player)
 
         elif character_choice == "2":
             player = character2
             print("""
-Ahhh, Sherlock. It took quite some time
-to gather your wits. They say that is a side effect
-when you've got it...
+                                                                        Ahhh, Sherlock. It took quite some time
+                                                                        to gather your wits. They say that is a side effect
+                                                                        when you've got it...
 
-You must move quickly now. It's spreading... Where will you go?
+                                                                        You must move quickly now. It's spreading... Where will you go?
             """)
-            mall_menu(player)
+            print("-" * 192)
+            location_menu(player)
 
         elif character_choice == "3":
             player = character3
             print("""
-Ahhh, Mr. Grimes. Carl, is it? 
-It took quite quite a while to gather your wits. 
-They say that is a side effect when you've got it...
+                                                                        Ahhh, Mr. Grimes. Carl, is it? 
+                                                                        It took quite quite a while to gather your wits. 
+                                                                        They say that is a side effect when you've got it...
 
-You must move quickly now. It's spreading... Where will you go?
+                                                                        You must move quickly now. It's spreading... Where will you go?
             """)
-            mall_menu(player)
+            print("-" * 192)
+            location_menu(player)
 
         elif character_choice == "4":
             player = character4
             print("""
-Ahhh, Chico Dusty. Father of Sir Lucious Leftfoot.
-It took quite some time to gather your wits.
-They say that is a side effect when you've got it...
+                                                                        Ahhh, Chico Dusty. Father of Sir Lucious Leftfoot.
+                                                                        It took quite some time to gather your wits.
+                                                                        They say that is a side effect when you've got it...
 
-You must move quickly now. It's spreading... Where will you go?
+                                                                        You must move quickly now. It's spreading... Where will you go?
             """)
-            mall_menu(player)
+            print("-" * 192)
+            location_menu(player)
 
         else:
-            print("Choose your character by typing '1', '2', '3', or '4', then Enter or Return")
+            print("""
+                                                                    Choose your character by typing '1', '2', '3', or '4', then Enter or Return
+            """)
+            print("-" * 192)
 
 ########################################################################################################
 ######################################### end SELECT A PLAYER ##########################################
@@ -163,14 +174,14 @@ def location_menu(player):
 # Looping user input to choose location
     while True:
         location_choice = input("""
-1. The Pub
-2. The High School
-3. The Mall
-4. DigitalCrafts
-5. Check Health
-6. Check Bag
-
-""")
+                                                                                    1. The Pub
+                                                                                    2. The High School
+                                                                                    3. The Mall
+                                                                                    4. DigitalCrafts
+                                                                                    5. Check Health
+                                                                                    6. Check Bag
+        """)
+        print("-" * 192)
         if location_choice == "1":
             pub_location()
             pub_menu(player)
@@ -188,7 +199,10 @@ def location_menu(player):
         elif location_choice == "6":
             player.bag_contents()   
         else:
-            print("Enter \"1\", \"2\", \"3\", \"4\", \"5\", or \"6\"")
+            print("""
+                                                                                Enter \"1\", \"2\", \"3\", \"4\", \"5\", or \"6\"
+            """)
+            print("-" * 192)
             location_menu(player)
 
 ########################################################################################################
@@ -206,11 +220,12 @@ def location_menu(player):
 
 def pub_location():
     print("""
-Ahh, the old pub. You've been coming here for years. It's been a while though, 
-what with the pandemic and all. The smell of bar tar and cigarettes still lingers; 
-this place was always packed. Now, a single bartender manages every patron. 
-It's almost empty, but there are two young ladies sitting at the far end of the bar.
+                                                                Ahh, the old pub. You've been coming here for years. It's been a while though, 
+                                                                what with the pandemic and all. The smell of bar tar and cigarettes still lingers; 
+                                                                this place was always packed. Now, a single bartender manages every patron. 
+                                                                It's almost empty, but there are two young ladies sitting at the far end of the bar.
     """)
+    print("-" * 192)
     # time.sleep(5)
     print("What will it be?")
     # time.sleep(3)
@@ -646,6 +661,7 @@ def mall_menu(player):
         coming from behind one of the cars in the first row of the parking lot...
         It has heard the loud crunching and is slowly making it's way to you.
         """)
+        time.sleep(2)
         print("")
         print("*" * 20)
         print("\nWhat do you want to do?")
@@ -711,9 +727,8 @@ def mall_menu(player):
 
                 Nvm aye maybe another time.
                 """)
-################
-################
                 print("*" * 20)
+                time.sleep(2)
                 player.gamestop_count += 1
             elif player.gamestop_count == 2:
                 print("*" * 20)
@@ -726,37 +741,31 @@ def mall_menu(player):
                 coughing.... 
                 """)
                 print("*" * 20)
-                time.sleep(3)
+                time.sleep(5)
                 print("""
                 When you approach the distressed noises, you walk over
-                a dead zombie, to see a man pointing a gun at you. He says 
-                
+                a dead zombie, to see a man pointing a gun at you. He says                 
                 "Hands up.. cough.. cough.. Thats far enough" 
-                
                 As you tell him you are not infected and was just coming to check
                 what was happening.
-                
                 He then states "I need you to do something for me cough.. cough.. 
                 as obviously I am not going to make it much longer if you couldn't
                 tell already." 
-                
                 Sure what do you need some bandages?
-                
                 "No, here take this" as he hands you the gun "Before I turn into one
-                of those things I need you to stop that from happening"
-
+                of those things I need you to stop that from happening!
                 But....
-
                 "No buts cough.. cough.. I would hate for my body to be one of them
                 cough.. grr.. and walking around attacking people grr.. cough.. do it
                 now or it's going to be late grrr...
-                
                 BOOM........................
                 """)
                 print("*" * 20)
+                time.sleep(2)
 ############### ADD GUN SHOT                
                 player.bag.append("gun")
                 print("Your bag contents are now %s." % player.bag)
+                print("*" * 20)
                 player.gamestop_count += 1
             elif player.gamestop_count >= 3 and player.gvisit_count == 1:
                 print("*" * 20)
@@ -766,6 +775,7 @@ def mall_menu(player):
                 you decide not to go back in just yet to find out what you've been
                 wanting since your first visit.
                 """)
+                print("*" * 20)
                 player.gvisit_count += 2
             elif player.gamestop_count >= 3 and player.gvisit_count >= 2:
                 print("*" * 20)
@@ -797,6 +807,8 @@ def mall_menu(player):
                     seems to be full of something. When you make your way to the
                     bag you trip over something.....
                     """)
+                    print("*" * 20)
+                    time.sleep(4)
                     print("""
                     GGGRRRRR.....
 
@@ -805,6 +817,7 @@ def mall_menu(player):
                     and coming at you.
                     """)
                     print("*" * 20)
+                    time.sleep(3)
                     while mall_zombie.health > 0 and player.health > 0:
                         print("\nWhat do you want to do?")
                         print("1. Run Away")
@@ -829,7 +842,7 @@ def mall_menu(player):
                             player.do_shoot(mall_zombie)
 
                         else:
-                            print("*" * 20)
+                            # print("*" * 20)
                             print("You entered an invalid option and missed your chance to strike!")
                             print("*" * 20)
                         #time.sleep(1.5)
@@ -839,13 +852,13 @@ def mall_menu(player):
                             mall_zombie.do_punch(player)
                     
                         if player.health <= 0:
-                            print("*" * 20)
+                            # print("*" * 20)
                             print("The %s KILLED YOU!!! Better luck next time...") % (mall_zombie.name)
                             print("*" * 20)
                             quit
                     
                         if mall_zombie.health <= 0:
-                            print("*" * 20)
+                            # print("*" * 20)
                             print ("""
                             %s KILLED %s!! 
                             %s's health is %d.
@@ -856,6 +869,7 @@ def mall_menu(player):
                             ooohh $150.
                             """ % (player.name, mall_zombie.name, player.name, player.health))
                             player.purse += 150
+                            time.sleep(4)
                             print("*" * 20)
                             print("You now have $%s." % player.purse)
                             print("*" * 20)
@@ -879,30 +893,31 @@ def mall_menu(player):
                 if "gun" in player.bag and player.beretta_count >= 2 and player.dontvisit_count == 1:
                     print("*" * 20)
                     print("""
-                    As you walk to Beretta you notice something down one of the other
+                    As you walk towards Beretta you notice something down one of the other
                     corridors that you have seen somewhere else...
 
-                    You turn down that corridor and rush to check that you are seeing this
-                    correctly.
+                    You turn down that corridor and rush to check if you were just imagining it.
 
-                    They were...
+                    You weren't .......
 
                     "What the hell you doing over here Fred?
 
                     "What the hell are you.. NO! NOO! NOOOOO!"
 
-                    As you reach in your bag to grab your gun and continue to walk towards him.
+                    As you reach in your bag, to grab your gun you continue walking towards him.....
 
-                    "No! What the hell you doing over her Fred? How did you get out here? Fred 
-                    if you are real you better tell me right now.
+                    "No! What the hell you doing over her Fred? How did you get over here?" 
+
+                    "Fred if you are real you better tell me right now."
                     
                     No answer from the mannequin...
 
                     You start shooting at him until he falls apart and hits the floor.
 
-                    DAMNIT FRED!!! DAMNIT!!!!
+                    "DAMNIT FRED!!! DAMNIT!!!!"
                     """)
                     print("*" * 20)
+                    time.sleep(5)
                     player.dontvisit_count += 5
 
                 if player.beretta_count == 1:
@@ -912,24 +927,20 @@ def mall_menu(player):
                     of the store.
 
                     "OH hey a customer"
-
                     While walking towards the voice you shout out "Whose there?" Once you get to where the voice
                     came from.
-
                     The voice replies from the other side now "OOP im over here now"
-
                     You think to yourself what the hell is going on while you walk towards the voice again.
                     When you reach the counter you ask again "Who is .." the computer monitor turns around
                     and says
-
                     "Im giphy, the stores cashier haven't seen anyone in here in quite some time. I was built when
                     all this mess started. How can I help you today we have a small variety of items still."
                     """)
                     print("*" * 20)
+                    time.sleep(4)
                     print("")
                     while True:
                         if "mask" in player.bag and "respirator" in player.bag and "Sam's dog collar" in player.bag:
-                            
                             print("Sorry we are sold out of everything")
                             print("*" * 20)
                             player.beretta_count += 1
