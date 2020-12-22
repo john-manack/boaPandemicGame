@@ -109,7 +109,8 @@ when you've got it...
 
 You must move quickly now. It's spreading... Where will you go?
             """)
-            return player
+            mall_menu(player)
+
         elif character_choice == "2":
             player = character2
             print("""
@@ -119,7 +120,8 @@ when you've got it...
 
 You must move quickly now. It's spreading... Where will you go?
             """)
-            return player
+            mall_menu(player)
+
         elif character_choice == "3":
             player = character3
             print("""
@@ -129,7 +131,8 @@ They say that is a side effect when you've got it...
 
 You must move quickly now. It's spreading... Where will you go?
             """)
-            return player
+            mall_menu(player)
+
         elif character_choice == "4":
             player = character4
             print("""
@@ -139,7 +142,8 @@ They say that is a side effect when you've got it...
 
 You must move quickly now. It's spreading... Where will you go?
             """)
-            return player
+            mall_menu(player)
+
         else:
             print("Choose your character by typing '1', '2', '3', or '4', then Enter or Return")
 
@@ -805,7 +809,7 @@ def mall_menu(player):
                         if "knife" in player.bag:
                             print("3. Use Knife")
                         if "gun" in player.bag:
-                            print("3. Use Gun")
+                            print("4. Use Gun")
                         user_input = input()
                 # Run Away
                         if user_input == "1":
@@ -815,9 +819,9 @@ def mall_menu(player):
                             player.do_punch(mall_zombie)
                 # Knife
                         elif user_input == "3" and "knife" in player.bag:
-                            player.do_punch(mall_zombie)
+                            player.do_knife(mall_zombie)
                 # Gun
-                        elif user_input == "4":
+                        elif user_input == "4" and "gun" in player.bag:
                             player.do_shoot(mall_zombie)
 
                         else:
@@ -907,16 +911,17 @@ def mall_menu(player):
                     elif "Sam's dog collar" in player.bag:                         
                         print("You bought the only dog collar")
                     if "Sam's dog collar" in player.bag and "respirator" in player.bag and "mask" in player.bag:
-                        print("Everything is sold out")
-                        return player
+                        print("Everything is sold out. Thanks for visiting check back soon to see if we have more supplies.")
+                        player.beretta_count += 1
+                        mall_menu(player)
                     else:
                         print("Will there be anything else youd like to buy?")
                         user_choice = input("(y/n) ").lower()
                         if user_choice == "y":
-                            print(player.itemslist)
-                            user_input = input("What would you like to buy (1-3) ")
+                            print("ALRIGHTY THEN")
                         if user_choice == "n":
-                            return player
+                            player.beretta_count += 1
+                            mall_menu(player)
                 else:
                     print("Sorry we are sold out of everything")
                 player.beretta_count += 1
@@ -948,86 +953,90 @@ def mall_menu(player):
                 """)
                 print("*" * 20)
                 while True:
-                    print("*" * 20)
-                    # if "mask" not in player.bag and "respirator" not in player.bag and "Sam's dog collar" not in player.bag:
-                    print(player.itemslist)
-                    user_input = input("What would you like to buy (1-3) ")
-                    if user_input == "1" and "mask" not in player.bag:
-                        print("That'll be $25")
-                        player.purse -= 25
-                        player.bag.append("mask")
-                        print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
-                    elif "mask" in player.bag:
-                        print("Masks are sold out")
-                    if user_input == "2" and "respirator" not in player.bag:
-                        print("That'll be $30")
-                        player.purse -= 30
-                        player.bag.append("respirator")
-                        print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
-                    elif "respirator" in player.bag:
-                        print("Respirator are sold out")
-                    if user_input == "3" and "Sam's dog collar" not in player.bag:
-                        print("That'll be $500")
-                        player.purse -= 500
-                        player.bag.append("Sam's dog collar")
-                        print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
-                    elif "Sam's dog collar" in player.bag:                         
-                        print("You bought the only dog collar")
-                    if "Sam's dog collar" in player.bag and "respirator" in player.bag and "mask" in player.bag:
-                        print("Everything is sold out")
-                        return player
+                    if "mask" in player.bag and "respirator" in player.bag and "Sam's dog collar" in player.bag:
+                        print("Sorry we are sold out of everything")
+                        mall_menu(player)
                     else:
-                        print("Will there be anything else youd like to buy?")
-                        user_choice = input("(y/n) ").lower()
-                        if user_choice =="y":
-                            print(player.itemslist)
-                            user_input = input("What would you like to buy (1-3) ")
-                        if user_choice == "n":
-                            return player
-                else:
-                    print("Sorry we are sold out of everything")
+                        print(player.itemslist)
+                        user_input = input("What would you like to buy (1-3) ")
+                        if user_input == "1" and "mask" not in player.bag:
+                            print("That'll be $25")
+                            player.purse -= 25
+                            player.bag.append("mask")
+                            print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                        elif "mask" in player.bag:
+                            print("Masks are sold out")
+                        if user_input == "2" and "respirator" not in player.bag:
+                            print("That'll be $30")
+                            player.purse -= 30
+                            player.bag.append("respirator")
+                            print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                        elif "respirator" in player.bag:
+                            print("Respirator are sold out")
+                        if user_input == "3" and "Sam's dog collar" not in player.bag:
+                            print("That'll be $500")
+                            player.purse -= 500
+                            player.bag.append("Sam's dog collar")
+                            print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                        elif "Sam's dog collar" in player.bag:                         
+                            print("You bought the only dog collar")
+                        if "Sam's dog collar" in player.bag and "respirator" in player.bag and "mask" in player.bag:
+                            print("Everything is sold out. Thanks for visiting, check back soon to see if we have more supplies.")
+                            player.dontvisit_count += 5
+                            player.beretta_count += 1
+                            mall_menu(player)
+                        else:
+                            print("Will there be anything else youd like to buy?")
+                            user_choice = input("(y/n) ").lower()
+                            if user_choice == "y":
+                                print("ALRIGHTY THEN")
+                            if user_choice == "n":
+                                player.dontvisit_count += 5
+                                player.beretta_count += 1
+                                mall_menu(player)
                 player.dontvisit_count += 2
-            elif player.beretta_count >= 2 and player.dontvisit_count >= 2:
-                
+            elif player.beretta_count >= 2 and player.dontvisit_count <= 2 and player.dontvisit_count <= 5:
                 while True:
-                    print("*" * 20)
-                    # if "mask" not in player.bag and "respirator" not in player.bag and "Sam's dog collar" not in player.bag:
-                    print(player.itemslist)
-                    user_input = input("What would you like to buy (1-3) ")
-                    if user_input == "1" and "mask" not in player.bag:
-                        print("That'll be $25")
-                        player.purse -= 25
-                        player.bag.append("mask")
-                        print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
-                    elif "mask" in player.bag:
-                        print("Masks are sold out")
-                    if user_input == "2" and "respirator" not in player.bag:
-                        print("That'll be $30")
-                        player.purse -= 30
-                        player.bag.append("respirator")
-                        print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
-                    elif "respirator" in player.bag:
-                        print("Respirator are sold out")
-                    if user_input == "3" and "Sam's dog collar" not in player.bag:
-                        print("That'll be $500")
-                        player.purse -= 500
-                        player.bag.append("Sam's dog collar")
-                        print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
-                    elif "Sam's dog collar" in player.bag:                         
-                        print("You bought the only dog collar")
-                    if "Sam's dog collar" in player.bag and "respirator" in player.bag and "mask" in player.bag:
-                        print("Everything is sold out")
-                        return player
+                    if "mask" in player.bag and "respirator" in player.bag and "Sam's dog collar" in player.bag:
+                        print("Sorry we are sold out of everything")
                     else:
-                        print("Will there be anything else youd like to buy?")
-                        user_choice = input("(y/n) ").lower()
-                        if user_choice == "y":
-                            print(player.itemslist)
-                            user_input = input("What would you like to buy (1-3) ")
-                        if user_choice == "n":
-                            return player
-                else:
-                    print("Sorry we are sold out of everything")
+                        print(player.itemslist)
+                        user_input = input("What would you like to buy (1-3) ")
+                        if user_input == "1" and "mask" not in player.bag:
+                            print("That'll be $25")
+                            player.purse -= 25
+                            player.bag.append("mask")
+                            print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                        elif "mask" in player.bag:
+                            print("Masks are sold out")
+                        if user_input == "2" and "respirator" not in player.bag:
+                            print("That'll be $30")
+                            player.purse -= 30
+                            player.bag.append("respirator")
+                            print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                        elif "respirator" in player.bag:
+                            print("Respirator are sold out")
+                        if user_input == "3" and "Sam's dog collar" not in player.bag:
+                            print("That'll be $500")
+                            player.purse -= 500
+                            player.bag.append("Sam's dog collar")
+                            print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                        elif "Sam's dog collar" in player.bag:                         
+                            print("You bought the only dog collar")
+                        if "Sam's dog collar" in player.bag and "respirator" in player.bag and "mask" in player.bag:
+                            print("Everything is sold out, Thanks for visiting check back soon to see ")
+                            player.dontvisit_count += 1
+                            player.beretta_count += 1
+                            mall_menu(player)
+                        else:
+                            print("Will there be anything else youd like to buy?")
+                            user_choice = input("(y/n) ").lower()
+                            if user_choice == "y":
+                                print("ALRIGHTY THEN")
+                            if user_choice == "n":
+                                player.dontvisit_count += 3
+                                player.beretta_count += 1
+                                mall_menu(player)
 
                 
 ################ LEAVE Mall #######################

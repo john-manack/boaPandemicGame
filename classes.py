@@ -58,23 +58,23 @@ class Character:
         zombie.health -= (damage - defense)
         #//mixer.Sound.play(punch_se)
         #//time.sleep(1)
-        print("\n\n%s PUNCHED %s for %d damage!" % (self.name, zombie.name, damage))
-        print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health) )
+        print("\n\n%s PUNCHED %s for %d damage!" % (self.name, zombie.name, (damage - defense)))
+        print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health))
         
     def do_knife(self, zombie):
         self.knife == 25
         defense = zombie.add_defense()
         zombie.health -= (self.knife - defense)
-        print("\n\n%s SLASHED %s for %d damage!" % (self.name, zombie.name, self.knife))
-        print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health) )
+        print("\n\n%s SLASHED %s for %d damage!" % (self.name, zombie.name, (self.knife - defense)))
+        print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health))
 
     def do_shoot(self, zombie):
-        self.shoot_power == 50
+        self.shoot == 50
         defense = zombie.add_defense()
-        if defense > self.shoot_power:
-            defense = self.shoot_power
-        zombie.health -= (self.shoot_power - defense)
-        print("\n\nYou SLASHED %s for %d damage!" % (zombie.name, self.shoot_power))
+        zombie.health -= (self.shoot - defense)
+        print("\n\nYou Shot %s for %d damage!" % (zombie.name, (self.shoot - defense)))
+        print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health))
+
 
     def is_alive(self):
         return self.health > 0
@@ -83,7 +83,7 @@ class Character:
         return self.health <= 0
 
     def add_defense(self):
-        if self.defense == "low":
+        if self.defense== "low":
             return random.randint(1, 3)
         if self.defense == "medium":
             return random.randint(4, 6)
