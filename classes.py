@@ -53,6 +53,8 @@ class Character:
             damage = random.randint(4,6)
         if self.punch == "high":
             damage = random.randint(7,9)
+        if self.punch == 50:
+            damage = 50
         defense = zombie.add_defense()
         # if defense < damage:
         #     defense = 8
@@ -116,7 +118,6 @@ class Character:
         # time.sleep(1)
         print('You got paid $%d, you now have $%s!' % (pay, other_person.purse))
         print("*" * 20)
-        
     # def get_infected(self):
     #    self.infection += 5
     #    while self.infection > 0:
@@ -147,6 +148,3 @@ class Location():
 #         %s
 #         """ % (self.place, self.description)
 # # def room1(self, place):
-
-  
-    
