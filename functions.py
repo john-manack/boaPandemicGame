@@ -45,8 +45,8 @@ Who are you?
 ########################################################################################################
 
 #name, species, health, charisma level, purse, sex, punch, knife, shoot, defense)
-character1 = Character("Dr. Robert Neville", 100, 500, "Male", "low", "high")
-character2 = Character("Sherlock", 100, 400, "Female", "medium", "high")
+character1 = Character("Dr. Robert Neville", 100, 500, "Male", "low", "low")
+character2 = Character("Sherlock", 100, 400, "Female", "medium", "low")
 character3 = Character("Carl Grimes", 100, 600, "Male", "high", "low")
 character4 = Character("Chico Dusty", 100, 1000, "Male", "high", "low")
 pubZombie = Character("Pub Zombie", 40, 100, "Male", "low", "low")
