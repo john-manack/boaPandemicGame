@@ -44,6 +44,7 @@ class Character:
     def add_item(self, new_item):
         self.bag.append(new_item)
         print("%s was added to your bag" % (new_item))
+        print("*" * 20)
     
     def do_punch(self, zombie):
         if self.punch == "low":
@@ -62,13 +63,14 @@ class Character:
         #//time.sleep(1)
         print("\n\n%s PUNCHED %s for %d damage!" % (self.name, zombie.name, (damage - defense)))
         print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health))
-        
+        print("*" * 20)
     def do_knife(self, zombie):
         self.knife == 25
         defense = zombie.add_defense()
         zombie.health -= (self.knife - defense)
         print("\n\n%s SLASHED %s for %d damage!" % (self.name, zombie.name, (self.knife - defense)))
         print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health))
+        print("*" * 20)
 
     def do_shoot(self, zombie):
         self.shoot == 50
@@ -76,6 +78,7 @@ class Character:
         zombie.health -= (self.shoot - defense)
         print("\n\nYou Shot %s for %d damage!" % (zombie.name, (self.shoot - defense)))
         print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health))
+        print("*" * 20)
 
     def is_alive(self):
         return self.health > 0
@@ -95,11 +98,13 @@ class Character:
         # INPUT SOUNDBOARD OF UNZIPPING A BAG
         # time.sleep(1)
         print("Your bag contains %s" % (self.bag))
+        print("*" * 20)
     
     def print_status(self):
         # INPUT SOUNDBOARD OF UNZIPPING A BAG
         # time.sleep(1)
         print("Your health: %d" % (self.health))
+        print("*" * 20)
                 
     def pay(self, other_person):
         if self.charisma_lvl == "low":
@@ -112,7 +117,7 @@ class Character:
         # INPUT SOUNDBOARD OF KA-CHING
         # time.sleep(1)
         print('You got paid $%d, you now have $%s!' % (pay, other_person.purse))
-        
+        print("*" * 20)
     # def get_infected(self):
     #    self.infection += 5
     #    while self.infection > 0:
