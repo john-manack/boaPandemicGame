@@ -3,10 +3,23 @@ import sys
 from pygame import mixer
 from classes import Character, Location
 
-#///// mixer.init()
-
-
-
+##### SOUND #####
+mixer.init()
+crash = mixer.Sound("audio/mirrorshattering.wav")
+punch = mixer.Sound("audio/punch.wav")
+knife = mixer.Sound("audio/knife.wav")
+shoot = mixer.Sound("audio/shoot.wav")
+guncock = mixer.Sound("audio/guncock.wav")
+pourbeer = mixer.Sound("audio/pourbeer.wav")
+zipper = mixer.Sound("audio/zipper.mp3")
+cash = mixer.Sound("audio/cash.wav")
+gas = mixer.Sound("audio/gas.wav")
+creak = mixer.Sound("audio/creak.wav")
+evildroid = mixer.Sound("audio/evildroid.wav")
+slow_breathing = mixer.Sound("audio/slow_breathing.wav")
+groan = mixer.Sound("audio/groan.wav")
+sherlock = mixer.Sound("audio/sherlock.wav")
+evil_laugh = mixer.Sound("audio/sherlock.wav")
 
 
 ########################################################################################################
@@ -48,7 +61,7 @@ def open_story():
 
 #########################name, ###########health, purse, sex, punch, knife, shoot, defense)
 character1 = Character("Dr. Robert Neville", 100, 500, "Male", "medium", "high")
-character2 = Character("Sherlock", 100, 400, "Female", "medium", "high")
+character2 = Character("Sherlock the Cat", 100, 400, "Female", "medium", "high")
 character3 = Character("Carl Grimes", 100, 600, "Male", "high", "low")
 character4 = Character("Chico Dusty", 100, 1000, "Male", "high", "low")
 pubZombie = Character("Pub Zombie", 40, 100, "Male", "low", "low")
@@ -273,7 +286,7 @@ def player_selection():
         print("-" * 192)
         character_choice = input("""
                                                                                     1. Doctor Robert Neville
-                                                                                    2. Sherlock
+                                                                                    2. Sherlock the Cat
                                                                                     3. Carl Grimes
                                                                                     4. Chico Dusty
 
@@ -293,8 +306,9 @@ def player_selection():
 
         elif character_choice == "2":
             player = character2
+            sherlock.play()
             print("""
-                                                                        Ahhh, Sherlock. It took quite some time
+                                                                        Ahhh, Sherlock. The freaky feline. It took quite some time
                                                                         to gather your wits. They say that is a side effect
                                                                         when you've got it...
 
@@ -354,7 +368,7 @@ def location_menu(player):
                                                                                     1. The Pub
                                                                                     2. The High School
                                                                                     3. The Mall
-                                                                                    4. DigitalCrafts
+                                                                                    4. Digital Crafts
                                                                                     5. Check Health
                                                                                     6. Check Bag
                                                                                     86. Go to the CDC
@@ -365,7 +379,7 @@ def location_menu(player):
                                                                                     1. The Pub
                                                                                     2. The High School
                                                                                     3. The Mall
-                                                                                    4. DigitalCrafts
+                                                                                    4. Digital Crafts
                                                                                     5. Check Health
                                                                                     6. Check Bag
             """)
@@ -585,7 +599,6 @@ Today may not be your day...""")
 2. Approach the Young Ladies
 3. Leave
 """)
-
                 if user_choice == "1":
                     # INPUT SOUNDBOARD OF POURING A BEER
                     # time.sleep()
@@ -754,6 +767,8 @@ ZOMBIE ATTACK!")
             # Run Away
                     if user_input == "1":
                         player.health -= 20
+                        location_menu(player)
+                        
             # Punch
                     elif user_input == "2":
                         player.do_punch(hs_zombie)
@@ -1290,18 +1305,21 @@ def mall_menu(player):
 ########################################################################################################
 
 def digitalcrafts_location():
-    # insert an effect that makes the text show up character by character 
+    mixer.music.load("audio/tron.mp3")
+    mixer.music.play(-1)
     print("""
 You have arrived at Digital Crafts.
+
 The flickering fluorescent lights shed scattered rays on an ominous scene.
 You notice black computer monitors covered in dust. A coffee mug is shattered on a desk.
 Cobwebs cover closed cabinets and chewed up rubber duckies litter the floor.
 You could tell this once used to be a place of learning and success.
 """)
-    #time.sleep(3)
-    # insert sound effect!!
+    time.sleep(2)
+    crash.play()
     print("""
 *Suddenly, you hear a loud crash coming from up the stairs.*
+
 What's that!
 You are not alone.
 """)
@@ -1313,56 +1331,76 @@ def digitalcrafts_menu(player):
         if user_choice == "1":
             if player.dc_hallway_count == 1:
                 print("""
-    You continue down the hallway.
-    You are lead to an empty room at the end of the hallway.
-    There you find a doll in the middle of the room.
-    """)
+You continue down the hallway.
+You are lead to an empty room at the end of the hallway.
+There you find a doll in the middle of the room.
+""")
                 yesorno = input("Would you like to pick it up? (Y/N) ")
                 yesorno = yesorno.lower()
                 if yesorno == "y":
                     print("""
-    You pick up the doll. 
-    Suddenly it releases a poisonous gas!
-    Your health takes a -10 hit.
+You pick up the doll. 
+Suddenly it releases a poisonous gas!
     """)
+                    gas.play()
+                    time.sleep(1)
+                    print("Your health takes a -10 hit.")
+
                     player.health -= 10
                     player.dc_hallway_count += 1
-                    print("%s's health: %d" % (player.name, player.health))
+                    print("""
+                    %s's health: %d
+                    """ % (player.name, player.health))
             elif player.dc_hallway_count >= 2:
-                print("Hmm! There's just the empty remnants of the poison doll here... You head back into the hallway.")
+                print("""
+                Hmm! There's just the empty remnants of the poison doll here...
+                You head back into the hallway.
+                """)
         elif user_choice == "2":
             if player.dc_sound_count == 1:
                 print("""
-Your curiosity gets the best of you. Let us not hope curiosity kills the cat.
+Your curiosity gets the best of you.
+Let us not hope curiosity kills the cat...
+
 You walk upstairs and investigate the sound.
-""")
-                # time.sleep(4)
+    """)        
+                creak.play()
+                time.sleep(2)
+                print("The room is dark, but you make out a faint outline in the corner of the room.")
+                slow_breathing.play()
+                time.sleep(2)
                 print("""
-The room is dark, but you make out a faint outline in the corner of the room.
-""")
-                # time.sleep(2)
-                print("""
-'Who goes there?!' Calls the voice.
+'Who goes there?!' Calls a voice.
 You answer back.
-Suddenly, a man with a scraggly beard and kind but withered eyes appears. He looks like he's been through a lot.
-""")
-                # time.sleep(2)
+
+Suddenly, a man with a scraggly beard and kind but withered eyes appears.
+He looks like he's been through a lot.
+    """)
+                time.sleep(2)
                 print("""
-'My name is Sean. I used to teach here at Digital Crafts... But that was a long time ago.
-Since then, I haven't been able to leave the facility. Memories, ya know? But also, I'm a bit tied up.'
-Sean shows you a battery pack hooked up to the wall. Sean is a cyborg.
+'My name is Sean. I used to teach here at Digital Crafts... 
+But that was a long time ago.
+Since then, I haven't been able to leave the facility. 
+Memories, ya know? 
+But also, I'm a bit tied up.'
+
+Sean shows you a battery pack hooked up to the wall. 
+Sean is a cyborg.
+
 'It's one of the few places in town that still has electricity...'
+
 You look around and see he has a small pouch next to him.
-""")
-                # time.sleep(2)
-                yesorno = input("'You want it? It's got some money in it. I don't need it anymore.' (Y/N)" )
+    """)
+                time.sleep(2)
+                yesorno = input("You want it? It's got some money in it. I don't need it anymore. (Y/N) ")
                 yesorno = yesorno.lower()
                 if yesorno == "y":
                     print("""
-Alright... But I won't let you just have all the answers!
-You need a challenge - let's fight!""")
+Alright... But I won't let you just have all the answers!""")
+                    print("You need a challenge - let's fight!")
+                    evildroid.play()
+                    time.sleep(2)
                     print("Cyborg Sean challenges you to a duel!")
-                    cyborgattack_art()
                     while cyborgsean.health > 0 and player.health > 0:
                                 print("\nWhat do you want to do?")
                                 print("1. Run Away")
@@ -1375,6 +1413,14 @@ You need a challenge - let's fight!""")
                         # Run Away
                                 if user_input == "1":
                                     player.health -= 20
+                                    evil_laugh.play()
+                                    print("""
+You choose to run away.
+You hear Cyborg Sean's voice echo in the distance.
+
+'Hah Hah Hah better luck next time.'
+                                    """)
+                                    digitalcrafts_menu(player)
                         # Punch
                                 elif user_input == "2":
                                     player.do_punch(cyborgsean)
@@ -1387,29 +1433,36 @@ You need a challenge - let's fight!""")
 
                                 else:
                                     print("You entered an invalid option and missed your chance to strike!")
-                                    #time.sleep(1.5)
-                        # ZOMBIE ATTACKS!
+                        
+                        # CYBORG ATTACKS!
                                 if player.health > 0 and cyborgsean.health > 0:
                                     # Opponent attacks player
                                     cyborgsean.do_punch(player)
                                 
                                 if player.health <= 0:
-                                    print ("The %s KILLED YOU!!! Better luck next time...")
+                                    print ("CYBORG SEAN KILLED YOU!!! Better luck next time...")
                                     player_dies()
                                 
                                 if cyborgsean.health <= 0:
+                                    groan.play()
                                     print ("""
                                 
 %s KILLED %s!! 
 %s's health is %d.
 ....Now what?""" % (player.name, cyborgsean.name, player.name, player.health))
                                     player.dc_sound_count += 1
+                                    cash.play()
+                                    print("You take the pocket money and leave.")
+                                    player.purse += 50
+                                    print("You now have $%s." % player.purse)
                 else:
                     print("Okay. Bye bye.")
             elif player.dc_sound_count >= 2:
                 print('The mangled wreckage of Cyborg Sean lay sparking. You can hear him softly repeating "group debug... group debug..."')
+                groan.play()
         elif user_choice == "3":
             if player.dc_cabinet_count == 1:
+                creak.play()
                 print("""
 You sweep away the cobwebs and open the cabinet.
 You find some old sanitizer.
@@ -1420,6 +1473,7 @@ You find some old sanitizer.
             elif player.dc_cabinet_count >= 2:
                 print("Hmm! The cabinet is empty... You've seen all there is to see here.")
         elif user_choice == "4":
+            print("You dash out of there... Where to?")
             location_menu(player)
         else:
             print("BLOOP. Can't do that patna'. Please choose again. ")

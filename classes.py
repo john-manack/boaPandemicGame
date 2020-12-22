@@ -2,6 +2,23 @@ import random
 import time
 from pygame import mixer
 
+##### SOUND #####
+mixer.init()
+punch = mixer.Sound("audio/punch.wav")
+knife = mixer.Sound("audio/knife.wav")
+shoot = mixer.Sound("audio/shoot.wav")
+guncock = mixer.Sound("audio/guncock.wav")
+pourbeer = mixer.Sound("audio/pourbeer.wav")
+zipper = mixer.Sound("audio/zipper.mp3")
+cash = mixer.Sound("audio/cash.wav")
+gas = mixer.Sound("audio/gas.wav")
+creak = mixer.Sound("audio/creak.wav")
+evildroid = mixer.Sound("audio/evildroid.wav")
+slow_breathing = mixer.Sound("audio/slow_breathing.wav")
+groan = mixer.Sound("audio/groan.wav")
+sherlock = mixer.Sound("audio/sherlock.wav")
+evil_laugh = mixer.Sound("audio/sherlock.wav")
+
 class Character:
     def __init__(self, name, health, purse, sex, punch, defense):
         self.name = name
@@ -49,12 +66,16 @@ class Character:
     def do_punch(self, zombie):
         if self.punch == "low":
             damage = random.randint(1,3)
+            punch.play()
         if self.punch == "medium":
             damage = random.randint(4,6)
+            punch.play()
         if self.punch == "high":
             damage = random.randint(7,9)
+            punch.play()
         if self.punch == 50:
             damage = 50
+            punch.play()
         defense = zombie.add_defense()
         # if defense < damage:
         #     defense = 8
@@ -69,6 +90,7 @@ class Character:
         defense = zombie.add_defense()
         zombie.health -= (self.knife - defense)
         print("\n\n%s SLASHED %s for %d damage!" % (self.name, zombie.name, (self.knife - defense)))
+        knife.play()
         print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health))
         print("*" * 20)
 
@@ -77,6 +99,7 @@ class Character:
         defense = zombie.add_defense()
         zombie.health -= (self.shoot - defense)
         print("\n\nYou Shot %s for %d damage!" % (zombie.name, (self.shoot - defense)))
+        shoot.play()
         print("%s health: %d \n%s health: %s " % (self.name, self.health, zombie.name, zombie.health))
         print("*" * 20)
 
@@ -95,15 +118,15 @@ class Character:
             return random.randint(7, 9)
         
     def bag_contents(self):
-        # INPUT SOUNDBOARD OF UNZIPPING A BAG
-        # time.sleep(1)
+        time.sleep(1)
         print("Your bag contains %s" % (self.bag))
+        zipper.play()
         print("*" * 20)
     
     def print_status(self):
-        # INPUT SOUNDBOARD OF UNZIPPING A BAG
-        # time.sleep(1)
+        time.sleep(1)
         print("Your health: %d" % (self.health))
+        zipper.play()
         print("*" * 20)
                 
     def pay(self, other_person):
@@ -114,8 +137,8 @@ class Character:
         if self.charisma_lvl == "high":
             pay = random.randint(11, 15)
         other_person.purse += pay
-        # INPUT SOUNDBOARD OF KA-CHING
-        # time.sleep(1)
+        cash.play()
+        time.sleep(1)
         print('You got paid $%d, you now have $%s!' % (pay, other_person.purse))
         print("*" * 20)
     # def get_infected(self):
