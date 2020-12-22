@@ -419,7 +419,7 @@ You use your lock-picking kit to pick the locked door.
 You enter the school auditorium, which is cool and dark.
 The large burgundy curtains hanging over the stage are ripped and tattered.
 To your left is the sound booth, so you decide to investigate.
-As soon as you open the saloon-style door, you notice a $25 bill on the floor benieth the sound board.
+As soon as you open the saloon-style door, you notice a $25 bill on the floor beneath the sound board.
 Neat!
                         """)
                         player.purse += 25
@@ -445,7 +445,7 @@ Neat!
                 print("""
 The cafeteria reveals the source of the horrid smell. 
 The freezers have been left open for days,
-and the putrid food has been plundered thrown all over the cafeteria by someone...
+and the putrid food has been plundered and thrown all over the cafeteria by someone...
 ... or something.
 You hear the sound of a sink running coming from the kitchen.
 Is someone in there? You approach the door and push it open.
@@ -468,6 +468,8 @@ ZOMBIE ATTACK!")
             # Run Away
                     if user_input == "1":
                         player.health -= 20
+                        location_menu(player)
+                        
             # Punch
                     elif user_input == "2":
                         player.do_punch(hs_zombie)
