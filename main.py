@@ -1,7 +1,7 @@
 import random
 import time
 from classes import Character, Location
-from functions import open_story, character_list, print_character_menu, player_selection, pub_location, pub_menu, location_menu
+from functions import open_story, character_list, print_character_menu, player_selection, pub_location, pub_menu, location_menu, highschool_location, highschool_menu, mall_location, mall_menu, digitalcrafts_location, digitalcrafts_menu
 import sys
 
 # Music
