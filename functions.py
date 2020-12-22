@@ -28,20 +28,24 @@ evil_laugh = mixer.Sound("audio/sherlock.wav")
 
 def open_story():
     print("""
-            _  .-')                                 .-') _  _ .-') _           .-') _   ('-.  _  .-')               
-           ( \( -O )                               ( OO ) )( (  OO) )         (  OO) )_(  OO)( \( -O )              
-  ,----.    ,------.  .-'),-----.  ,--. ,--.   ,--./ ,--,'  \     .'_       ,(_)----.(,------.,------.  .-'),-----. 
- '  .-./-') |   /`. '( OO'  .-.  ' |  | |  |   |   \ |  |\  ,`'--..._)      |       | |  .---'|   /`. '( OO'  .-.  '
- |  |_( O- )|  /  | |/   |  | |  | |  | | .-') |    \|  | ) |  |  \  '      '--.   /  |  |    |  /  | |/   |  | |  |
- |  | .--, \|  |_.' |\_) |  |\|  | |  |_|( OO )|  .     |/  |  |   ' |      (_/   /  (|  '--. |  |_.' |\_) |  |\|  |
-(|  | '. (_/|  .  '.'  \ |  | |  | |  | | `-' /|  |\    |   |  |   / :       /   /___ |  .--' |  .  '.'  \ |  | |  |
- |  '--'  | |  |\  \    `'  '-'  '('  '-'(_.-' |  | \   |   |  '--'  /      |        ||  `---.|  |\  \    `'  '-'  '
-  `------'  `--' '--'     `-----'   `-----'    `--'  `--'   `-------'       `--------'`------'`--' '--'     `-----'
-You wake up in a daze.
-Outside the window, it's dark and dreary. 
-You look around the room and find a mirror..
-An unfamiliar face stares back at you.
-Who are you? 
+                                                 _  .-')                                 .-') _  _ .-') _           .-') _   ('-.  _  .-')               
+                                                ( \( -O )                               ( OO ) )( (  OO) )         (  OO) )_(  OO)( \( -O )              
+                                        ,----.    ,------.  .-'),-----.  ,--. ,--.   ,--./ ,--,'  \     .'_       ,(_)----.(,------.,------.  .-'),-----. 
+                                        '  .-./-') |   /`. '( OO'  .-.  ' |  | |  |   |   \ |  |\  ,`'--..._)      |       | |  .---'|   /`. '( OO'  .-.  '
+                                        |  |_( O- )|  /  | |/   |  | |  | |  | | .-') |    \|  | ) |  |  \  '      '--.   /  |  |    |  /  | |/   |  | |  |
+                                        |  | .--, \|  |_.' |\_) |  |\|  | |  |_|( OO )|  .     |/  |  |   ' |      (_/   /  (|  '--. |  |_.' |\_) |  |\|  |
+                                        (|  | '. (_/|  .  '.'  \ |  | |  | |  | | `-' /|  |\    |   |  |   / :       /   /___ |  .--' |  .  '.'  \ |  | |  |
+                                        |  '--'  | |  |\  \    `'  '-'  '('  '-'(_.-' |  | \   |   |  '--'  /      |        ||  `---.|  |\  \    `'  '-'  '
+                                        `------'  `--' '--'     `-----'   `-----'    `--'  `--'   `-------'       `--------'`------'`--' '--'     `-----'
+        
+        
+                                                                                You wake up in a daze.
+                                                                    When you look outside the window its dark and dreary. 
+                                                                        You look around the room and find a mirror,
+                                                                            and you see an unfamiliar figure
+                                                                            staring back at you. who are you? 
+                                                                                        
+                                                                                        Who are you? 
 """)
 
 ########################################################################################################
@@ -55,34 +59,212 @@ Who are you?
 ######################## character/location object and function definitions ############################
 ########################################################################################################
 
-#name, species, health, charisma level, purse, sex, punch, knife, shoot, defense)
-character1 = Character("Dr. Robert Neville", 100, 500, "Male", "low", "low")
-character2 = Character("Sherlock the Cat", 100, 400, "Female", "medium", "low")
+#########################name, ###########health, purse, sex, punch, knife, shoot, defense)
+character1 = Character("Dr. Robert Neville", 100, 500, "Male", "medium", "high")
+character2 = Character("Sherlock the Cat", 100, 400, "Female", "medium", "high")
 character3 = Character("Carl Grimes", 100, 600, "Male", "high", "low")
 character4 = Character("Chico Dusty", 100, 1000, "Male", "high", "low")
 pubZombie = Character("Pub Zombie", 40, 100, "Male", "low", "low")
 cyborgsean = Character("Cyborg Sean", 60, 100, "Male", "low", "medium")
 hs_zombie = Character("Lunch Lady Zombie", 80, 100, "Female", "low", "medium")
-#pub = Location("The Pub", "your favorite watering hole", "Bar Area", "Bathroom", "Dart Board")
+mall_zombie = Character("Body Building Zombie", 90, 100, "Male", "medium", "medium")
+plot_zombie = Character("Parking Lot Zombie", 40, 100, "Male", "low", "low")
+cdcZombie = Character("CDC MEGA ZOMBIE", 100, 10000, "Male", 50, "high")
+
+
 
 def character_list():
     return [character1, character2, character3, character4]
 
 def print_character_menu(pos1, char1, pos2, char2, pos3, char3, pos4, char4):
-    print("-" * 110)
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        # "Name:", (pos1 + char1.name), (pos2 + char2.name), (pos3 + char3.name), (pos4 + char4.name)))
-        "Name:", (char1.name), (char2.name), (char3.name), (char4.name)))
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        "Health:", char1.health, char2.health, char3.health, char4.health))
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        "Purse:", char1.purse, char2.purse, char3.purse, char4.purse))
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        "Sex:", char1.sex, char2.sex, char3.sex, char4.sex))
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        "Punch:", char1.punch.title(), char2.punch.title(), char3.punch.title(), char4.punch.title()))
-    print("{:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
-        "Defense:", char1.defense.title(), char2.defense.title(), char3.defense.title(), char4.defense.title()))
+    print("-" * 192)
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    # "Name:", (pos1 + char1.name), (pos2 + char2.name), (pos3 + char3.name), (pos4 + char4.name)))
+                                                    "Name:", (char1.name), (char2.name), (char3.name), (char4.name)))
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    "Health:", char1.health, char2.health, char3.health, char4.health))
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    "Purse:", char1.purse, char2.purse, char3.purse, char4.purse))
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    "Sex:", char1.sex, char2.sex, char3.sex, char4.sex))
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    "Punch:", char1.punch.title(), char2.punch.title(), char3.punch.title(), char4.punch.title()))
+    print("                                         {:<12}|| {:<22}|| {:<22}|| {:<22}|| {:<22}|".format(
+                                                    "Defense:", char1.defense.title(), char2.defense.title(), char3.defense.title(), char4.defense.title()))
+
+########################################################################################################
+######################### end character object and function definitions ################################
+########################################################################################################
+
+
+########################################################################################################
+################################### ASCII GRAPHIC FUNCTIONS ############################################
+########################################################################################################
+
+def zombieattack_art():
+    print("""
+  ______  _______  _______  ______  _________ _______ 
+/ ___   )(  ___  )(       )(  ___ \ \__   __/(  ____ \\
+\/   )  || (   ) || () () || (   ) )   ) (   | (    \/
+    /   )| |   | || || || || (__/ /    | |   | (__    
+   /   / | |   | || |(_)| ||  __ (     | |   |  __)   
+  /   /  | |   | || |   | || (  \ \    | |   | (      
+ /   (_/\| (___) || )   ( || )___) )___) (___| (____/\\
+(_______/(_______)|/     \||/ \___/ \_______/(_______/
+                                                      
+ _______ __________________ _______  _______  _        _  _ 
+(  ___  )\__   __/\__   __/(  ___  )(  ____ \| \    /\( )( )
+| (   ) |   ) (      ) (   | (   ) || (    \/|  \  / /| || |
+| (___) |   | |      | |   | (___) || |      |  (_/ / | || |
+|  ___  |   | |      | |   |  ___  || |      |   _ (  | || |
+| (   ) |   | |      | |   | (   ) || |      |  ( \ \ (_)(_)
+| )   ( |   | |      | |   | )   ( || (____/\|  /  \ \ _  _ 
+|/     \|   )_(      )_(   |/     \|(_______/|_/    \/(_)(_)
+""")
+
+def cyborgattack_art():
+    print("""
+ _______           ______   _______  _______  _______ 
+(  ____ \|\     /|(  ___ \ (  ___  )(  ____ )(  ____ \\
+| (    \/( \   / )| (   ) )| (   ) || (    )|| (    \/
+| |       \ (_) / | (__/ / | |   | || (____)|| |      
+| |        \   /  |  __ (  | |   | ||     __)| | ____ 
+| |         ) (   | (  \ \ | |   | || (\ (   | | \_  )
+| (____/\   | |   | )___) )| (___) || ) \ \__| (___) |
+(_______/   \_/   |/ \___/ (_______)|/   \__/(_______)
+                                                      
+ _______ __________________ _______  _______  _        _  _ 
+(  ___  )\__   __/\__   __/(  ___  )(  ____ \| \    /\( )( )
+| (   ) |   ) (      ) (   | (   ) || (    \/|  \  / /| || |
+| (___) |   | |      | |   | (___) || |      |  (_/ / | || |
+|  ___  |   | |      | |   |  ___  || |      |   _ (  | || |
+| (   ) |   | |      | |   | (   ) || |      |  ( \ \ (_)(_)
+| )   ( |   | |      | |   | )   ( || (____/\|  /  \ \ _  _ 
+|/     \|   )_(      )_(   |/     \|(_______/|_/    \/(_)(_)
+                                                            
+""")
+
+def player_dies():
+    print("""
+          _______              ______  _________ _______  ______   _  _ 
+|\     /|(  ___  )|\     /|    (  __  \ \__   __/(  ____ \(  __  \ ( )( )
+( \   / )| (   ) || )   ( |    | (  \  )   ) (   | (    \/| (  \  )| || |
+ \ (_) / | |   | || |   | |    | |   ) |   | |   | (__    | |   ) || || |
+  \   /  | |   | || |   | |    | |   | |   | |   |  __)   | |   | || || |
+   ) (   | |   | || |   | |    | |   ) |   | |   | (      | |   ) |(_)(_)
+   | |   | (___) || (___) |    | (__/  )___) (___| (____/\| (__/  ) _  _ 
+   \_/   (_______)(_______)    (______/ \_______/(_______/(______/ (_)(_)
+""")
+    exit()
+
+def you_win():
+    print("""
+          _______                       _________ _        _  _ 
+|\     /|(  ___  )|\     /|    |\     /|\__   __/( (    /|( )( )
+( \   / )| (   ) || )   ( |    | )   ( |   ) (   |  \  ( || || |
+ \ (_) / | |   | || |   | |    | | _ | |   | |   |   \ | || || |
+  \   /  | |   | || |   | |    | |( )| |   | |   | (\ \) || || |
+   ) (   | |   | || |   | |    | || || |   | |   | | \   |(_)(_)
+   | |   | (___) || (___) |    | () () |___) (___| )  \  | _  _ 
+   \_/   (_______)(_______)    (_______)\_______/|/    )_)(_)(_)
+You have defeated all of the massive mutant zombies and cyborgs
+in your path. You have discovered the vaccine for the virus
+and acquired all the information you need to deploy it.
+The world will be back to normal in no time...
+""")
+    time.sleep(10)
+    print("Or will it?")
+    time.sleep(2)
+    exit()
+
+########################################################################################################
+######################### end character object and function definitions ################################
+########################################################################################################
+
+
+
+########################################################################################################
+################################### ASCII GRAPHIC FUNCTIONS ############################################
+########################################################################################################
+
+def zombieattack_art():
+    print("""
+  ______  _______  _______  ______  _________ _______ 
+/ ___   )(  ___  )(       )(  ___ \ \__   __/(  ____ \\
+\/   )  || (   ) || () () || (   ) )   ) (   | (    \/
+    /   )| |   | || || || || (__/ /    | |   | (__    
+   /   / | |   | || |(_)| ||  __ (     | |   |  __)   
+  /   /  | |   | || |   | || (  \ \    | |   | (      
+ /   (_/\| (___) || )   ( || )___) )___) (___| (____/\\
+(_______/(_______)|/     \||/ \___/ \_______/(_______/
+                                                      
+ _______ __________________ _______  _______  _        _  _ 
+(  ___  )\__   __/\__   __/(  ___  )(  ____ \| \    /\( )( )
+| (   ) |   ) (      ) (   | (   ) || (    \/|  \  / /| || |
+| (___) |   | |      | |   | (___) || |      |  (_/ / | || |
+|  ___  |   | |      | |   |  ___  || |      |   _ (  | || |
+| (   ) |   | |      | |   | (   ) || |      |  ( \ \ (_)(_)
+| )   ( |   | |      | |   | )   ( || (____/\|  /  \ \ _  _ 
+|/     \|   )_(      )_(   |/     \|(_______/|_/    \/(_)(_)
+
+""")
+
+def cyborgattack_art():
+    print("""
+ _______           ______   _______  _______  _______ 
+(  ____ \|\     /|(  ___ \ (  ___  )(  ____ )(  ____ \\
+| (    \/( \   / )| (   ) )| (   ) || (    )|| (    \/
+| |       \ (_) / | (__/ / | |   | || (____)|| |      
+| |        \   /  |  __ (  | |   | ||     __)| | ____ 
+| |         ) (   | (  \ \ | |   | || (\ (   | | \_  )
+| (____/\   | |   | )___) )| (___) || ) \ \__| (___) |
+(_______/   \_/   |/ \___/ (_______)|/   \__/(_______)
+                                                      
+ _______ __________________ _______  _______  _        _  _ 
+(  ___  )\__   __/\__   __/(  ___  )(  ____ \| \    /\( )( )
+| (   ) |   ) (      ) (   | (   ) || (    \/|  \  / /| || |
+| (___) |   | |      | |   | (___) || |      |  (_/ / | || |
+|  ___  |   | |      | |   |  ___  || |      |   _ (  | || |
+| (   ) |   | |      | |   | (   ) || |      |  ( \ \ (_)(_)
+| )   ( |   | |      | |   | )   ( || (____/\|  /  \ \ _  _ 
+|/     \|   )_(      )_(   |/     \|(_______/|_/    \/(_)(_)
+                                                            
+""")
+
+def player_dies():
+    print("""
+          _______              ______  _________ _______  ______   _  _ 
+|\     /|(  ___  )|\     /|    (  __  \ \__   __/(  ____ \(  __  \ ( )( )
+( \   / )| (   ) || )   ( |    | (  \  )   ) (   | (    \/| (  \  )| || |
+ \ (_) / | |   | || |   | |    | |   ) |   | |   | (__    | |   ) || || |
+  \   /  | |   | || |   | |    | |   | |   | |   |  __)   | |   | || || |
+   ) (   | |   | || |   | |    | |   ) |   | |   | (      | |   ) |(_)(_)
+   | |   | (___) || (___) |    | (__/  )___) (___| (____/\| (__/  ) _  _ 
+   \_/   (_______)(_______)    (______/ \_______/(_______/(______/ (_)(_)
+""")
+    exit()
+
+def you_win():
+    print("""
+          _______                       _________ _        _  _ 
+|\     /|(  ___  )|\     /|    |\     /|\__   __/( (    /|( )( )
+( \   / )| (   ) || )   ( |    | )   ( |   ) (   |  \  ( || || |
+ \ (_) / | |   | || |   | |    | | _ | |   | |   |   \ | || || |
+  \   /  | |   | || |   | |    | |( )| |   | |   | (\ \) || || |
+   ) (   | |   | || |   | |    | || || |   | |   | | \   |(_)(_)
+   | |   | (___) || (___) |    | () () |___) (___| )  \  | _  _ 
+   \_/   (_______)(_______)    (_______)\_______/|/    )_)(_)(_)
+
+You have defeated all of the massive mutant zombies and cyborgs
+in your path. You have discovered the vaccine for the virus
+and acquired all the information you need to deploy it.
+
+The world will be back to normal in no time...
+""")
+    time.sleep(10)
+    print("Or will it?")
+    time.sleep(2)
+    exit()
 
 ########################################################################################################
 ######################### end character object and function definitions ################################
@@ -101,63 +283,69 @@ def player_selection():
 
 # Looping user input to choose character
     while True:
+        print("-" * 192)
         character_choice = input("""
-1. Doctor Robert Neville
-2. Sherlock the Cat
-3. Carl Grimes
-4. Chico Dusty
-""")
+                                                                                    1. Doctor Robert Neville
+                                                                                    2. Sherlock the Cat
+                                                                                    3. Carl Grimes
+                                                                                    4. Chico Dusty
+
+        """)
+        print("-" * 192)
         if character_choice == "1":
             player = character1
             print("""
-Ahhh, Doctor Neville.
-It took quite some time to gather your wits.
-They say that is a side effect when you've got it...
-You must move quickly now. 
-It's spreading...
+                                                                        Ahhh, Doctor Neville. It took quite some time
+                                                                        to gather your wits. They say that is a side effect
+                                                                        when you've got it...
 
-Where will you go?
+                                                                        You must move quickly now. It's spreading... Where will you go?
             """)
-            return player
+            print("-" * 192)
+            location_menu(player)
+
         elif character_choice == "2":
             player = character2
             sherlock.play()
             print("""
-Ahhh, Sherlock the Cat. The freaky feline.
-It took quite some time to gather your wits.
-They say that is a side effect when you've got it...
-You must move quickly now.
-It's spreading...
+                                                                        Ahhh, Sherlock. The freaky feline. It took quite some time
+                                                                        to gather your wits. They say that is a side effect
+                                                                        when you've got it...
 
-Where will you go?
+                                                                        You must move quickly now. It's spreading... Where will you go?
             """)
-            return player
+            print("-" * 192)
+            location_menu(player)
+
         elif character_choice == "3":
             player = character3
             print("""
-Ahhh, Mr. Grimes. Carl, is it? 
-It took quite quite a while to gather your wits. 
-They say that is a side effect when you've got it...
-You must move quickly now.
-It's spreading...
+                                                                        Ahhh, Mr. Grimes. Carl, is it? 
+                                                                        It took quite quite a while to gather your wits. 
+                                                                        They say that is a side effect when you've got it...
 
-Where will you go?
+                                                                        You must move quickly now. It's spreading... Where will you go?
             """)
-            return player
+            print("-" * 192)
+            location_menu(player)
+
         elif character_choice == "4":
             player = character4
             print("""
-Ahhh, Chico Dusty. Father of Sir Lucious Leftfoot.
-It took quite some time to gather your wits.
-They say that is a side effect when you've got it...
-You must move quickly now.
-It's spreading...
+                                                                        Ahhh, Chico Dusty. Father of Sir Lucious Leftfoot.
+                                                                        It took quite some time to gather your wits.
+                                                                        They say that is a side effect when you've got it...
 
-Where will you go?
+                                                                        You must move quickly now. It's spreading... Where will you go?
             """)
-            return player
+            print("-" * 192)
+            location_menu(player)
+
         else:
-            print("Choose your character by typing '1', '2', '3', or '4', then Enter or Return")
+            print("""
+                                                                    Choose your character by typing '1', '2', '3', or '4', then Enter or Return
+            """)
+            print("-" * 192)
 
 ########################################################################################################
 ######################################### end SELECT A PLAYER ##########################################
@@ -174,14 +362,28 @@ Where will you go?
 def location_menu(player):
 # Looping user input to choose location
     while True:
-        location_choice = input("""
-1. The Pub
-2. The High School
-3. The Stadium
-4. Digital Crafts
-5. Check Health
-6. Check Bag
-""")
+        
+        if pubZombie.health <= 0 and cyborgsean.health <= 0 and hs_zombie.health <= 0 and mall_zombie.health <= 0 and plot_zombie.health <=0:
+            location_choice = input("""
+                                                                                    1. The Pub
+                                                                                    2. The High School
+                                                                                    3. The Mall
+                                                                                    4. Digital Crafts
+                                                                                    5. Check Health
+                                                                                    6. Check Bag
+                                                                                    86. Go to the CDC
+            """)
+            print("*" * 192)
+        else:
+            location_choice = input("""
+                                                                                    1. The Pub
+                                                                                    2. The High School
+                                                                                    3. The Mall
+                                                                                    4. Digital Crafts
+                                                                                    5. Check Health
+                                                                                    6. Check Bag
+            """)
+            print("*" * 192)
         if location_choice == "1":
             pub_location()
             pub_menu(player)
@@ -197,9 +399,15 @@ def location_menu(player):
         elif location_choice == "5":
             player.print_status()
         elif location_choice == "6":
-            player.bag_contents()   
+            player.bag_contents()
+        elif location_choice == "86":
+            cdc_location()
+            cdc_menu(player)         
         else:
-            print("Enter \"1\", \"2\", \"3\", \"4\", \"5\", or \"6\"")
+            print("""
+                                                                                Enter \"1\", \"2\", \"3\", \"4\", \"5\", or \"6\"
+            """)
+            print("-" * 192)
             location_menu(player)
 
 ########################################################################################################
@@ -217,16 +425,18 @@ def location_menu(player):
 
 def pub_location():
     print("""
-Ahh, the old pub. You've been coming here for years. It's been a while though, 
-what with the pandemic and all. The smell of bar tar and cigarettes still lingers; 
-this place was always packed. Now, a single bartender manages every patron. 
-It's almost empty, but there are two young ladies sitting at the far end of the bar.
+                                                                Ahh, the old pub. You've been coming here for years. It's been a while though, 
+                                                                what with the pandemic and all. The smell of bar tar and cigarettes still lingers; 
+                                                                this place was always packed. Now, a single bartender manages every patron. 
+                                                                It's almost empty, but there are two young ladies sitting at the far end of the bar.
     """)
+    print("-" * 192)
     # time.sleep(5)
     print("What will it be?")
     # time.sleep(3)
 
-def pub_menu(player): 
+def pub_menu(player):
+    pint_count = 0 
     while True:
 
 # IF PUB ZOMBIE IS ALIVE:
@@ -239,13 +449,52 @@ def pub_menu(player):
 4. Leave
 """)
                 if user_choice == "1":
+                    print("That'll be $5")
                     # INPUT SOUNDBOARD OF POURING A BEER
                     # time.sleep()
                     # self.getdrunk()
-                    print("Will you have another?")
-                    pub_menu(player)
-            
-                
+                    player.purse -= 5
+                    player.health -=2
+                    if player.health <= 0:
+                        player_dies()
+                    pint_count += 1
+                    user_choice = input("Will you have another?\n1. Yes\n2. No\n")
+                    if user_choice == "1" and pint_count <= 5:
+                        player.purse -= 5
+                        pint_count += 1
+                    if user_choice == "1" and player.gamestop_count >= 2 and pint_count >=6:
+                        print("""
+                        ya... ya... ya..., ok!! ill take your advice and go say hey to her....
+                        You leave the bar and just start walking....
+
+                        once you go inside you ask the mannequin behind the cashier counter
+                        "Aye Hank whose the girl in the.. Never mind I'll find out for myself.
+
+                        As you walk to the back where this mannequin wearing a fur coat is standing you say
+
+                        "I promised my friends that I would say hello to you....
+
+                        Hello.....
+
+                        Hello.....
+
+                        Please say hello to me
+
+                        PPleease say hello to me!!!!"
+                        """)
+                        time.sleep(5)
+                        print("You wake up at home not remembering what happened last night.")
+                        location_menu(player)
+                    if user_choice == "1" and pint_count >= 6:
+                        print("""
+                        I think its time to go home..........
+                        .....................................
+                        You wake up at home... now what?
+                        """)
+                        location_menu(player)
+                    if user_choice == "2":
+                        pub_menu(player)
+                    
                 elif user_choice == "2":
                     #time.sleep(2)
                     
@@ -269,9 +518,7 @@ As you sit down, he turns to you and looks up, an empty stare on his face.
 His mouth is.....      Bleeding?
 """)
                         #///time.sleep(5)
-                        print("""
-ZOMBIE ATTACK!
-""")
+                        zombieattack_art()
                         # INPUT ZOMBIE BARTENDER SOUND
                         # time.sleep()                   
                         while pubZombie.health > 0 and player.health > 0:
@@ -307,7 +554,7 @@ ZOMBIE ATTACK!
                             
                             if player.health <= 0:
                                 print ("The %s KILLED YOU!!! Better luck next time...")
-                                quit
+                                player_dies()
                             
                             if pubZombie.health <= 0:
                                 print ("""
@@ -356,8 +603,46 @@ Today may not be your day...""")
                     # INPUT SOUNDBOARD OF POURING A BEER
                     # time.sleep()
                     # self.getdrunk()
-                    print("Will you have another?")
-                    pub_menu(player)
+                    print("That'll be $5")
+                    player.purse -= 5
+                    pint_count += 1
+                    user_choice = input("Will you have another?\n1. Yes\n2. No\n")
+                    if user_choice == "1" and pint_count <= 5:
+                        player.purse -= 5
+                        pint_count += 1
+                    if user_choice == "1" and player.gamestop_count >= 2 and pint_count >=6:
+                        print("""
+                        ya... ya... ya..., ok!! ill take your advice and go say hey to her....
+                        You leave the bar and just start walking....
+
+                        once you go inside you ask the mannequin behind the cashier counter
+                        "Aye Hank whose the girl in the.. Never mind I'll find out for myself.
+
+                        As you walk to the back where this mannequin wearing a fur coat is standing you say
+
+                        "I promised my friends that I would say hello to you....
+
+                        Hello.....
+
+                        Hello.....
+
+                        Please say hello to me
+
+                        PPleease say hello to me!!!!"
+                        """)
+                        time.sleep(5)
+                        print("You wake up at home not remembering what happened last night.")
+                        location_menu(player)
+                    if user_choice == "1" and pint_count >= 6:
+                        print("""
+                        I think its time to go home..........
+                        .....................................
+                        You wake up at home now what?
+                        """)
+                        location_menu(player)
+                    if user_choice == "2":
+                        pub_menu(player)
+                    # pub_menu(player)
 
                 elif user_choice == "2":
                     if player.ladies_count == 1:
@@ -432,7 +717,7 @@ You use your lock-picking kit to pick the locked door.
 You enter the school auditorium, which is cool and dark.
 The large burgundy curtains hanging over the stage are ripped and tattered.
 To your left is the sound booth, so you decide to investigate.
-As soon as you open the saloon-style door, you notice a $25 bill on the floor beneath the sound board.
+As soon as you open the saloon-style door, you notice a $25 bill on the floor benieth the sound board.
 Neat!
                         """)
                         player.purse += 25
@@ -458,7 +743,7 @@ Neat!
                 print("""
 The cafeteria reveals the source of the horrid smell. 
 The freezers have been left open for days,
-and the putrid food has been plundered and thrown all over the cafeteria by someone...
+and the putrid food has been plundered thrown all over the cafeteria by someone...
 ... or something.
 You hear the sound of a sink running coming from the kitchen.
 Is someone in there? You approach the door and push it open.
@@ -469,6 +754,7 @@ But is that her arm...... moving???
 ZOMBIE ATTACK!")
                 """)
                 print("*" * 20)
+                zombieattack_art()
                 while hs_zombie.health > 0 and player.health > 0:
                     print("\nWhat do you want to do?")
                     print("1. Run Away")
@@ -503,7 +789,7 @@ ZOMBIE ATTACK!")
                     
                     if player.health <= 0:
                         print ("The %s KILLED YOU!!! Better luck next time..." % hs_zombie)
-                        quit()
+                        player_dies()
                     
                     if hs_zombie.health <= 0:
                         print ("""
@@ -533,7 +819,7 @@ You wander back into the hall.
                         """)
                 print("*" * 20)
                 player.bag.append("Lock-picking Kit")
-                print("Your bag contents is now %s." % player.bag)
+                print("Your bag contents are now %s." % player.bag)
                 player.classroom_count += 1
             elif player.classroom_count >= 2:
                 print("*" * 20)
@@ -551,7 +837,466 @@ You wander back into the hall.
             
             print("Sorry I didn't get that.")
 
+########################################################################################################
+############################# 3. MALL LOCATION & MENU FUNCTIONS ########################################
+########################################################################################################
 
+
+def mall_location():
+    print("*" * 20)
+    print("""
+    Oooh, the mall. You haven't came here in forever!!! You remember coming here
+    with your friends to hang out and meet new people. Instead of the amazing smell
+    of all the different types of food, from the food market, it now smells like 
+    rotting flesh. As you are walking towards the entrance from the parking lot
+    all the abandoned cars windows are shattered and scattered across the ground.
+    Loud crunching of the glass echos out........
+        """)
+    print("*" * 20)
+    time.sleep(4)
+
+def mall_menu(player): 
+    while plot_zombie.health > 0 and player.health > 0:
+        print("*" * 20)
+        print("""
+        Just as you are about to reach the entrance you hear a deep growling voice 
+        coming from behind one of the cars in the first row of the parking lot...
+        It has heard the loud crunching and is slowly making it's way to you.
+        """)
+        print("*" * 20)
+        zombieattack_art()
+        time.sleep(2)
+        print("\nWhat do you want to do?")
+        print("1. Run Away")
+        print("2. Punch")
+        if "knife" in player.bag:
+            print ("3. Use Knife")
+        if "gun" in player.bag:
+            print ("4. Use Gun")
+        user_input = input()
+        if user_input == "1":
+            player.health -= 20
+    # Punch
+        if user_input == "2":
+            player.do_punch(plot_zombie)
+# Knife
+        if user_input == "3" and "knife" in player.bag:
+            player.do_punch(plot_zombie)
+# Gun
+        if user_input == "4":
+            player.do_shoot(plot_zombie)
+        else:
+            print("*" * 20)
+            print("you entered an invalid option and zombie struck you!")
+            print("*" * 20)
+
+        if player.health > 0:
+        # Opponent attacks player
+            plot_zombie.do_punch(player)
+        if player.health <= 0:
+            print("*" * 20)
+            print ("The %s KILLED YOU!!! Better luck next time..." % (plot_zombie.name))
+            print("*" * 20)
+            player_dies()
+        if plot_zombie.health <= 0:
+            print("*" * 20)
+            print ("""%s KILLED %s!! 
+            %s's health is %d.
+            ....Now what?""" % (player.name, plot_zombie.name, player.name, player.health))
+            print("*" * 20)
+
+    while True:
+        user_choice = input("Where do you want to go? (1-4)\n1. Gamestop\n2. Staff Lounge\n3. Beretta\n4. Leave Mall\nEnter selection here: ")
+
+################ INTERACTION 1 ######################
+        if user_choice == "1":
+            if player.gamestop_count == 1:
+                print("*" * 20)
+                print(""" 
+                You are walking toward GameStop which is in the middle of the Plaza level. 
+                There are mannequins everywhere and graffiti written all of the walls...
+                As you are right outside of the doors you notice 2 mannequins, one is 
+                a male mannequin wearing an orange hoodie. The other a female mannequin
+                wearing a black hat covering her face, as well as a black leather jacket.
+                I guess ill just name you Fred and Marge. When you enter something catches
+                your eye.
+                """)
+                print("*" * 20)
+                time.sleep(4)
+                print("""
+                You walk over to the mannequin behind the cashier counter and ask
+
+                Aye hank whose the girl in the uuuggghh........
+
+                Nvm aye maybe another time.
+                """)
+                print("*" * 20)
+                time.sleep(2)
+                player.gamestop_count += 1
+            elif player.gamestop_count == 2:
+                print("*" * 20)
+                print("""
+                While opening the door to GameStop you say
+                'Aye morning Marge, morning Fred, anything new happen since
+                I've been gone? Just as you ask you notice someone has been 
+                in here since all the videos on the shelf have been rummaged 
+                through. As you look around you hear a faint moan and some 
+                coughing.... 
+                """)
+                print("*" * 20)
+                time.sleep(5)
+                print("""
+                When you approach the distressed noises, you walk over
+                a dead zombie, to see a man pointing a gun at you. He says                 
+                "Hands up.. cough.. cough.. Thats far enough" 
+                As you tell him you are not infected and was just coming to check
+                what was happening.
+                He then states "I need you to do something for me cough.. cough.. 
+                as obviously I am not going to make it much longer if you couldn't
+                tell already." 
+                Sure what do you need some bandages?
+                "No, here take this" as he hands you the gun "Before I turn into one
+                of those things I need you to stop that from happening!
+                But....
+                "No buts cough.. cough.. I would hate for my body to be one of them
+                cough.. grr.. and walking around attacking people grr.. cough.. do it
+                now or it's going to be late grrr...
+                BOOM........................
+                """)
+                print("*" * 20)
+                time.sleep(2)
+############### ADD GUN SHOT                
+                player.bag.append("gun")
+                print("Your bag contents are now %s." % player.bag)
+                print("*" * 20)
+                player.gamestop_count += 1
+            elif player.gamestop_count >= 3 and player.gvisit_count == 1:
+                print("*" * 20)
+                print("")
+                print("""
+                As the events of what happened previously here still haunt you,
+                you decide not to go back in just yet to find out what you've been
+                wanting since your first visit.
+                """)
+                print("*" * 20)
+                player.gvisit_count += 2
+            elif player.gamestop_count >= 3 and player.gvisit_count >= 2:
+                print("*" * 20)
+                print("")
+                print("Hmm! You've seen all there is to see here! You wander back into the hall.")
+                print("")
+                print("*" * 20)
+
+
+################ INTERACTION 2 ######################
+        elif user_choice == "2":
+            if player.stafflounge_count == 1:
+                if "Lock-picking Kit" in player.bag:
+                    print("*" * 20)
+                    print("""
+                    You use your lock-picking kit to pick the locked door.
+                    The staff lounge is pitch black and has an awful odor.
+                    Once the door room opens it sheds only a little bit of
+                    light into the room. You find the light switch on the wall
+                    right next to the door and flip it and nothing happens.
+                    As you look into the room you see the furniture all in
+                    disarray and the lights on the walls were smashed. With the 
+                    light from the hall still just barely shinning through you 
+                    see a lamp at the far end of the room. With nothing to hold 
+                    the door open you make your way into the room the stench of 
+                    something just keeps getting worse. As you turn on the lamp 
+                    and turn around the room is filled with bodies just torn to
+                    shreds. On one of the couches you see a duffle bag and it
+                    seems to be full of something. When you make your way to the
+                    bag you trip over something.....
+                    """)
+                    print("*" * 20)
+                    time.sleep(4)
+                    print("""
+                    GGGRRRRR.....
+
+                    As you stumble back to your feet you realise this big body 
+                    building zombie had tripped you and is now getting up himself
+                    and coming at you.
+                    """)
+                    print("*" * 20)
+                    zombieattack_art()
+                    time.sleep(3)
+                    while mall_zombie.health > 0 and player.health > 0:
+                        print("\nWhat do you want to do?")
+                        print("1. Run Away")
+                        print("2. Punch")
+                        if "knife" in player.bag:
+                            print("3. Use Knife")
+                        if "gun" in player.bag:
+                            print("4. Use Gun")
+                        user_input = input()
+                        print("*" * 20)
+                # Run Away
+                        if user_input == "1":
+                            player.health -= 20
+                # Punch
+                        elif user_input == "2":
+                            player.do_punch(mall_zombie)
+                # Knife
+                        elif user_input == "3" and "knife" in player.bag:
+                            player.do_knife(mall_zombie)
+                # Gun
+                        elif user_input == "4" and "gun" in player.bag:
+                            player.do_shoot(mall_zombie)
+
+                        else:
+                            # print("*" * 20)
+                            print("You entered an invalid option and missed your chance to strike!")
+                            print("*" * 20)
+                        #time.sleep(1.5)
+                # ZOMBIE ATTACKS!
+                        if player.health > 0:
+                            # Opponent attacks player
+                            mall_zombie.do_punch(player)
+                    
+                        if player.health <= 0:
+                            # print("*" * 20)
+                            print("The %s KILLED YOU!!! Better luck next time...") % (mall_zombie.name)
+                            print("*" * 20)
+                            player_dies()
+                    
+                        if mall_zombie.health <= 0:
+                            # print("*" * 20)
+                            print ("""
+                            %s KILLED %s!! 
+                            %s's health is %d.
+                            ....Now whats inside that bag?
+                            Majority of it is just work out clothes that are way to big 
+                            and haven't been washed in forever. You come across a wallet.
+                            ooohh $150.
+                            """ % (player.name, mall_zombie.name, player.name, player.health))
+                            player.purse += 150
+                            time.sleep(4)
+                            print("*" * 20)
+                            print("You now have $%s." % player.purse)
+                            print("*" * 20)
+                            player.stafflounge_count += 1
+                elif "Lock-picking Kit" not in player.bag:
+                    print("*" * 20)
+                    print("")
+                    print("This door is locked! If only there were a way to pick the lock...")
+                    print("")
+                    print("*" * 20)
+            elif player.stafflounge_count >= 2:
+                print("*" * 20)
+                print("")
+                print("Hmm! You've seen all there is to see here! You wander back into the hall.")
+                print("")
+                print("*" * 20)
+
+################ INTERACTION 3 ######################
+        elif user_choice == "3":
+            while True:
+                if "gun" in player.bag and player.beretta_count >= 2 and player.dontvisit_count == 1:
+                    print("*" * 20)
+                    print("""
+                    As you walk towards Beretta you notice something down one of the other
+                    corridors that you have seen somewhere else...
+
+                    You turn down that corridor and rush to check if you were just imagining it.
+
+                    You weren't .......
+
+                    "What the hell you doing over here Fred?
+
+                    "What the hell are you.. NO! NOO! NOOOOO!"
+
+                    As you reach in your bag, to grab your gun you continue walking towards him.....
+
+                    "No! What the hell you doing over her Fred? How did you get over here?" 
+
+                    "Fred if you are real you better tell me right now."
+                    
+                    No answer from the mannequin...
+
+                    You start shooting at him until he falls apart and hits the floor.
+
+                    "DAMNIT FRED!!! DAMNIT!!!!"
+                    """)
+                    print("*" * 20)
+                    time.sleep(5)
+                    player.dontvisit_count += 5
+
+                if player.beretta_count == 1:
+                    print("""
+                    You walk into Beretta which is on the main floor. Everything is still neat and organized
+                    as your walking through the store this mans voice starts talking to you from the other-side 
+                    of the store.
+
+                    "OH hey a customer"
+                    While walking towards the voice you shout out "Whose there?" Once you get to where the voice
+                    came from.
+                    The voice replies from the other side now "OOP im over here now"
+                    You think to yourself what the hell is going on while you walk towards the voice again.
+                    When you reach the counter you ask again "Who is .." the computer monitor turns around
+                    and says
+                    "Im giphy, the stores cashier haven't seen anyone in here in quite some time. I was built when
+                    all this mess started. How can I help you today we have a small variety of items still."
+                    """)
+                    print("*" * 20)
+                    time.sleep(4)
+                    print("")
+                    while True:
+                        if "mask" in player.bag and "respirator" in player.bag and "Sam's dog collar" in player.bag:
+                            print("Sorry we are sold out of everything")
+                            print("*" * 20)
+                            player.beretta_count += 1
+                            mall_menu(player)
+                        else:
+                            # print("*" * 20)
+                            print(player.itemslist)
+                            print("")
+                            user_input = input("What would you like to buy (1-3) ")
+                            print("*" * 20)
+                            if user_input == "1" and "mask" not in player.bag:
+                                # print("*" * 20)
+                                print("That'll be $25")
+                                print("*" * 20)
+                                player.purse -= 25
+                                player.bag.append("mask")
+                                # print("*" * 20)
+                                print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                                print("*" * 20)
+                            elif "mask" in player.bag:
+                                # print("*" * 20)
+                                print("Masks are sold out")
+                                print("*" * 20)
+                            if user_input == "2" and "respirator" not in player.bag:
+                                # print("*" * 20)
+                                print("That'll be $30")
+                                print("*" * 20)
+                                player.purse -= 30
+                                player.bag.append("respirator")
+                                # print("*" * 20)
+                                print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                                print("*" * 20)
+                            elif "respirator" in player.bag:
+                                # print("*" * 20)
+                                print("Respirator are sold out")
+                                print("*" * 20)
+                            if user_input == "3" and "Sam's dog collar" not in player.bag:
+                                # print("*" * 20)
+                                print("That'll be $500")
+                                print("*" * 20)
+                                player.purse -= 500
+                                player.bag.append("Sam's dog collar")
+                                # print("*" * 20)
+                                print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                                print("*" * 20)
+                            elif "Sam's dog collar" in player.bag:
+                                # print("*" * 20)
+                                print("You bought the only dog collar")
+                                # print("*" * 20)
+                            if "Sam's dog collar" in player.bag and "respirator" in player.bag and "mask" in player.bag:
+                                # print("*" * 20)
+                                print("Everything is sold out. Thanks for visiting check back soon to see if we have more supplies.")
+                                print("*" * 20)
+                                player.beretta_count += 1
+                                mall_menu(player)
+                            else:
+                                # print("*" * 20)
+                                print("Will there be anything else youd like to buy?")
+                                print("*" * 20)
+                                user_choice = input("(y/n) ").lower()
+                                if user_choice != "n":
+                                    # print("*" * 20)
+                                    print("ALRIGHTY THEN")
+                                    print("*" * 20)
+                                if user_choice == "n":
+                                    print("*" * 20)
+                                    player.beretta_count += 1
+                                    mall_menu(player)
+                            player.beretta_count += 1
+                if player.beretta_count >= 2:
+                    while True:
+                        if "mask" in player.bag and "respirator" in player.bag and "Sam's dog collar" in player.bag:
+                            # print("*" * 20)
+                            print("Sorry we are sold out of everything")
+                            print("*" * 20)
+                            player.beretta_count += 1
+                            mall_menu(player)
+                        else:
+                            # print("*" * 20)
+                            print(player.itemslist)
+                            print("")
+                            user_input = input("What would you like to buy (1-3) ")
+                            print("*" * 20)
+                            if user_input == "1" and "mask" not in player.bag:
+                                # print("*" * 20)
+                                print("That'll be $25")
+                                print("*" * 20)
+                                player.purse -= 25
+                                player.bag.append("mask")
+                                # print("*" * 20)
+                                print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                                print("*" * 20)
+                            elif "mask" in player.bag:
+                                # print("*" * 20)
+                                print("Masks are sold out")
+                                print("*" * 20)
+                            if user_input == "2" and "respirator" not in player.bag:
+                                # print("*" * 20)
+                                print("That'll be $30")
+                                print("*" * 20)
+                                player.purse -= 30
+                                player.bag.append("respirator")
+                                # print("*" * 20)
+                                print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                                print("*" * 20)
+                            elif "respirator" in player.bag:
+                                # print("*" * 20)
+                                print("Respirator are sold out")
+                                print("*" * 20)
+                            if user_input == "3" and "Sam's dog collar" not in player.bag:
+                                # print("*" * 20)
+                                print("That'll be $500")
+                                print("*" * 20)
+                                player.purse -= 500
+                                player.bag.append("Sam's dog collar")
+                                # print("*" * 20)
+                                print("Your bag contains %s and you now have $%d" % (player.bag, player.purse))
+                                # print("*" * 20)
+                            elif "Sam's dog collar" in player.bag:                         
+                                # print("*" * 20)
+                                print("You bought the only dog collar")
+                                print("*" * 20)
+                            if "Sam's dog collar" in player.bag and "respirator" in player.bag and "mask" in player.bag:
+                                # print("*" * 20)
+                                print("Everything is sold out, Thanks for visiting check back soon to see ")
+                                print("*" * 20)
+                                player.beretta_count += 1
+                                mall_menu(player)
+                            else:
+                                # print("*" * 20)
+                                print("Will there be anything else youd like to buy?")
+                                print("")
+                                user_choice = input("(y/n) ").lower()
+                                print("*" * 20)
+                                if user_choice != "n":
+                                    # print("*" * 20)
+                                    print("")
+                                    print("ALRIGHTY THEN")
+                                    print("*" * 20)
+                                if user_choice == "n":
+                                    print("*" * 20)
+                                    player.dontvisit_count += 3
+                                    player.beretta_count += 1
+                                    mall_menu(player)
+
+                
+################ LEAVE Mall #######################
+        elif user_choice == "4":
+            location_menu(player)
+
+############### INVALID ENTRY - LOOP RESETS #########
+        else:
+            print("Sorry I didn't get that.")
 
 
 
@@ -696,7 +1441,7 @@ You hear Cyborg Sean's voice echo in the distance.
                                 
                                 if player.health <= 0:
                                     print ("CYBORG SEAN KILLED YOU!!! Better luck next time...")
-                                    quit
+                                    player_dies()
                                 
                                 if cyborgsean.health <= 0:
                                     groan.play()
@@ -732,3 +1477,155 @@ You find some old sanitizer.
             location_menu(player)
         else:
             print("BLOOP. Can't do that patna'. Please choose again. ")
+
+
+
+
+########################################################################################################
+################################## 7. CDC LOCATION & MENU FUNCTIONS ####################################
+########################################################################################################
+
+def cdc_location():
+    print("""
+The Center for Disease Control may as well be ground zero.
+Healthcare professionals used to work around the clock here, 
+trying to produce a vaccine for the virus, while millions of people
+named Karen denounced their efforts on facebook.
+
+How close did they get? Nobody knows. The CDC was shut down
+when a maskless group of Karens gathered outside in protest.
+You must get inside and find out.
+    """)
+    # time.sleep(5)
+    print("What will you do next?")
+    # time.sleep(3)
+
+def cdc_menu(player): 
+    while True:
+
+        user_choice = input("""
+1. Check the Lab 
+2. Check the Cooler
+3. Check the Immunology Wing
+4. Leave
+
+""")
+        if user_choice == "1":
+            # time.sleep()
+            print("""
+You wander into the lab, careful not to touch anything.
+
+There is an IV drip bag and some unused needles on the counter.
+
+Your health could use a boost. 
+""")                    
+            print("1. Use IV")
+            print("2. Do not use IV")
+            user_input = input()
+            if user_input == "1":
+                player.health += 50
+                print("Your health increased by 50")
+                print("%s's health: %d" % (player.name,player.health))
+                cdc_menu(player)  
+            elif user_input == "2":
+                print("You can never be too careful, huh?")
+                cdc_menu(player)
+
+    
+        elif user_choice == "2":
+            #time.sleep(2)
+            print("""
+You've heard the vaccine would have to be refrigerated.
+
+The cooler on the second floor seems like a good place to investigate.
+
+There's a small case of viles on the bottom shelf of the cooler...
+""")   
+            print("""
+You take out a vile. Its label reads 'ZomPanVac-20'
+
+You have the vaccine! But does it work?
+ 
+There's only one way to find out...
+""")   
+            player.bag.append("vaccine")
+            print("1. Take the Vaccine")
+            print("2. Do not take the Vaccine")
+            user_input = input()
+            if user_input == "1":
+                player.health += 100000
+                print("It works! Your health increased by 10,000")
+                print("%s's health: %d" % (player.name,player.health))
+                cdc_menu(player)
+            elif user_input == "2":
+                print("You can never be too careful, huh?")
+                cdc_menu(player)
+    
+        
+        elif user_choice == "3":
+            if "vaccine" in player.bag:
+                print("""
+    You know the Immunology Wing will have the information you need to deploy the vaccine.
+
+    You go there to figure out how you can defeat the virus once and for all.
+
+    You open the door to the Immunology center. 
+
+    A massive, highly evolved mutant blocks your path...
+    """)   
+                    # time.sleep()                   
+                zombieattack_art()
+                while cdcZombie.health > 0 and player.health > 0:
+                    print("\nWhat do you want to do?")
+                    print("1. Run Away")
+                    print("2. Punch")
+                    if "knife" in player.bag:
+                        print ("3. Use Knife")
+                    if "gun" in player.bag:
+                        print ("4. Use Gun")
+                    
+                    user_input = input()
+            # Run Away
+                    if user_input == "1":
+                        player.health -= 20
+                        location_menu(player)
+            # Punch
+                    elif user_input == "2":
+                        player.do_punch(cdcZombie)
+            # Knife
+                    elif user_input == "3":
+                        player.do_knife(cdcZombie)
+            # Gun
+                    elif user_input == "4":
+                        player.do_shoot(cdcZombie)
+
+                    else:
+                        print("You entered an invalid option and missed your chance to strike!")
+                        #time.sleep(1.5)
+            # ZOMBIE ATTACKS!
+                    if player.health > 0 and cdcZombie.health > 0:
+                        # Opponent attacks player
+                        cdcZombie.do_punch(player)
+                    
+                    if player.health <= 0:
+                        print ("The %s KILLED YOU!!! Better luck next time..." % (cdcZombie.name))
+                        player_dies()
+                    
+                    if cdcZombie.health <= 0:
+                        you_win()
+
+            elif "vaccine" not in player.bag:
+                print("""
+You must have the vaccine to access the Immunology Center...
+""")   
+                cdc_menu(player)
+
+        
+        elif user_choice == "4":
+            print("You couldn't be leaving any sooner... Where to?")
+            location_menu(player)
+
+
+########################################################################################################
+############################### END 7. CDC LOCATION & MENU FUNCTIONS ###################################
+########################################################################################################

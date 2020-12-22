@@ -12,5 +12,5 @@ mixer.music.play(-1)
 
 
 open_story()
-player=player_selection()
+player = player_selection()
 location_menu(player)
