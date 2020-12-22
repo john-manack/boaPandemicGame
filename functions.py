@@ -164,7 +164,7 @@ The world will be back to normal in no time...
     time.sleep(10)
     print("Or will it?")
     time.sleep(2)
-    exit():
+    exit()
 
 ########################################################################################################
 ######################### end character object and function definitions ################################
