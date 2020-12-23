@@ -1350,6 +1350,7 @@ You look around and see he has a small pouch next to him.
                     print("""
 Alright... But I won't let you just have all the answers!""")
                     print("You need a challenge - let's fight!")
+                    cyborgattack_art()
                     evildroid.play()
                     time.sleep(2)
                     print("Cyborg Sean challenges you to a duel!")
