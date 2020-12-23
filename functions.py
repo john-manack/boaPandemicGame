@@ -60,8 +60,8 @@ def open_story():
 ########################################################################################################
 
 #########################name, ###########health, purse, sex, punch, knife, shoot, defense)
-character1 = Character("Dr. Robert Neville", 100, 500, "Male", "medium", "high")
-character2 = Character("Sherlock the Cat", 100, 400, "Female", "medium", "high")
+character1 = Character("Dr. Robert Neville", 100, 500, "Male", "medium", "medium")
+character2 = Character("Sherlock the Cat", 100, 400, "Female", "medium", "medium")
 character3 = Character("Carl Grimes", 100, 600, "Male", "high", "low")
 character4 = Character("Chico Dusty", 100, 1000, "Male", "high", "low")
 pubZombie = Character("Pub Zombie", 40, 100, "Male", "low", "low")
@@ -855,8 +855,8 @@ def mall_location():
     print("*" * 20)
     time.sleep(4)
 
-def mall_menu(player): 
-    while plot_zombie.health > 0 and player.health > 0:
+def mall_menu(player):
+    if player.mall_count == 1:
         print("*" * 20)
         print("""
         Just as you are about to reach the entrance you hear a deep growling voice 
@@ -864,7 +864,9 @@ def mall_menu(player):
         It has heard the loud crunching and is slowly making it's way to you.
         """)
         print("*" * 20)
+        player.mall_count += 1
         zombieattack_art()
+    while plot_zombie.health > 0 and player.health > 0:
         time.sleep(2)
         print("\nWhat do you want to do?")
         print("1. Run Away")
@@ -873,17 +875,18 @@ def mall_menu(player):
             print ("3. Use Knife")
         if "gun" in player.bag:
             print ("4. Use Gun")
-        user_input = input()
+        user_input = input("(1-4)")
         if user_input == "1":
-            player.health -= 20
-    # Punch
-        if user_input == "2":
+            # player.health -= 20
+            location_menu(player)
+# Punch
+        elif user_input == "2":
             player.do_punch(plot_zombie)
 # Knife
-        if user_input == "3" and "knife" in player.bag:
-            player.do_punch(plot_zombie)
+        elif user_input == "3" and "knife" in player.bag:
+            player.do_knife(plot_zombie)
 # Gun
-        if user_input == "4":
+        elif user_input == "4" and "gun" in player.bag:
             player.do_shoot(plot_zombie)
         else:
             print("*" * 20)

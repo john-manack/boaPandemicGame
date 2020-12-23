@@ -38,6 +38,7 @@ class Character:
         self.dc_hallway_count = 1
         self.dc_sound_count = 1
         self.dc_cabinet_count = 1
+        self.mall_count = 1
         self.gamestop_count = 1
         self.stafflounge_count = 1
         self.beretta_count = 1
