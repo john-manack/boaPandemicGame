@@ -17,7 +17,7 @@ evildroid = mixer.Sound("audio/evildroid.wav")
 slow_breathing = mixer.Sound("audio/slow_breathing.wav")
 groan = mixer.Sound("audio/groan.wav")
 sherlock = mixer.Sound("audio/sherlock.wav")
-evil_laugh = mixer.Sound("audio/sherlock.wav")
+evil_laugh = mixer.Sound("audio/evil_laugh.wav")
 
 class Character:
     def __init__(self, name, health, purse, sex, punch, defense):
@@ -34,6 +34,7 @@ class Character:
         self.auditorium_count = 1
         self.cafeteria_count = 1
         self.bartenderencounter = 1
+        self.ladies1_count = 1
         self.ladies_count = 1
         self.dc_hallway_count = 1
         self.dc_sound_count = 1
@@ -94,11 +95,11 @@ class Character:
         defense = enemy.add_defense()
         enemy.health -= (self.knife - defense)
         print("""
-                                                                                %s SLASHED %s for %d damage!
+                                                                            %s SLASHED %s for %d damage!
         """ % (self.name, enemy.name, (self.knife - defense)))
         knife.play()
         print("""
-        %s health: %d \n%s health: %s 
+                                                                        %s health: %d \n%s health: %s 
         """ % (self.name, self.health, enemy.name, enemy.health))
         print("*" * 192)
 
@@ -111,7 +112,9 @@ class Character:
         """ % (self.name, enemy.name, (self.shoot - defense)))
         shoot.play()
         print("""
-                                                                                %s health: %d \n%s health: %s 
+                                                                                        %s health: %d 
+                                                                        
+                                                                                        %s health: %s 
         """ % (self.name, self.health, enemy.name, enemy.health))
         print("*" * 192)
 
@@ -132,7 +135,7 @@ class Character:
     def bag_contents(self):
         time.sleep(1)
         print("""
-                                                                                Your bag contains %s
+                                                                          Your bag contains %s
         """ % (self.bag))
         zipper.play()
         print("-" * 192)
