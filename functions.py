@@ -371,7 +371,7 @@ def location_menu(player):
                                                                                     4. Digital Crafts
                                                                                     5. Check Health
                                                                                     6. Check Bag
-                                                                                    86. Go to the CDC
+                                                                                    7. Go to the CDC
             """)
             print("*" * 192)
         else:
@@ -400,7 +400,7 @@ def location_menu(player):
             player.print_status()
         elif location_choice == "6":
             player.bag_contents()
-        elif location_choice == "86":
+        elif location_choice == "7" and pubZombie.health <= 0 and cyborgsean.health <= 0 and hs_zombie.health <= 0 and mall_zombie.health <= 0 and plot_zombie.health <=0:
             cdc_location()
             cdc_menu(player)         
         else:
