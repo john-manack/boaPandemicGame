@@ -1320,6 +1320,7 @@ def mall_menu(player):
 
                                                                                 4. Nothing, Leave
                     """)
+                    user_input = input()
                     print("*" * 192)
 ########### PURCHASE Mask ########################################################
                     if user_input == "1" and "Mask" in player.bag:
@@ -1387,7 +1388,7 @@ def mall_menu(player):
                                                                                         That'll be $500
                         """)
                         print("*" * 192)
-                        cash.pay()
+                        cash.play()
                         player.purse -= 500
                         time.sleep(1.5)
                         print("""
@@ -1395,16 +1396,16 @@ def mall_menu(player):
                                                                             Your eyes start to water up and bead down your
                                                                             face, as your dogs name was Sam..............
                         """)
-                        be_alright.play()
+                        # be_alright.play()
                         player.bag.append("Sam's dog collar")
                         zipper.play()
                         print("""
                                                                 Your bag contains %s and you now have $%d
                         """ % (player.bag, player.purse))
                         print("*" * 192)
-                    # elif user_choice == "4":
-                    #     print("*" * 192
-                    #     mall_menu(player)
+                    elif user_choice == "4":
+                        print("*" * 192)
+                        mall_menu(player)
 
                 
 ################ LEAVE Mall #######################
@@ -1461,7 +1462,7 @@ def digitalcrafts_menu(player):
                                                                                 
                                                                                 4. Leave Digital Crafts
         """)
-        user_choice()
+        user_choice = input()
         print("*" * 192)
         if user_choice == "1":
             if player.dc_hallway_count == 1:
