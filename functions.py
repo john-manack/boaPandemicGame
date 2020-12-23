@@ -59,7 +59,7 @@ def open_story():
 ######################## character/location object and function definitions ############################
 ########################################################################################################
 
-#########################name, ###########health, purse, sex, punch, knife, shoot, defense)
+#########################name, ###########health, purse, sex, punch, defense)
 character1 = Character("Dr. Robert Neville", 100, 500, "Male", "medium", "medium")
 character2 = Character("Sherlock the Cat", 100, 400, "Female", "medium", "medium")
 character3 = Character("Carl Grimes", 100, 600, "Male", "high", "low")
@@ -69,7 +69,7 @@ cyborgsean = Character("Cyborg Sean", 60, 100, "Male", "low", "medium")
 hs_zombie = Character("Lunch Lady Zombie", 80, 100, "Female", "low", "medium")
 mall_zombie = Character("Body Building Zombie", 90, 100, "Male", "medium", "medium")
 plot_zombie = Character("Parking Lot Zombie", 40, 100, "Male", "low", "low")
-cdcZombie = Character("CDC MEGA ZOMBIE", 100, 10000, "Male", 50, "high")
+cdcZombie = Character("CDC MEGA ZOMBIE", 600, 10000, "Male", "extra_high", "medium")
 
 
 
@@ -107,9 +107,9 @@ def zombieattack_art():
                                                                     / ___   )(  ___  )(       )(  ___ \ \__   __/(  ____ \\
                                                                     \/   )  || (   ) || () () || (   ) )   ) (   | (    \/
                                                                         /   )| |   | || || || || (__/ /    | |   | (__    
-                                                                    /   / | |   | || |(_)| ||  __ (     | |   |  __)   
-                                                                    /   /  | |   | || |   | || (  \ \    | |   | (      
-                                                                    /   (_/\| (___) || )   ( || )___) )___) (___| (____/\\
+                                                                       /   / | |   | || |(_)| ||  __ (     | |   |  __)   
+                                                                      /   /  | |   | || |   | || (  \ \    | |   | (      
+                                                                     /   (_/\| (___) || )   ( || )___) )___) (___| (____/\\
                                                                     (_______/(_______)|/     \||/ \___/ \_______/(_______/
                                                                                                                         
                                                                     _______ __________________ _______  _______  _        _  _ 
@@ -178,97 +178,9 @@ The world will be back to normal in no time...
     exit()
 
 ########################################################################################################
-######################### end character object and function definitions ################################
+##################################### END ASCII GRAPHIC FUNCTIONS ######################################
 ########################################################################################################
 
-
-
-########################################################################################################
-################################### ASCII GRAPHIC FUNCTIONS ############################################
-########################################################################################################
-
-def zombieattack_art():
-    print("""
-  ______  _______  _______  ______  _________ _______ 
-/ ___   )(  ___  )(       )(  ___ \ \__   __/(  ____ \\
-\/   )  || (   ) || () () || (   ) )   ) (   | (    \/
-    /   )| |   | || || || || (__/ /    | |   | (__    
-   /   / | |   | || |(_)| ||  __ (     | |   |  __)   
-  /   /  | |   | || |   | || (  \ \    | |   | (      
- /   (_/\| (___) || )   ( || )___) )___) (___| (____/\\
-(_______/(_______)|/     \||/ \___/ \_______/(_______/
-                                                      
- _______ __________________ _______  _______  _        _  _ 
-(  ___  )\__   __/\__   __/(  ___  )(  ____ \| \    /\( )( )
-| (   ) |   ) (      ) (   | (   ) || (    \/|  \  / /| || |
-| (___) |   | |      | |   | (___) || |      |  (_/ / | || |
-|  ___  |   | |      | |   |  ___  || |      |   _ (  | || |
-| (   ) |   | |      | |   | (   ) || |      |  ( \ \ (_)(_)
-| )   ( |   | |      | |   | )   ( || (____/\|  /  \ \ _  _ 
-|/     \|   )_(      )_(   |/     \|(_______/|_/    \/(_)(_)
-
-""")
-
-def cyborgattack_art():
-    print("""
- _______           ______   _______  _______  _______ 
-(  ____ \|\     /|(  ___ \ (  ___  )(  ____ )(  ____ \\
-| (    \/( \   / )| (   ) )| (   ) || (    )|| (    \/
-| |       \ (_) / | (__/ / | |   | || (____)|| |      
-| |        \   /  |  __ (  | |   | ||     __)| | ____ 
-| |         ) (   | (  \ \ | |   | || (\ (   | | \_  )
-| (____/\   | |   | )___) )| (___) || ) \ \__| (___) |
-(_______/   \_/   |/ \___/ (_______)|/   \__/(_______)
-                                                      
- _______ __________________ _______  _______  _        _  _ 
-(  ___  )\__   __/\__   __/(  ___  )(  ____ \| \    /\( )( )
-| (   ) |   ) (      ) (   | (   ) || (    \/|  \  / /| || |
-| (___) |   | |      | |   | (___) || |      |  (_/ / | || |
-|  ___  |   | |      | |   |  ___  || |      |   _ (  | || |
-| (   ) |   | |      | |   | (   ) || |      |  ( \ \ (_)(_)
-| )   ( |   | |      | |   | )   ( || (____/\|  /  \ \ _  _ 
-|/     \|   )_(      )_(   |/     \|(_______/|_/    \/(_)(_)
-                                                            
-""")
-
-def player_dies():
-    print("""
-          _______              ______  _________ _______  ______   _  _ 
-|\     /|(  ___  )|\     /|    (  __  \ \__   __/(  ____ \(  __  \ ( )( )
-( \   / )| (   ) || )   ( |    | (  \  )   ) (   | (    \/| (  \  )| || |
- \ (_) / | |   | || |   | |    | |   ) |   | |   | (__    | |   ) || || |
-  \   /  | |   | || |   | |    | |   | |   | |   |  __)   | |   | || || |
-   ) (   | |   | || |   | |    | |   ) |   | |   | (      | |   ) |(_)(_)
-   | |   | (___) || (___) |    | (__/  )___) (___| (____/\| (__/  ) _  _ 
-   \_/   (_______)(_______)    (______/ \_______/(_______/(______/ (_)(_)
-""")
-    exit()
-
-def you_win():
-    print("""
-          _______                       _________ _        _  _ 
-|\     /|(  ___  )|\     /|    |\     /|\__   __/( (    /|( )( )
-( \   / )| (   ) || )   ( |    | )   ( |   ) (   |  \  ( || || |
- \ (_) / | |   | || |   | |    | | _ | |   | |   |   \ | || || |
-  \   /  | |   | || |   | |    | |( )| |   | |   | (\ \) || || |
-   ) (   | |   | || |   | |    | || || |   | |   | | \   |(_)(_)
-   | |   | (___) || (___) |    | () () |___) (___| )  \  | _  _ 
-   \_/   (_______)(_______)    (_______)\_______/|/    )_)(_)(_)
-
-You have defeated all of the massive mutant zombies and cyborgs
-in your path. You have discovered the vaccine for the virus
-and acquired all the information you need to deploy it.
-
-The world will be back to normal in no time...
-""")
-    time.sleep(10)
-    print("Or will it?")
-    time.sleep(2)
-    exit()
-
-########################################################################################################
-######################### end character object and function definitions ################################
-########################################################################################################
 
 
 
@@ -362,7 +274,7 @@ def player_selection():
 def location_menu(player):
 # Looping user input to choose location
     while True:
-        
+        player.add_item("gun")
         if pubZombie.health <= 0 and cyborgsean.health <= 0 and hs_zombie.health <= 0 and mall_zombie.health <= 0 and plot_zombie.health <=0:
             location_choice = input("""
                                                                                     1. The Pub
@@ -449,14 +361,13 @@ def pub_menu(player):
                                                                                     4. Leave
                 """)
                 print("*" * 192)
-                if user_choice == "1":
+                if user_choice == "1" and pint_count <= 5:
                     print("*" * 192)
                     print("""
                                                                                             That'll be $5
                     """)
-                    # INPUT SOUNDBOARD OF POURING A BEER
-                    # time.sleep()
-                    # self.getdrunk()
+                    pourbeer.play()
+                    time.sleep(4)
                     cash.play()
                     time.sleep(1)
                     player.purse -= 5
@@ -468,21 +379,10 @@ def pub_menu(player):
                     if player.health <= 0:
                         player_dies()
                     pint_count += 1
-                    user_choice = input("""
-                                                                                            Will you have another?
-                                                                                            1. Yes
-                                                                                            2. No
+                   
+                    
 
-                    """)
-                    if user_choice == "1" and pint_count <= 5:
-                        cash.play()
-                        time.sleep(1)
-                        player.purse -= 5
-                        print("""
-                                                                                            You now have $%d
-                        """ % (player.purse))
-
-                        pint_count += 1
+                        
                     if user_choice == "1" and player.gamestop_count >= 2 and pint_count >=6:
                         print("""
                                                                     ya... ya... ya..., ok!! ill take your advice and go say hey to her....
@@ -512,9 +412,12 @@ def pub_menu(player):
                         location_menu(player)
                     if user_choice == "1" and pint_count >= 6:
                         print("""
-                                                                                        I think its time to go home..........
-                                                                                        .....................................
-                                                                                        You wake up at home... now what?
+                                                                                        I think it's time to go home..........
+                                                                                        ......................................
+                        
+                                                                                        You wake up at home... 
+                        
+                                                                                        Now what?
                         """)
                         print("*" * 192)
                         location_menu(player)
@@ -534,8 +437,8 @@ It's nice to be here..
                         #time.sleep(5)
                         # INPUT ZOMBIE BARTENDER SOUND
                         # time.sleep()
-                        #/print("new menu to either talk to the girls or leave?")
-                        player. bartenderencounter += 1
+                        
+                        player.bartenderencounter += 1
 
                     elif player.bartenderencounter == 2:
                         print("""
@@ -560,7 +463,7 @@ His mouth is.....      Bleeding?
                     # Run Away
                             if user_input == "1":
                                 player.health -= 20
-                                location_menu(player)
+                                pub_menu(player)
                     # Punch
                             elif user_input == "2":
                                 player.do_punch(pubZombie)
@@ -626,55 +529,70 @@ Today may not be your day...""")
 2. Approach the Young Ladies
 3. Leave
 """)
-                if user_choice == "1":
-                    # INPUT SOUNDBOARD OF POURING A BEER
-                    # time.sleep()
-                    # self.getdrunk()
-                    print("That'll be $5")
+                print("*" * 192)
+                if user_choice == "1" and pint_count <= 5:
+                    print("*" * 192)
+                    print("""
+                                                                                            That'll be $5
+                    """)
+                    pourbeer.play()
+                    time.sleep(4)
                     cash.play()
                     time.sleep(1)
                     player.purse -= 5
                     print("""
                                                                                             You now have $%d
                     """ % (player.purse))
+                    print("*" * 192)
+                    player.health -=2
+                    if player.health <= 0:
+                        player_dies()
                     pint_count += 1
-                    user_choice = input("Will you have another?\n1. Yes\n2. No\n")
-                    if user_choice == "1" and pint_count <= 5:
-                        player.purse -= 5
-                        pint_count += 1
+                   
+                    
+
+                        
                     if user_choice == "1" and player.gamestop_count >= 2 and pint_count >=6:
                         print("""
-                        ya... ya... ya..., ok!! ill take your advice and go say hey to her....
-                        You leave the bar and just start walking....
+                                                                    ya... ya... ya..., ok!! ill take your advice and go say hey to her....
+                                                                    You leave the bar and just start walking....
 
-                        once you go inside you ask the mannequin behind the cashier counter
-                        "Aye Hank whose the girl in the.. Never mind I'll find out for myself.
+                                                                    once you go inside you ask the mannequin behind the cashier counter
+                                                                    "Aye Hank whose the girl in the.. Never mind I'll find out for myself.
 
-                        As you walk to the back where this mannequin wearing a fur coat is standing you say
+                                                                    As you walk to the back where this mannequin wearing a fur coat is standing you say
 
-                        "I promised my friends that I would say hello to you....
+                                                                    "I promised my friends that I would say hello to you....
 
-                        Hello.....
+                                                                    Hello.....
 
-                        Hello.....
+                                                                    Hello.....
 
-                        Please say hello to me
+                                                                    Please say hello to me
 
-                        PPleease say hello to me!!!!"
+                                                                    PPleease say hello to me!!!!"
                         """)
+                        print("*" * 192)
                         time.sleep(5)
-                        print("You wake up at home not remembering what happened last night.")
+                        print("""
+                                                                            You wake up at home not remembering what happened last night.
+                        """)
+                        print("*" * 192)
                         location_menu(player)
                     if user_choice == "1" and pint_count >= 6:
                         print("""
-                        I think its time to go home..........
-                        .....................................
-                        You wake up at home now what?
+                                                                                        I think it's time to go home..........
+                                                                                        ......................................
+                        
+                                                                                        You wake up at home... 
+                        
+                                                                                        Now what?
                         """)
+                        print("*" * 192)
                         location_menu(player)
                     if user_choice == "2":
                         pub_menu(player)
-                    # pub_menu(player)
+                    
 
                 elif user_choice == "2":
                     if player.ladies_count == 1:
@@ -803,7 +721,7 @@ ZOMBIE ATTACK!")
             # Run Away
                     if user_input == "1":
                         player.health -= 20
-                        location_menu(player)
+                        highschool_menu(player)
                         
             # Punch
                     elif user_input == "2":
@@ -1074,6 +992,7 @@ def mall_menu(player):
                 # Run Away
                         if user_input == "1":
                             player.health -= 20
+                            mall_menu(player)
                 # Punch
                         elif user_input == "2":
                             player.do_punch(mall_zombie)
@@ -1105,7 +1024,7 @@ def mall_menu(player):
                             print ("""
                             %s KILLED %s!! 
                             %s's health is %d.
-                            ....Now whats inside that bag?
+                            ....Now what's inside that bag?
                             Majority of it is just work out clothes that are way too big 
                             and haven't been washed in forever. You come across a wallet.
                             ooohh $150.
@@ -1593,7 +1512,7 @@ There's only one way to find out...
             print("2. Do not take the Vaccine")
             user_input = input()
             if user_input == "1":
-                player.health += 100000
+                player.health += 10000
                 print("It works! Your health increased by 10,000")
                 print("%s's health: %d" % (player.name,player.health))
                 cdc_menu(player)
@@ -1628,7 +1547,7 @@ There's only one way to find out...
             # Run Away
                     if user_input == "1":
                         player.health -= 20
-                        location_menu(player)
+                        cdc_menu(player)
             # Punch
                     elif user_input == "2":
                         player.do_punch(cdcZombie)

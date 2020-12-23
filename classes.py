@@ -74,8 +74,8 @@ class Character:
         if self.punch == "high":
             damage = random.randint(7,9)
             punch.play()
-        if self.punch == 50:
-            damage = 50
+        if self.punch == "extra_high":
+            damage = 1000
             punch.play()
         defense = enemy.add_defense()
         if defense >= damage:
