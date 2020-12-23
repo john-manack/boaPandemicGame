@@ -122,15 +122,19 @@ class Character:
         
     def bag_contents(self):
         time.sleep(1)
-        print("Your bag contains %s" % (self.bag))
+        print("""
+                                                                    Your bag contains %s
+        """ % (self.bag))
         zipper.play()
-        print("*" * 20)
+        print("-" * 192)
     
     def print_status(self):
         time.sleep(1)
-        print("Your health: %d" % (self.health))
+        print("""
+                                                                                            Your health: %d
+        """ % (self.health))
         zipper.play()
-        print("*" * 20)
+        print("*" * 192)
                 
     def pay(self, other_person):
         if self.charisma_lvl == "low":

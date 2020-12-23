@@ -443,17 +443,25 @@ def pub_menu(player):
 
             if pubZombie.health > 0:
                 user_choice = input("""
-1. Have a Pint 
-2. Talk to the Bartender
-3. Approach the Young Ladies
-4. Leave
-""")
+                                                                                    1. Have a Pint 
+                                                                                    2. Talk to the Bartender
+                                                                                    3. Approach the Young Ladies
+                                                                                    4. Leave
+                """)
+                print("*" * 192)
                 if user_choice == "1":
-                    print("That'll be $5")
+                    print("*" * 192)
+                    print("""
+                                                                                            That'll be $5
+                    """)
                     # INPUT SOUNDBOARD OF POURING A BEER
                     # time.sleep()
                     # self.getdrunk()
+                    cash.play()
                     player.purse -= 5
+                    print("""
+                                                                                            You now have $%d
+                    """ % (player.purse))
                     player.health -=2
                     if player.health <= 0:
                         player_dies()
@@ -461,6 +469,7 @@ def pub_menu(player):
                     user_choice = input("Will you have another?\n1. Yes\n2. No\n")
                     if user_choice == "1" and pint_count <= 5:
                         player.purse -= 5
+
                         pint_count += 1
                     if user_choice == "1" and player.gamestop_count >= 2 and pint_count >=6:
                         print("""
@@ -667,7 +676,11 @@ Today may not be your day...""")
     blade from her handbag. "I'm not much with it. But it may help you next time..."
     """)            
                         player.knife += 1
-                        player.add_item("knife")
+                        player.bag.append("knife")
+                        print("""
+                                                            Your bag now contains %s
+                        """ % (player.bag))
+
                         player.ladies_count += 1
                         pub_menu(player)
                     elif player.ladies_count >= 2:
@@ -1219,7 +1232,7 @@ def mall_menu(player):
                 if player.beretta_count >= 2:
                     while True:
                         if "mask" in player.bag and "respirator" in player.bag and "Sam's dog collar" in player.bag:
-                            # print("*" * 20)
+                            print("*" * 20)
                             print("Sorry we are sold out of everything")
                             print("*" * 20)
                             player.beretta_count += 1
