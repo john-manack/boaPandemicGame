@@ -1288,7 +1288,7 @@ def mall_menu(player):
                                                         No answer from the mannequin...
                 """)
                 time.sleep(4)
-                ar_15.play()
+                # ar_15.play()
                 time.sleep(2)
                 print("""
                                                         You start shooting at him until he falls apart and hits the floor.
