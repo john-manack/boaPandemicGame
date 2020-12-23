@@ -103,23 +103,23 @@ def print_character_menu(pos1, char1, pos2, char2, pos3, char3, pos4, char4):
 
 def zombieattack_art():
     print("""
-  ______  _______  _______  ______  _________ _______ 
-/ ___   )(  ___  )(       )(  ___ \ \__   __/(  ____ \\
-\/   )  || (   ) || () () || (   ) )   ) (   | (    \/
-    /   )| |   | || || || || (__/ /    | |   | (__    
-   /   / | |   | || |(_)| ||  __ (     | |   |  __)   
-  /   /  | |   | || |   | || (  \ \    | |   | (      
- /   (_/\| (___) || )   ( || )___) )___) (___| (____/\\
-(_______/(_______)|/     \||/ \___/ \_______/(_______/
-                                                      
- _______ __________________ _______  _______  _        _  _ 
-(  ___  )\__   __/\__   __/(  ___  )(  ____ \| \    /\( )( )
-| (   ) |   ) (      ) (   | (   ) || (    \/|  \  / /| || |
-| (___) |   | |      | |   | (___) || |      |  (_/ / | || |
-|  ___  |   | |      | |   |  ___  || |      |   _ (  | || |
-| (   ) |   | |      | |   | (   ) || |      |  ( \ \ (_)(_)
-| )   ( |   | |      | |   | )   ( || (____/\|  /  \ \ _  _ 
-|/     \|   )_(      )_(   |/     \|(_______/|_/    \/(_)(_)
+                                                                    ______  _______  _______  ______  _________ _______ 
+                                                                    / ___   )(  ___  )(       )(  ___ \ \__   __/(  ____ \\
+                                                                    \/   )  || (   ) || () () || (   ) )   ) (   | (    \/
+                                                                        /   )| |   | || || || || (__/ /    | |   | (__    
+                                                                    /   / | |   | || |(_)| ||  __ (     | |   |  __)   
+                                                                    /   /  | |   | || |   | || (  \ \    | |   | (      
+                                                                    /   (_/\| (___) || )   ( || )___) )___) (___| (____/\\
+                                                                    (_______/(_______)|/     \||/ \___/ \_______/(_______/
+                                                                                                                        
+                                                                    _______ __________________ _______  _______  _        _  _ 
+                                                                    (  ___  )\__   __/\__   __/(  ___  )(  ____ \| \    /\( )( )
+                                                                    | (   ) |   ) (      ) (   | (   ) || (    \/|  \  / /| || |
+                                                                    | (___) |   | |      | |   | (___) || |      |  (_/ / | || |
+                                                                    |  ___  |   | |      | |   |  ___  || |      |   _ (  | || |
+                                                                    | (   ) |   | |      | |   | (   ) || |      |  ( \ \ (_)(_)
+                                                                    | )   ( |   | |      | |   | )   ( || (____/\|  /  \ \ _  _ 
+                                                                    |/     \|   )_(      )_(   |/     \|(_______/|_/    \/(_)(_)
 """)
 
 def cyborgattack_art():
@@ -458,50 +458,68 @@ def pub_menu(player):
                     # time.sleep()
                     # self.getdrunk()
                     cash.play()
+                    time.sleep(1)
                     player.purse -= 5
                     print("""
                                                                                             You now have $%d
                     """ % (player.purse))
+                    print("*" * 192)
                     player.health -=2
                     if player.health <= 0:
                         player_dies()
                     pint_count += 1
-                    user_choice = input("Will you have another?\n1. Yes\n2. No\n")
+                    user_choice = input("""
+                                                                                            Will you have another?
+                                                                                            1. Yes
+                                                                                            2. No
+
+                    """)
                     if user_choice == "1" and pint_count <= 5:
+                        cash.play()
+                        time.sleep(1)
                         player.purse -= 5
+                        print("""
+                                                                                            You now have $%d
+                        """ % (player.purse))
 
                         pint_count += 1
                     if user_choice == "1" and player.gamestop_count >= 2 and pint_count >=6:
                         print("""
-                        ya... ya... ya..., ok!! ill take your advice and go say hey to her....
-                        You leave the bar and just start walking....
+                                                                    ya... ya... ya..., ok!! ill take your advice and go say hey to her....
+                                                                    You leave the bar and just start walking....
 
-                        once you go inside you ask the mannequin behind the cashier counter
-                        "Aye Hank whose the girl in the.. Never mind I'll find out for myself.
+                                                                    once you go inside you ask the mannequin behind the cashier counter
+                                                                    "Aye Hank whose the girl in the.. Never mind I'll find out for myself.
 
-                        As you walk to the back where this mannequin wearing a fur coat is standing you say
+                                                                    As you walk to the back where this mannequin wearing a fur coat is standing you say
 
-                        "I promised my friends that I would say hello to you....
+                                                                    "I promised my friends that I would say hello to you....
 
-                        Hello.....
+                                                                    Hello.....
 
-                        Hello.....
+                                                                    Hello.....
 
-                        Please say hello to me
+                                                                    Please say hello to me
 
-                        PPleease say hello to me!!!!"
+                                                                    PPleease say hello to me!!!!"
                         """)
+                        print("*" * 192)
                         time.sleep(5)
-                        print("You wake up at home not remembering what happened last night.")
+                        print("""
+                                                                            You wake up at home not remembering what happened last night.
+                        """)
+                        print("*" * 192)
                         location_menu(player)
                     if user_choice == "1" and pint_count >= 6:
                         print("""
-                        I think its time to go home..........
-                        .....................................
-                        You wake up at home... now what?
+                                                                                        I think its time to go home..........
+                                                                                        .....................................
+                                                                                        You wake up at home... now what?
                         """)
+                        print("*" * 192)
                         location_menu(player)
                     if user_choice == "2":
+                        print("*" * 192)
                         pub_menu(player)
                     
                 elif user_choice == "2":
@@ -613,7 +631,12 @@ Today may not be your day...""")
                     # time.sleep()
                     # self.getdrunk()
                     print("That'll be $5")
+                    cash.play()
+                    time.sleep(1)
                     player.purse -= 5
+                    print("""
+                                                                                            You now have $%d
+                    """ % (player.purse))
                     pint_count += 1
                     user_choice = input("Will you have another?\n1. Yes\n2. No\n")
                     if user_choice == "1" and pint_count <= 5:
@@ -1083,7 +1106,7 @@ def mall_menu(player):
                             %s KILLED %s!! 
                             %s's health is %d.
                             ....Now whats inside that bag?
-                            Majority of it is just work out clothes that are way to big 
+                            Majority of it is just work out clothes that are way too big 
                             and haven't been washed in forever. You come across a wallet.
                             ooohh $150.
                             """ % (player.name, mall_zombie.name, player.name, player.health))
@@ -1160,6 +1183,7 @@ def mall_menu(player):
                     print("")
                     while True:
                         if "mask" in player.bag and "respirator" in player.bag and "Sam's dog collar" in player.bag:
+
                             print("Sorry we are sold out of everything")
                             print("*" * 20)
                             player.beretta_count += 1
