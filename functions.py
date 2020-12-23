@@ -467,15 +467,15 @@ def pub_menu(player):
                                                               As you sit down, he turns to you and looks up, an empty stare on his face.
                                                               His mouth is.....      
                         """)
-                        time.sleep(10)
+                        time.sleep(8)
                         print("""
                                                                                             Bleeding?
                         """)
                         print("*" * 192)
                         time.sleep(2)
+                        zombieattack_art()
                         # INPUT ZOMBIE BARTENDER SOUND
                         while pubZombie.health > 0 and player.health > 0:
-                            zombieattack_art()
                             print("""
                                                                                     What do you want to do?
                                                                                     1. Run Away
@@ -642,7 +642,7 @@ def pub_menu(player):
                         print("* " * 192)
                         location_menu(player)
                     if user_choice == "1" and pint_count >= 6:
-                    print("""
+                        print("""
                                                                                 I think it's time to go home..........
 
                                                                                 ......................................
@@ -826,8 +826,8 @@ def highschool_menu(player):
                 """)
                 print("*" * 192)
                 time.sleep(2)
+                zombieattack_art()
                 while hs_zombie.health > 0 and player.health > 0:
-                    zombieattack_art()
                     print("""
                                                                                     What do you want to do?
 
@@ -968,8 +968,8 @@ def mall_menu(player):
         """)
         print("*" * 192)
         player.mall_count += 1
-    while plot_zombie.health > 0 and player.health > 0:
         zombieattack_art()
+    while plot_zombie.health > 0 and player.health > 0:
         time.sleep(2)
         print("""
                                                                                     What do you want to do?
@@ -1156,8 +1156,8 @@ def mall_menu(player):
                     """)
                     print("*" * 192)
                     time.sleep(7)
+                    zombieattack_art()
                     while mall_zombie.health > 0 and player.health > 0:
-                        zombieattack_art()
                         print("""
                                                                                     What do you want to do?
 
@@ -1205,7 +1205,7 @@ def mall_menu(player):
                             # print("*" * 192)
                             print("""
                                                                     The %s KILLED YOU!!! Better luck next time...
-                            """ % (mall_zombie.name)
+                            """ % (mall_zombie.name))
                             print("*" * 192)
                             player_dies()
                     
@@ -1318,7 +1318,7 @@ def mall_menu(player):
                                                                                 
                                                                                 3. An old dog collar
 
-                                                                                4.Nothing, Leave
+                                                                                4. Nothing, Leave
                     """)
                     print("*" * 192)
 ########### PURCHASE Mask ########################################################
@@ -1357,7 +1357,7 @@ def mall_menu(player):
                         print("""
                                                                                 You ain't got the cash, bub.
                         """)
-                        print("*" 192)
+                        print("*" * 192)
                     elif user_input == "2" and "Respirator" not in player.bag and player.purse >= 30:
                         print("""
                                                                                         That'll be $30
@@ -1402,9 +1402,9 @@ def mall_menu(player):
                                                                 Your bag contains %s and you now have $%d
                         """ % (player.bag, player.purse))
                         print("*" * 192)
-                    if user_choice == "4":
-                        print("*" * 192
-                        mall_menu(player))
+                    # elif user_choice == "4":
+                    #     print("*" * 192
+                    #     mall_menu(player)
 
                 
 ################ LEAVE Mall #######################
@@ -1551,91 +1551,93 @@ def digitalcrafts_menu(player):
                                                                    Alright... But I won't let you just have all the answers!
                 """)
                     print("""
-                                                                                    You need a challenge - let's fight!
+                                                                                You need a challenge - let's fight!
                     """)
                     print("*" * 192)
                     cyborgattack_art()
                     evildroid.play()
                     time.sleep(2)
-                    print("Cyborg Sean challenges you to a duel!")
+                    print("""
+                                                                                Cyborg Sean challenges you to a duel!
+                    """)
                     while cyborgsean.health > 0 and player.health > 0:
-                        cyborgattack_art()
-                                print("""
+                        
+                        print("""
                                                                                     What do you want to do?
 
                                                                                     1. Run Away
 
                                                                                     2. Punch""")
-                                if "knife" in player.bag:
-                                    print ("""
+                        if "knife" in player.bag:
+                            print ("""
                                                                                     3. Use Knife""")
-                                if "Gun" in player.bag:
-                                    print ("""
+                        if "Gun" in player.bag:
+                            print ("""
                                                                                     4. Use Gun""")
-                                user_input = input()
+                        user_input = input()
                         # Run Away
-                                if user_input == "1":
-                                    player.health -= 20
-                                    evil_laugh.play()
-                                    print("""
+                        if user_input == "1":
+                            player.health -= 20
+                            evil_laugh.play()
+                            print("""
                                                                       You choose to run away.
                                                                       You hear Cyborg Sean's voice echo in the distance.
 
                                                                       'Hah Hah Hah better luck next time.'
-                                    """)
-                                    print("*" * 192)
-                                    digitalcrafts_menu(player)
+                            """)
+                            print("*" * 192)
+                            digitalcrafts_menu(player)
                         # Punch
-                                elif user_input == "2":
-                                    player.do_punch(cyborgsean)
-                                    punch.play()
+                        elif user_input == "2":
+                            player.do_punch(cyborgsean)
+                            punch.play()
                         # Knife
-                                elif user_input == "3" and "knife" in player.bag:
-                                    player.do_knife(cyborgsean)
-                                    knife.play()
+                        elif user_input == "3" and "knife" in player.bag:
+                            player.do_knife(cyborgsean)
+                            knife.play()
                         # Gun
-                                elif user_input == "4" and "Gun" in player.bag:
-                                    player.do_shoot(cyborgsean)
-                                    shoot.play()
+                        elif user_input == "4" and "Gun" in player.bag:
+                            player.do_shoot(cyborgsean)
+                            shoot.play()
 
-                                else:
-                                    print("""
+                        else:
+                            print("""
                                                                 You entered an invalid option and missed your chance to strike!
-                                    """)
-                                    print("*" * 192)
+                            """)
+                            print("*" * 192)
                         
                         # CYBORG ATTACKS!
-                                if player.health > 0 and cyborgsean.health > 0:
-                                    time.sleep(1.5)
-                                    cyborgsean.do_punch(player)
-                                    punch.play()
+                        if player.health > 0 and cyborgsean.health > 0:
+                            time.sleep(1.5)
+                            cyborgsean.do_punch(player)
+                            punch.play()
                                 
-                                if player.health <= 0:
-                                    print ("""
+                        if player.health <= 0:
+                            print ("""
                                                                     CYBORG SEAN KILLED YOU!!! Better luck next time...
-                                    """)
-                                    print("*" * 192)
-                                    player_dies()
+                            """)
+                            print("*" * 192)
+                            player_dies()
                                 
-                                if cyborgsean.health <= 0:
-                                    groan.play()
-                                    print ("""
+                        if cyborgsean.health <= 0:
+                            groan.play()
+                            print ("""
                                                                                 %s KILLED %s!! 
                                                                                 %s's health is %d.
                                                                                 ....Now what?
-                                    """ % (player.name, cyborgsean.name, player.name, player.health))
-                                    print("*" * 192)
-                                    player.dc_sound_count += 1
-                                    time.sleep(1.5)
-                                    cash.play()
-                                    print("""
+                            """ % (player.name, cyborgsean.name, player.name, player.health))
+                            print("*" * 192)
+                            player.dc_sound_count += 1
+                            time.sleep(1.5)
+                            cash.play()
+                            print("""
                                                                              You take the pocket money and leave.
-                                    """)
-                                    player.purse += 50
-                                    print("""
+                            """)
+                            player.purse += 50
+                            print("""
                                                                                         You now have $%s.
-                                    """ % (player.purse))
-                                    print("*" * 192)
+                            """ % (player.purse))
+                            print("*" * 192)
                 else:
                     print("""
                                                                                         Okay. Bye bye.
@@ -1715,8 +1717,8 @@ def cdc_menu(player):
                                                                                         3. Check the Immunology Wing
 
                                                                                         4. Leave
-""")
-print("*" * 192)
+        """)
+        print("*" * 192)
         if user_choice == "1":
             # time.sleep()
             print("""
