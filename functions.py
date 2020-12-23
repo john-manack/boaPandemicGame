@@ -274,7 +274,6 @@ def player_selection():
 def location_menu(player):
 # Looping user input to choose location
     while True:
-        player.add_item("gun")
         if pubZombie.health <= 0 and cyborgsean.health <= 0 and hs_zombie.health <= 0 and mall_zombie.health <= 0 and plot_zombie.health <=0:
             location_choice = input("""
                                                                                         1. The Pub
@@ -412,12 +411,12 @@ def pub_menu(player):
                         location_menu(player)
                     if user_choice == "1" and pint_count >= 6:
                         print("""
-                                                                                        I think it's time to go home..........
-                                                                                        ......................................
-                        
-                                                                                        You wake up at home... 
-                        
-                                                                                        Now what?
+                                                                                I think it's time to go home..........
+                                                                                ......................................
+                
+                                                                                You wake up at home... 
+                
+                                                                                Now what?
                         """)
                         print("*" * 192)
                         location_menu(player)
@@ -443,10 +442,10 @@ def pub_menu(player):
 
                     elif player.bartenderencounter == 2:
                         print("""
-                                                                You approach the bar. Your faithful bartender's back is turned.
-                                                                He's more interested in his female patrons than you.
-                                                                As you sit down, he turns to you and looks up, an empty stare on his face.
-                                                                His mouth is.....      
+                                                            You approach the bar. Your faithful bartender's back is turned.
+                                                            He's more interested in his female patrons than you.
+                                                            As you sit down, he turns to you and looks up, an empty stare on his face.
+                                                            His mouth is.....      
                         """)
                         time.sleep(10)
                         print("""
@@ -507,11 +506,11 @@ def pub_menu(player):
                             
                             if pubZombie.health <= 0:
                                 print ("""
-                            
-                                                                                    %s KILLED %s!! 
-                                                                                    %s's health is %d.
+                        
+                                                                                %s KILLED %s!! 
+                                                                                %s's health is %d.
 
-                                                                                    ....Now what?
+                                                                                ....Now what?
                                 """ % (player.name, pubZombie.name, player.name, player.health))
                                 print("*" * 192)
                         player.bartenderencounter += 1
@@ -573,7 +572,7 @@ def pub_menu(player):
                     time.sleep(1)
                     player.purse -= 5
                     print("""
-                                                                                        You now have $%d
+                                                                                    You now have $%d
                     """ % (player.purse))
                     print("*" * 192)
                     player.health -=2
@@ -610,12 +609,12 @@ def pub_menu(player):
                         location_menu(player)
                     if user_choice == "1" and pint_count >= 6:
                         print("""
-                                                                                        I think it's time to go home..........
-                                                                                        ......................................
-                        
-                                                                                        You wake up at home... 
-                        
-                                                                                        Now what?
+                                                                                I think it's time to go home..........
+                                                                                ......................................
+                
+                                                                                You wake up at home... 
+                
+                                                                                Now what?
                         """)
                         print("*" * 192)
                         location_menu(player)
@@ -627,39 +626,52 @@ def pub_menu(player):
                     if player.ladies_count == 1:
                         #time.sleep(2)
                         print("""
-    You can't help but notice these two gorgeous young ladies looking at you.
-    You approach them...
-    """)
-                        #time.sleep(5)
+                                                            You can't help but notice these two gorgeous young ladies looking at you.
+                                                            You approach them...
+                        """)
+                        time.sleep(2)
                         print("""
-    "How are you, ladies?"
-    """)
+                                                                                    "How are you, ladies?"
+                        """)
                         # INPUT LADIES SOUND
-                        # time.sleep()
+                        time.sleep(1)
                         print("""
-    \"Hey there, handsome\" says the pale, glassy eyed brunette, 
-    in a slow, almost infectious drawl. "You saved us from that plague of a bartender.
-    We thought we were history."
-    "Just an instinct these days," you reply, as you notice the color
-    running away from her face.
-    "Here," she says. "Take this." As she pulls a large, glinting
-    blade from her handbag. "I'm not much with it. But it may help you next time..."
-    """)            
+                                                        "Hey there, handsome" says the pale, glassy eyed brunette, 
+                                                        in a slow, almost infectious drawl. "You saved us from that plague of a bartender.
+                                                        We thought we were history."
+                                                        "Just an instinct these days," you reply, as you notice the color
+                                                        running away from her face.
+                                                        "Here," she says. "Take this." As she pulls a large, glinting
+                                                        blade from her handbag. "I'm not much with it. But it may help you next time..."
+                        """)
+                        print("*" * 192)            
                         player.knife += 1
                         player.bag.append("knife")
+                        zipper.play()
+                        time.sleep(1)
                         print("""
-                                                            Your bag now contains %s
+                                                                            Your bag now contains %s
                         """ % (player.bag))
+                        print("*" * 192)
 
                         player.ladies_count += 1
                         pub_menu(player)
                     elif player.ladies_count >= 2:
                         print("""
-"That was some showing with the bartender. Hope the knife we gave you helps..."
-""")                
+                                                                            "That was some show with the bartender. 
+                                                                            Hope the knife we gave you helps..."
+                        """)
+                        print("*" * 192)                 
                     
                 elif user_choice == "3":
-                    print("You couldn't be leaving any sooner... Where to?")
+                    print("""
+                                                                            You couldn't be leaving any sooner... 
+                    """)
+                    time.sleep(1)
+                    print("""
+                                                                                           Where to?
+                    """)
+                    print("*" * 192)
                     location_menu(player)
             
 
