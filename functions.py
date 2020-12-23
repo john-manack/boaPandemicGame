@@ -467,20 +467,24 @@ His mouth is.....      Bleeding?
                     # Punch
                             elif user_input == "2":
                                 player.do_punch(pubZombie)
+                                punch.play()
                     # Knife
                             elif user_input == "3" and "knife" in player.bag:
                                 player.do_knife(pubZombie)
+                                knife.play()
                     # Gun
                             elif user_input == "4" and "gun" in player.bag:
                                 player.do_shoot(pubZombie)
+                                shoot.play()
 
                             else:
                                 print("You entered an invalid option and missed your chance to strike!")
-                                #time.sleep(1.5)
+                                time.sleep(1.5)
                     # ZOMBIE ATTACKS!
                             if player.health > 0 and pubZombie.health > 0:
-                                # Opponent attacks player
+                                time.sleep(1.5)
                                 pubZombie.do_punch(player)
+                                punch.play()
                             
                             if player.health <= 0:
                                 print ("The %s KILLED YOU!!! Better luck next time...")
@@ -726,20 +730,23 @@ ZOMBIE ATTACK!")
             # Punch
                     elif user_input == "2":
                         player.do_punch(hs_zombie)
+                        punch.play()
             # Knife
                     elif user_input == "3" and "knife" in player.bag:
                         player.do_knife(hs_zombie)
+                        knife.play()
             # Gun
                     elif user_input == "4" and "gun" in player.bag:
                         player.do_shoot(hs_zombie)
+                        shoot.play()
 
                     else:
                         print("You entered an invalid option and missed your chance to strike!")
-                        #time.sleep(1.5)
             # ZOMBIE ATTACKS!
                     if player.health > 0:
-                        # Opponent attacks player
+                        time.sleep(1.5)
                         hs_zombie.do_punch(player)
+                        punch.play()
                     
                     if player.health <= 0:
                         print ("The %s KILLED YOU!!! Better luck next time..." % hs_zombie)
@@ -836,20 +843,24 @@ def mall_menu(player):
 # Punch
         elif user_input == "2":
             player.do_punch(plot_zombie)
+            punch.play()
 # Knife
         elif user_input == "3" and "knife" in player.bag:
             player.do_knife(plot_zombie)
+            knife.play()
 # Gun
         elif user_input == "4" and "gun" in player.bag:
             player.do_shoot(plot_zombie)
+            shoot.play()
         else:
             print("*" * 20)
             print("you entered an invalid option and zombie struck you!")
             print("*" * 20)
 
         if player.health > 0:
-        # Opponent attacks player
+            time.sleep(1.5)
             plot_zombie.do_punch(player)
+            punch.play()
         if player.health <= 0:
             print("*" * 20)
             print ("The %s KILLED YOU!!! Better luck next time..." % (plot_zombie.name))
@@ -996,12 +1007,15 @@ def mall_menu(player):
                 # Punch
                         elif user_input == "2":
                             player.do_punch(mall_zombie)
+                            punch.play()
                 # Knife
                         elif user_input == "3" and "knife" in player.bag:
                             player.do_knife(mall_zombie)
+                            knife.play()
                 # Gun
                         elif user_input == "4" and "gun" in player.bag:
                             player.do_shoot(mall_zombie)
+                            shoot.play()
 
                         else:
                             # print("*" * 20)
@@ -1010,8 +1024,9 @@ def mall_menu(player):
                         #time.sleep(1.5)
                 # ZOMBIE ATTACKS!
                         if player.health > 0:
-                            # Opponent attacks player
+                            time.sleep(1.5)
                             mall_zombie.do_punch(player)
+                            punch.play()
                     
                         if player.health <= 0:
                             # print("*" * 20)
@@ -1383,20 +1398,24 @@ You hear Cyborg Sean's voice echo in the distance.
                         # Punch
                                 elif user_input == "2":
                                     player.do_punch(cyborgsean)
+                                    punch.play()
                         # Knife
                                 elif user_input == "3" and "knife" in player.bag:
                                     player.do_knife(cyborgsean)
+                                    knife.play()
                         # Gun
                                 elif user_input == "4" and "gun" in player.bag:
                                     player.do_shoot(cyborgsean)
+                                    shoot.play()
 
                                 else:
                                     print("You entered an invalid option and missed your chance to strike!")
                         
                         # CYBORG ATTACKS!
                                 if player.health > 0 and cyborgsean.health > 0:
-                                    # Opponent attacks player
+                                    time.sleep(1.5)
                                     cyborgsean.do_punch(player)
+                                    punch.play()
                                 
                                 if player.health <= 0:
                                     print ("CYBORG SEAN KILLED YOU!!! Better luck next time...")
@@ -1511,10 +1530,14 @@ There's only one way to find out...
             print("1. Take the Vaccine")
             print("2. Do not take the Vaccine")
             user_input = input()
-            if user_input == "1":
+            if user_input == "1" and player.vaccine_count = 1:
                 player.health += 10000
                 print("It works! Your health increased by 10,000")
                 print("%s's health: %d" % (player.name,player.health))
+                player.vaccine_count += 1
+                cdc_menu(player)
+            elif user_input == "1" and player.vaccine_count > 1:
+                print("Sorry, you had your chance...")
                 cdc_menu(player)
             elif user_input == "2":
                 print("You can never be too careful, huh?")
@@ -1551,20 +1574,24 @@ There's only one way to find out...
             # Punch
                     elif user_input == "2":
                         player.do_punch(cdcZombie)
+                        punch.play()
             # Knife
                     elif user_input == "3":
                         player.do_knife(cdcZombie)
+                        knife.play()
             # Gun
                     elif user_input == "4":
                         player.do_shoot(cdcZombie)
+                        shoot.play()
 
                     else:
                         print("You entered an invalid option and missed your chance to strike!")
                         #time.sleep(1.5)
             # ZOMBIE ATTACKS!
                     if player.health > 0 and cdcZombie.health > 0:
-                        # Opponent attacks player
+                        time.sleep(1.5)
                         cdcZombie.do_punch(player)
+                        punch.play()
                     
                     if player.health <= 0:
                         print ("The %s KILLED YOU!!! Better luck next time..." % (cdcZombie.name))
