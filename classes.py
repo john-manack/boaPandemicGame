@@ -80,31 +80,46 @@ class Character:
         defense = enemy.add_defense()
         if defense >= damage:
             pass
-            print("\n\n%s BLOCKED %s's PUNCH!" % (enemy.name, self.name))
+            print("""
+                                                                                %s BLOCKED %s's PUNCH!
+            """ % (enemy.name, self.name))
+            print("*" * 192)
         else:
             enemy.health -= (damage - defense)
         #//mixer.Sound.play(punch_se)
         #//time.sleep(1)
-            print("\n\n%s PUNCHED %s for %d damage!" % (self.name, enemy.name, (damage - defense)))
-        print("%s health: %d \n%s health: %s " % (self.name, self.health, enemy.name, enemy.health) )
-        print("*" * 20)
+            print("""
+                                                                                %s PUNCHED %s for %d damage!
+            """ % (self.name, enemy.name, (damage - defense)))
+        print("""
+                                                                                %s health: %d \n%s health: %s 
+        """ % (self.name, self.health, enemy.name, enemy.health) )
+        print("*" * 192)
     def do_knife(self, enemy):
         self.knife == 25
         defense = enemy.add_defense()
         enemy.health -= (self.knife - defense)
-        print("\n\n%s SLASHED %s for %d damage!" % (self.name, enemy.name, (self.knife - defense)))
+        print("""
+                                                                                %s SLASHED %s for %d damage!
+        """ % (self.name, enemy.name, (self.knife - defense)))
         knife.play()
-        print("%s health: %d \n%s health: %s " % (self.name, self.health, enemy.name, enemy.health))
-        print("*" * 20)
+        print("""
+        %s health: %d \n%s health: %s 
+        """ % (self.name, self.health, enemy.name, enemy.health))
+        print("*" * 192)
 
     def do_shoot(self, enemy):
         self.shoot == 50
         defense = enemy.add_defense()
         enemy.health -= (self.shoot - defense)
-        print("\n\n%s SHOT %s for %d damage!" % (self.name, enemy.name, (self.shoot - defense)))
+        print("""
+                                                                                %s SHOT %s for %d damage!
+        """ % (self.name, enemy.name, (self.shoot - defense)))
         shoot.play()
-        print("%s health: %d \n%s health: %s " % (self.name, self.health, enemy.name, enemy.health))
-        print("*" * 20)
+        print("""
+                                                                                %s health: %d \n%s health: %s 
+        """ % (self.name, self.health, enemy.name, enemy.health))
+        print("*" * 192)
 
     def is_alive(self):
         return self.health > 0
@@ -123,7 +138,7 @@ class Character:
     def bag_contents(self):
         time.sleep(1)
         print("""
-                                                                    Your bag contains %s
+                                                                                Your bag contains %s
         """ % (self.bag))
         zipper.play()
         print("-" * 192)
@@ -131,7 +146,7 @@ class Character:
     def print_status(self):
         time.sleep(1)
         print("""
-                                                                                            Your health: %d
+                                                                                        Your health: %d
         """ % (self.health))
         zipper.play()
         print("*" * 192)
