@@ -1461,6 +1461,7 @@ def digitalcrafts_menu(player):
                                                                                 
                                                                                 4. Leave Digital Crafts
         """)
+        user_choice()
         print("*" * 192)
         if user_choice == "1":
             if player.dc_hallway_count == 1:

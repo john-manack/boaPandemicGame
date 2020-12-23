@@ -87,7 +87,9 @@ class Character:
                                                                                 %s PUNCHED %s for %d damage!
             """ % (self.name, enemy.name, (damage - defense)))
         print("""
-                                                                                %s health: %d \n%s health: %s 
+                                                                                %s health: %d 
+                                                                                
+                                                                                %s health: %s 
         """ % (self.name, self.health, enemy.name, enemy.health) )
         print("*" * 192)
     def do_knife(self, enemy):
@@ -99,7 +101,9 @@ class Character:
         """ % (self.name, enemy.name, (self.knife - defense)))
         knife.play()
         print("""
-                                                                        %s health: %d \n%s health: %s 
+                                                                                %s health: %d 
+                                                                        
+                                                                                %s health: %s 
         """ % (self.name, self.health, enemy.name, enemy.health))
         print("*" * 192)
 
