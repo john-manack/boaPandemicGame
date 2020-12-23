@@ -59,7 +59,7 @@ def open_story():
 ######################## character/location object and function definitions ############################
 ########################################################################################################
 
-#########################name, ###########health, purse, sex, punch, knife, shoot, defense)
+#########################name, ###########health, purse, sex, punch, defense)
 character1 = Character("Dr. Robert Neville", 100, 500, "Male", "medium", "medium")
 character2 = Character("Sherlock the Cat", 100, 400, "Female", "medium", "medium")
 character3 = Character("Carl Grimes", 100, 600, "Male", "high", "low")
@@ -69,7 +69,7 @@ cyborgsean = Character("Cyborg Sean", 60, 100, "Male", "low", "medium")
 hs_zombie = Character("Lunch Lady Zombie", 80, 100, "Female", "low", "medium")
 mall_zombie = Character("Body Building Zombie", 90, 100, "Male", "medium", "medium")
 plot_zombie = Character("Parking Lot Zombie", 40, 100, "Male", "low", "low")
-cdcZombie = Character("CDC MEGA ZOMBIE", 100, 10000, "Male", 50, "high")
+cdcZombie = Character("CDC MEGA ZOMBIE", 600, 10000, "Male", "extra_high", "medium")
 
 
 
@@ -107,9 +107,9 @@ def zombieattack_art():
                                                                     / ___   )(  ___  )(       )(  ___ \ \__   __/(  ____ \\
                                                                     \/   )  || (   ) || () () || (   ) )   ) (   | (    \/
                                                                         /   )| |   | || || || || (__/ /    | |   | (__    
-                                                                    /   / | |   | || |(_)| ||  __ (     | |   |  __)   
-                                                                    /   /  | |   | || |   | || (  \ \    | |   | (      
-                                                                    /   (_/\| (___) || )   ( || )___) )___) (___| (____/\\
+                                                                       /   / | |   | || |(_)| ||  __ (     | |   |  __)   
+                                                                      /   /  | |   | || |   | || (  \ \    | |   | (      
+                                                                     /   (_/\| (___) || )   ( || )___) )___) (___| (____/\\
                                                                     (_______/(_______)|/     \||/ \___/ \_______/(_______/
                                                                                                                         
                                                                 _______ __________________ _______  _______  _        _  _ 
@@ -180,8 +180,9 @@ def you_win():
     exit()
 
 ########################################################################################################
-######################### end character object and function definitions ################################
+##################################### END ASCII GRAPHIC FUNCTIONS ######################################
 ########################################################################################################
+
 
 
 
@@ -273,7 +274,7 @@ def player_selection():
 def location_menu(player):
 # Looping user input to choose location
     while True:
-        
+        player.add_item("gun")
         if pubZombie.health <= 0 and cyborgsean.health <= 0 and hs_zombie.health <= 0 and mall_zombie.health <= 0 and plot_zombie.health <=0:
             location_choice = input("""
                                                                                         1. The Pub
@@ -362,14 +363,13 @@ def pub_menu(player):
                                                                                     4. Leave
                 """)
                 print("*" * 192)
-                if user_choice == "1":
+                if user_choice == "1" and pint_count <= 5:
                     print("*" * 192)
                     print("""
                                                                                         That'll be $5
                     """)
-                    # INPUT SOUNDBOARD OF POURING A BEER
-                    # time.sleep()
-                    # self.getdrunk()
+                    pourbeer.play()
+                    time.sleep(4)
                     cash.play()
                     time.sleep(1)
                     player.purse -= 5
@@ -381,21 +381,8 @@ def pub_menu(player):
                     if player.health <= 0:
                         player_dies()
                     pint_count += 1
-                    user_choice = input("""
-                                                                                    Will you have another?
-                                                                                    1. Yes
-                                                                                    2. No
-
-                    """)
-                    if user_choice == "1" and pint_count <= 5:
-                        cash.play()
-                        time.sleep(1)
-                        player.purse -= 5
-                        print("""
-                                                                                        You now have $%d
-                        """ % (player.purse))
-
-                        pint_count += 1
+                    
+                        
                     if user_choice == "1" and player.gamestop_count >= 2 and pint_count >=6:
                         print("""
                                                             ya... ya... ya..., ok!! ill take your advice and go say hey to her....
@@ -425,9 +412,12 @@ def pub_menu(player):
                         location_menu(player)
                     if user_choice == "1" and pint_count >= 6:
                         print("""
-                                                                            I think its time to go home..........
-                                                                            .....................................
-                                                                            You wake up at home... now what?
+                                                                                        I think it's time to go home..........
+                                                                                        ......................................
+                        
+                                                                                        You wake up at home... 
+                        
+                                                                                        Now what?
                         """)
                         print("*" * 192)
                         location_menu(player)
@@ -448,8 +438,8 @@ def pub_menu(player):
                         #time.sleep(5)
                         # INPUT ZOMBIE BARTENDER SOUND
                         # time.sleep()
-                        #/print("new menu to either talk to the girls or leave?")
-                        player. bartenderencounter += 1
+                        
+                        player.bartenderencounter += 1
 
                     elif player.bartenderencounter == 2:
                         print("""
@@ -482,16 +472,19 @@ def pub_menu(player):
                     # Run Away
                             if user_input == "1":
                                 player.health -= 20
-                                location_menu(player)
+                                pub_menu(player)
                     # Punch
                             elif user_input == "2":
                                 player.do_punch(pubZombie)
+                                punch.play()
                     # Knife
                             elif user_input == "3" and "knife" in player.bag:
                                 player.do_knife(pubZombie)
+                                knife.play()
                     # Gun
                             elif user_input == "4" and "gun" in player.bag:
                                 player.do_shoot(pubZombie)
+                                shoot.play()
 
                             else:
                                 print("""
@@ -501,8 +494,9 @@ def pub_menu(player):
                                 time.sleep(1.5)
                     # ZOMBIE ATTACKS!
                             if player.health > 0 and pubZombie.health > 0:
-                                # Opponent attacks player
+                                time.sleep(1.5)
                                 pubZombie.do_punch(player)
+                                punch.play()
                             
                             if player.health <= 0:
                                 print ("""
@@ -569,29 +563,23 @@ def pub_menu(player):
                                                                                     3. Leave
                 """)
                 print("*" * 192)
-                if user_choice == "1":
-                    # INPUT SOUNDBOARD OF POURING A BEER
-                    # time.sleep()
-                    # self.getdrunk()
+                if user_choice == "1" and pint_count <= 5:
                     print("""
                                                                                         That'll be $5
                     """)
+                    pourbeer.play()
+                    time.sleep(4)
                     cash.play()
                     time.sleep(1)
                     player.purse -= 5
                     print("""
                                                                                         You now have $%d
                     """ % (player.purse))
-                    pint_count += 1
-                    user_choice = input("""
-                                                                                    Will you have another?
-                                                                                    1. Yes
-                                                                                    2. No
-                    """)
                     print("*" * 192)
-                    if user_choice == "1" and pint_count <= 5:
-                        player.purse -= 5
-                        pint_count += 1
+                    player.health -=2
+                    if player.health <= 0:
+                        player_dies()
+                    pint_count += 1
                     if user_choice == "1" and player.gamestop_count >= 2 and pint_count >=6:
                         print("""
                                                             ya... ya... ya..., ok!! ill take your advice and go say hey to her....
@@ -622,14 +610,18 @@ def pub_menu(player):
                         location_menu(player)
                     if user_choice == "1" and pint_count >= 6:
                         print("""
-                        I think its time to go home..........
-                        .....................................
-                        You wake up at home now what?
+                                                                                        I think it's time to go home..........
+                                                                                        ......................................
+                        
+                                                                                        You wake up at home... 
+                        
+                                                                                        Now what?
                         """)
+                        print("*" * 192)
                         location_menu(player)
                     if user_choice == "2":
                         pub_menu(player)
-                    # pub_menu(player)
+                    
 
                 elif user_choice == "2":
                     if player.ladies_count == 1:
@@ -758,25 +750,28 @@ ZOMBIE ATTACK!")
             # Run Away
                     if user_input == "1":
                         player.health -= 20
-                        location_menu(player)
+                        highschool_menu(player)
                         
             # Punch
                     elif user_input == "2":
                         player.do_punch(hs_zombie)
+                        punch.play()
             # Knife
                     elif user_input == "3" and "knife" in player.bag:
                         player.do_knife(hs_zombie)
+                        knife.play()
             # Gun
                     elif user_input == "4" and "gun" in player.bag:
                         player.do_shoot(hs_zombie)
+                        shoot.play()
 
                     else:
                         print("You entered an invalid option and missed your chance to strike!")
-                        #time.sleep(1.5)
             # ZOMBIE ATTACKS!
                     if player.health > 0:
-                        # Opponent attacks player
+                        time.sleep(1.5)
                         hs_zombie.do_punch(player)
+                        punch.play()
                     
                     if player.health <= 0:
                         print ("The %s KILLED YOU!!! Better luck next time..." % hs_zombie)
@@ -873,20 +868,24 @@ def mall_menu(player):
 # Punch
         elif user_input == "2":
             player.do_punch(plot_zombie)
+            punch.play()
 # Knife
         elif user_input == "3" and "knife" in player.bag:
             player.do_knife(plot_zombie)
+            knife.play()
 # Gun
         elif user_input == "4" and "gun" in player.bag:
             player.do_shoot(plot_zombie)
+            shoot.play()
         else:
             print("*" * 20)
             print("you entered an invalid option and zombie struck you!")
             print("*" * 20)
 
         if player.health > 0:
-        # Opponent attacks player
+            time.sleep(1.5)
             plot_zombie.do_punch(player)
+            punch.play()
         if player.health <= 0:
             print("*" * 20)
             print ("The %s KILLED YOU!!! Better luck next time..." % (plot_zombie.name))
@@ -1029,15 +1028,19 @@ def mall_menu(player):
                 # Run Away
                         if user_input == "1":
                             player.health -= 20
+                            mall_menu(player)
                 # Punch
                         elif user_input == "2":
                             player.do_punch(mall_zombie)
+                            punch.play()
                 # Knife
                         elif user_input == "3" and "knife" in player.bag:
                             player.do_knife(mall_zombie)
+                            knife.play()
                 # Gun
                         elif user_input == "4" and "gun" in player.bag:
                             player.do_shoot(mall_zombie)
+                            shoot.play()
 
                         else:
                             # print("*" * 20)
@@ -1046,8 +1049,9 @@ def mall_menu(player):
                         #time.sleep(1.5)
                 # ZOMBIE ATTACKS!
                         if player.health > 0:
-                            # Opponent attacks player
+                            time.sleep(1.5)
                             mall_zombie.do_punch(player)
+                            punch.play()
                     
                         if player.health <= 0:
                             # print("*" * 20)
@@ -1060,7 +1064,7 @@ def mall_menu(player):
                             print ("""
                             %s KILLED %s!! 
                             %s's health is %d.
-                            ....Now whats inside that bag?
+                            ....Now what's inside that bag?
                             Majority of it is just work out clothes that are way too big 
                             and haven't been washed in forever. You come across a wallet.
                             ooohh $150.
@@ -1332,20 +1336,24 @@ You hear Cyborg Sean's voice echo in the distance.
                         # Punch
                                 elif user_input == "2":
                                     player.do_punch(cyborgsean)
+                                    punch.play()
                         # Knife
                                 elif user_input == "3" and "knife" in player.bag:
                                     player.do_knife(cyborgsean)
+                                    knife.play()
                         # Gun
                                 elif user_input == "4" and "gun" in player.bag:
                                     player.do_shoot(cyborgsean)
+                                    shoot.play()
 
                                 else:
                                     print("You entered an invalid option and missed your chance to strike!")
                         
                         # CYBORG ATTACKS!
                                 if player.health > 0 and cyborgsean.health > 0:
-                                    # Opponent attacks player
+                                    time.sleep(1.5)
                                     cyborgsean.do_punch(player)
+                                    punch.play()
                                 
                                 if player.health <= 0:
                                     print ("CYBORG SEAN KILLED YOU!!! Better luck next time...")
@@ -1453,17 +1461,21 @@ There's a small case of viles on the bottom shelf of the cooler...
 You take out a vile. Its label reads 'ZomPanVac-20'
 
 You have the vaccine! But does it work?
- 
+
 There's only one way to find out...
 """)   
             player.bag.append("vaccine")
             print("1. Take the Vaccine")
             print("2. Do not take the Vaccine")
             user_input = input()
-            if user_input == "1":
-                player.health += 100000
+            if user_input == "1" and player.vaccine_count == 1:
+                player.health += 10000
                 print("It works! Your health increased by 10,000")
                 print("%s's health: %d" % (player.name,player.health))
+                player.vaccine_count += 1
+                cdc_menu(player)
+            elif user_input == "1" and player.vaccine_count >= 1:
+                print("Sorry, you had your chance...")
                 cdc_menu(player)
             elif user_input == "2":
                 print("You can never be too careful, huh?")
@@ -1496,24 +1508,28 @@ There's only one way to find out...
             # Run Away
                     if user_input == "1":
                         player.health -= 20
-                        location_menu(player)
+                        cdc_menu(player)
             # Punch
                     elif user_input == "2":
                         player.do_punch(cdcZombie)
+                        punch.play()
             # Knife
                     elif user_input == "3":
                         player.do_knife(cdcZombie)
+                        knife.play()
             # Gun
                     elif user_input == "4":
                         player.do_shoot(cdcZombie)
+                        shoot.play()
 
                     else:
                         print("You entered an invalid option and missed your chance to strike!")
                         #time.sleep(1.5)
             # ZOMBIE ATTACKS!
                     if player.health > 0 and cdcZombie.health > 0:
-                        # Opponent attacks player
+                        time.sleep(1.5)
                         cdcZombie.do_punch(player)
+                        punch.play()
                     
                     if player.health <= 0:
                         print ("The %s KILLED YOU!!! Better luck next time..." % (cdcZombie.name))

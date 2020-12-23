@@ -45,6 +45,7 @@ class Character:
         self.dontvisit_count = 1
         self.gvisit_count = 1
         # self.location = location
+        self.vaccine_count = 1
     
     def __str__(self):
         return """
@@ -64,16 +65,12 @@ class Character:
     def do_punch(self, enemy):
         if self.punch == "low":
             damage = random.randint(1,3)
-            punch.play()
         if self.punch == "medium":
             damage = random.randint(4,6)
-            punch.play()
         if self.punch == "high":
             damage = random.randint(7,9)
-            punch.play()
-        if self.punch == 50:
-            damage = 50
-            punch.play()
+        if self.punch == "extra_high":
+            damage = 1000
         defense = enemy.add_defense()
         if defense >= damage:
             pass
