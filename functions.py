@@ -208,7 +208,6 @@ def player_selection():
                                                                                     3. Carl Grimes
 
                                                                                     4. Chico Dusty
-
         """)
         print("-" * 192)
         if character_choice == "1":
@@ -217,7 +216,6 @@ def player_selection():
                                                                     Ahhh, Doctor Neville. It took quite some time
                                                                     to gather your wits. They say that is a side effect
                                                                     when you've got it...
-
                                                                     You must move quickly now. It's spreading... Where will you go?
             """)
             print("-" * 192)
@@ -230,7 +228,6 @@ def player_selection():
                                                                     Ahhh, Sherlock the Cat, such a freaky feline. It took quite some 
                                                                     time to gather your wits. They say that is a side effect
                                                                     when you've got it...
-
                                                                     You must move quickly now. It's spreading... Where will you go?
             """)
             print("-" * 192)
@@ -242,7 +239,6 @@ def player_selection():
                                                                     Ahhh, Mr. Grimes. Carl, is it? 
                                                                     It took quite quite a while to gather your wits. 
                                                                     They say that is a side effect when you've got it...
-
                                                                     You must move quickly now. It's spreading... Where will you go?
             """)
             print("-" * 192)
@@ -254,7 +250,6 @@ def player_selection():
                                                                     Ahhh, Chico Dusty. Father of Sir Lucious Leftfoot.
                                                                     It took quite some time to gather your wits.
                                                                     They say that is a side effect when you've got it...
-
                                                                     You must move quickly now. It's spreading... Where will you go?
             """)
             print("-" * 192)
@@ -281,8 +276,6 @@ def player_selection():
 def location_menu(player):
 # Looping user input to choose location
     while True:
-        player.bag.append("Gun")
-        player.bag.append("knife")
         if pubZombie.health <= 0 and cyborgsean.health <= 0 and hs_zombie.health <= 0 and mall_zombie.health <= 0 and plot_zombie.health <=0:
             location_choice = input("""
                                                                                         1. The Pub
@@ -465,12 +458,8 @@ def pub_menu(player):
                                                                 It's nice to be here..
                         """)
                         print("*" * 192)
-                        #time.sleep(5)
-                        # INPUT ZOMBIE BARTENDER SOUND
-                        # time.sleep()
-                        
                         player.bartenderencounter += 1
-
+                    
                     elif player.bartenderencounter == 2:
                         print("""
                                                               You approach the bar. Your faithful bartender's back is turned.
@@ -541,7 +530,6 @@ def pub_menu(player):
                         
                                                                                 %s KILLED %s!! 
                                                                                 %s's health is %d.
-
                                                                                 ....Now what?
                                 """ % (player.name, pubZombie.name, player.name, player.health))
                                 print("*" * 192)
@@ -737,7 +725,7 @@ def pub_menu(player):
 
 
 ########################################################################################################
-################################## 2. HIGH SCHOOL LOCATION & MENU FUNCTIONS ####################################
+################################## 2. HIGH SCHOOL LOCATION & MENU FUNCTIONS ############################
 ########################################################################################################
 
 def highschool_location():
@@ -879,7 +867,7 @@ def highschool_menu(player):
                         """)
                         print("*" * 192)
             # ZOMBIE ATTACKS!
-                    if player.health > 0:
+                    if player.health > 0 and hs_zombie.health > 0:
                         time.sleep(1.5)
                         hs_zombie.do_punch(player)
                         punch.play()
@@ -947,6 +935,14 @@ def highschool_menu(player):
             """)
 
 ########################################################################################################
+############################## END 2. HIGH SCHOOL LOCATION & MENU FUNCTIONS ############################
+########################################################################################################
+
+
+
+
+
+########################################################################################################
 ############################# 3. MALL LOCATION & MENU FUNCTIONS ########################################
 ########################################################################################################
 
@@ -1011,7 +1007,7 @@ def mall_menu(player):
             """)
             print("*" * 192)
 
-        if player.health > 0:
+        if player.health > 0 and plot_zombie.health > 0:
             time.sleep(1.5)
             plot_zombie.do_punch(player)
             punch.play()
@@ -1200,7 +1196,7 @@ def mall_menu(player):
                             """)
                             print("*" * 192)
                 # ZOMBIE ATTACKS!
-                        if player.health > 0:
+                        if player.health > 0 and mall_zombie.health > 0:
                             time.sleep(1.5)
                             mall_zombie.do_punch(player)
                             punch.play()
@@ -1321,6 +1317,8 @@ def mall_menu(player):
                                                                                 2. Respirator
                                                                                 
                                                                                 3. An old dog collar
+
+                                                                                4.Nothing, Leave
                     """)
                     print("*" * 192)
 ########### PURCHASE Mask ########################################################
@@ -1350,7 +1348,7 @@ def mall_menu(player):
                         """ % (player.bag, player.purse))
                         print("*" * 192)
 ########### PURCHASE Respirator ########################################################
-                    if user_input == "2" and "Respirator" in player.bag:
+                    elif user_input == "2" and "Respirator" in player.bag:
                         print("""
                                                                                   Respirators are sold out
                         """)
@@ -1375,7 +1373,7 @@ def mall_menu(player):
                         """ % (player.bag, player.purse))
                         print("*" * 192)
 ########### PURCHASE DOG COLLAR ########################################################
-                    if user_input == "3" and "Sam's dog collar" in player.bag:
+                    elif user_input == "3" and "Sam's dog collar" in player.bag:
                         print("""
                                                                                 You bought the only dog collar
                         """)
@@ -1404,6 +1402,9 @@ def mall_menu(player):
                                                                 Your bag contains %s and you now have $%d
                         """ % (player.bag, player.purse))
                         print("*" * 192)
+                    if user_choice == "4":
+                        print("*" * 192
+                        mall_menu(player))
 
                 
 ################ LEAVE Mall #######################
@@ -1625,6 +1626,7 @@ def digitalcrafts_menu(player):
                                     """ % (player.name, cyborgsean.name, player.name, player.health))
                                     print("*" * 192)
                                     player.dc_sound_count += 1
+                                    time.sleep(1.5)
                                     cash.play()
                                     print("""
                                                                              You take the pocket money and leave.
@@ -1726,9 +1728,9 @@ print("*" * 192)
             """)   
             print("*" * 192)
             print("""
-            1. Use IV
-            
-            2. Do not use IV
+                                                                                        1. Use IV
+                                                                                        
+                                                                                        2. Do not use IV
             """)
             user_input = input()
             print("*" * 192)
@@ -1797,6 +1799,7 @@ print("*" * 192)
                 """)
                 print("*" * 192)
                 cdc_menu(player)
+
     
         
         elif user_choice == "3":
