@@ -875,7 +875,7 @@ def mall_menu(player):
             print ("3. Use Knife")
         if "gun" in player.bag:
             print ("4. Use Gun")
-        user_input = input("(1-4)")
+        user_input = input("")
         if user_input == "1":
             # player.health -= 20
             location_menu(player)
