@@ -44,9 +44,6 @@ class Character:
         self.beretta_count = 1
         self.dontvisit_count = 1
         self.gvisit_count = 1
-        self.itemslist = ["1. mask",
-        "2. respirator",
-        "3. an old dog collar"]
         # self.location = location
     
     def __str__(self):
