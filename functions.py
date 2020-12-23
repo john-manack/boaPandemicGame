@@ -143,7 +143,7 @@ def cyborgattack_art():
                                                                 | )   ( |   | |      | |   | )   ( || (____/\|  /  \ \ _  _ 
                                                                 |/     \|   )_(      )_(   |/     \|(_______/|_/    \/(_)(_)
     """)
-    print("*" *)
+    print("*" * 192)
 
 def player_dies():
     print("""
@@ -231,11 +231,11 @@ def player_selection():
         elif character_choice == "3":
             player = character3
             print("""
-                                                                    Ahhh, Mr. Grimes. Carl, is it? 
-                                                                    It took quite quite a while to gather your wits. 
-                                                                    They say that is a side effect when you've got it...
+                                                                Ahhh, Mr. Grimes. Carl, is it? 
+                                                                It took quite quite a while to gather your wits. 
+                                                                They say that is a side effect when you've got it...
 
-                                                                    You must move quickly now. It's spreading... Where will you go?
+                                                                You must move quickly now. It's spreading... Where will you go?
             """)
             print("-" * 192)
             location_menu(player)
@@ -276,13 +276,13 @@ def location_menu(player):
         
         if pubZombie.health <= 0 and cyborgsean.health <= 0 and hs_zombie.health <= 0 and mall_zombie.health <= 0 and plot_zombie.health <=0:
             location_choice = input("""
-                                                                                    1. The Pub
-                                                                                    2. The High School
-                                                                                    3. The Mall
-                                                                                    4. Digital Crafts
-                                                                                    5. Check Health
-                                                                                    6. Check Bag
-                                                                                    7. Go to the CDC
+                                                                                        1. The Pub
+                                                                                        2. The High School
+                                                                                        3. The Mall
+                                                                                        4. Digital Crafts
+                                                                                        5. Check Health
+                                                                                        6. Check Bag
+                                                                                        7. Go to the CDC
             """)
             print("*" * 192)
         else:
@@ -398,23 +398,23 @@ def pub_menu(player):
                         pint_count += 1
                     if user_choice == "1" and player.gamestop_count >= 2 and pint_count >=6:
                         print("""
-                                                                    ya... ya... ya..., ok!! ill take your advice and go say hey to her....
-                                                                    You leave the bar and just start walking....
+                                                            ya... ya... ya..., ok!! ill take your advice and go say hey to her....
+                                                            You leave the bar and just start walking....
 
-                                                                    once you go inside you ask the mannequin behind the cashier counter
-                                                                    "Aye Hank whose the girl in the.. Never mind I'll find out for myself.
+                                                            once you go inside you ask the mannequin behind the cashier counter
+                                                            "Aye Hank whose the girl in the.. Never mind I'll find out for myself.
 
-                                                                    As you walk to the back where this mannequin wearing a fur coat is standing you say
+                                                            As you walk to the back where this mannequin wearing a fur coat is standing you say
 
-                                                                    "I promised my friends that I would say hello to you....
+                                                            "I promised my friends that I would say hello to you....
 
-                                                                    Hello.....
+                                                            Hello.....
 
-                                                                    Hello.....
+                                                            Hello.....
 
-                                                                    Please say hello to me
+                                                            Please say hello to me
 
-                                                                    PPleease say hello to me!!!!"
+                                                            PPleease say hello to me!!!!"
                         """)
                         print("*" * 192)
                         time.sleep(5)
@@ -474,9 +474,9 @@ def pub_menu(player):
                                                                                     1. Run Away
                                                                                     2. Punch""")
                             if "knife" in player.bag:
-                            print ("""                                              3. Use Knife""")
+                                print ("""                                          3. Use Knife""")
                             if "gun" in player.bag:
-                            print ("""                                              4. Use Gun""")
+                                print ("""                                          4. Use Gun""")
                             user_input = input()
                             print("*" * 192)
                     # Run Away
@@ -552,9 +552,9 @@ def pub_menu(player):
                     
                 elif user_choice == "4":
                     print("""
-                                                                                    You couldn't be leaving any sooner... 
-                                                                                    
-                                                                                    Where to?
+                                                                            You couldn't be leaving any sooner... 
+                                                                            
+                                                                            Where to?
                     """)
                     print("*" * 192)
                     location_menu(player)
@@ -615,7 +615,10 @@ def pub_menu(player):
                         """)
                         print("*" * 192)
                         time.sleep(5)
-                        print("You wake up at home not remembering what happened last night.")
+                        print("""
+                                                                You wake up at home not remembering what happened last night.
+                        """)
+                        print("* " * 192)
                         location_menu(player)
                     if user_choice == "1" and pint_count >= 6:
                         print("""
