@@ -15,8 +15,7 @@ Venture, if you dare, into a world ravaged by a pandemic, which causes its hosts
 RPG Main Menu:
 ![RPG Main Menu](images/main_menu.png)
 
-Zombie Attack Sequence:
+Zombie Attack Sequence, Location Selection, and Bag Contents Menus:
 ![Zombie Attack](images/zombie_attack.png)
 
-Location Selection and Bag Contents Menus:
 ![Location and Bag](images/bag_contents.png)
