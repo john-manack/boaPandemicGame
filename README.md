@@ -18,5 +18,5 @@ RPG Main Menu:
 Zombie Attack Sequence, Location Selection, and Bag Contents Menus:
 ![Zombie Attack](images/zombie_attack.png)
 ![Location Selection](images/location_selection_menu.png)
-![Highschool](images/highschool_selection_menu.png)
+![Highschool](images/highschool_menu.png)
 ![Location and Bag](images/bag_contents.png)
