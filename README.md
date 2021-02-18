@@ -15,8 +15,11 @@ Venture, if you dare, into a world ravaged by a pandemic, which causes its hosts
 RPG Main Menu:
 ![RPG Main Menu](images/main_menu.png)
 
-Zombie Attack Sequence, Location Selection, and Bag Contents Menus:
-![Zombie Attack](images/zombie_attack.png)
+Location Selection:
 ![Location Selection](images/location_selection_menu.png)
+
+Explore the 'Highschool':
 ![Highschool](images/highschool_menu.png)
-![Location and Bag](images/bag_contents.png)
+
+Zombie Attack Sequence:
+![Zombie Attack](images/zombie_attack.png)
